@@ -1,0 +1,21 @@
+[core]
+	autocrlf = false
+	editor = 'C:\\Program Files (x86)\\Notepad++\\notepad++.exe' -multiInst -notabbar -nosession -noPlugin
+[user]
+	name = David Woods
+	email = ***@hotmail.com
+[github]
+	user = ***
+	token = ***
+[merge]
+	tool = p4merge
+[mergetool "p4merge"]
+	cmd = "p4merge.exe $BASE $LOCAL $REMOTE $MERGED"
+[diff]
+	tool = p4merge
+[difftool "p4merge"]
+	cmd = "p4merge.exe $LOCAL $REMOTE"
+[push]
+	default = simple
+[credential]
+	helper = !'C:\\Users\\David\\AppData\\Roaming\\GitCredStore\\git-credential-winstore.exe'
