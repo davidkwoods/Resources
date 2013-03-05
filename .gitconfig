@@ -19,3 +19,7 @@
 	default = simple
 [credential]
 	helper = !'C:\\Users\\David\\AppData\\Roaming\\GitCredStore\\git-credential-winstore.exe'
+[alias]
+	logg = log --graph --full-history --all --color --pretty=format:\"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s\"
+	loggg = log --graph --full-history --all --color --pretty=format:\"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%cN:% s\"
+	gitkk = gitk --full-history --all
