@@ -8,13 +8,21 @@
 	user = ***
 	token = ***
 [merge]
-	tool = p4merge
+  tool = SemanticMerge
 [mergetool "p4merge"]
 	cmd = "p4merge.exe $BASE $LOCAL $REMOTE $MERGED"
+[mergetool "SemanticMerge"]
+  path = C:\\Users\\David\\AppData\\Local\\PlasticSCM4\\semanticmerge\\semanticmergetool.exe
+  keepBackup = false
+  trustExitCode = false
+  cmd = \"C:\\Users\\David\\AppData\\Local\\PlasticSCM4\\semanticmerge\\semanticmergetool.exe\" -b=\"$BASE\" -d=\"$LOCAL\" -s=\"$REMOTE\" -r=\"$MERGED\" -l=csharp -emt=\"mergetool.exe -b=\"\"@basefile\"\" -bn=\"\"@basesymbolic\"\" -s=\"\"@sourcefile\"\" -sn=\"\"@sourcesymbolic\"\" -d=\"\"@destinationfile\"\" -dn=\"\"@destinationsymbolic\"\" -r=\"\"@output\"\" -t=\"\"@filetype\"\" -i=\"\"@comparationmethod\"\" -e=\"\"@fileencoding\"\"\" -edt=\"mergetool.exe  -s=\"\"@sourcefile\"\" -sn=\"\"@sourcesymbolic\"\" -d=\"\"@destinationfile\"\" -dn=\"\"@destinationsymbolic\"\" -t=\"\"@filetype\"\" -i=\"\"@comparationmethod\"\" -e=\"\"@fileencoding\"\"\"
 [diff]
-	tool = p4merge
+	tool = SemanticMerge
 [difftool "p4merge"]
 	cmd = "p4merge.exe $LOCAL $REMOTE"
+[difftool "SemanticMerge"]
+  path = C:\\Users\\David\\AppData\\Local\\PlasticSCM4\\semanticmerge\\semanticmergetool.exe
+  cmd = \"C:\\Users\\David\\AppData\\Local\\PlasticSCM4\\semanticmerge\\semanticmergetool.exe\" -s=$LOCAL -d=$REMOTE
 [push]
 	default = simple
 [credential]
