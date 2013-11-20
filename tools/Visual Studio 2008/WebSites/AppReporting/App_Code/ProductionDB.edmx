@@ -1,0 +1,663 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AppReporting.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+        <EntityContainer Name="AppReportingStoreContainer">
+          <EntitySet Name="InstSilverlightStates" EntityType="AppReporting.Store.InstSilverlightStates" store:Type="Tables" Schema="MediaAx" />
+          <EntitySet Name="Log" EntityType="AppReporting.Store.Log" store:Type="Tables" store:Schema="MediaAx" store:Name="Log">
+            <DefiningQuery>SELECT 
+      [Log].[LogId] AS [LogId], 
+      [Log].[DayOfMonthGMT-7] AS [DayOfMonthGMT-7], 
+      [Log].[DayOfMonthGMT-8] AS [DayOfMonthGMT-8], 
+      [Log].[TimeSlice01GMT-7] AS [TimeSlice01GMT-7], 
+      [Log].[TimeSlice01GMT-8] AS [TimeSlice01GMT-8], 
+      [Log].[LogApplicationId] AS [LogApplicationId], 
+      [Log].[LogAreaId] AS [LogAreaId], 
+      [Log].[LogBrowserId] AS [LogBrowserId], 
+      [Log].[LogClientAddressId] AS [LogClientAddressId], 
+      [Log].[LogCreated] AS [LogCreated], 
+      [Log].[LogMessageKey] AS [LogMessageKey], 
+      [Log].[LogOffsetTicks] AS [LogOffsetTicks], 
+      [Log].[LogPlatformId] AS [LogPlatformId], 
+      [Log].[LogPlayerKey] AS [LogPlayerKey], 
+      [Log].[LogRelatedMessageKey] AS [LogRelatedMessageKey], 
+      [Log].[LogServerTime] AS [LogServerTime], 
+      [Log].[LogSessionKey] AS [LogSessionKey], 
+      [Log].[AppDurationSeconds] AS [AppDurationSeconds], 
+      [Log].[AppScopeId] AS [AppScopeId], 
+      [Log].[InstReferrerUrlId] AS [InstReferrerUrlId], 
+      [Log].[InstScopeId] AS [InstScopeId], 
+      [Log].[InstSilverlightStateId] AS [InstSilverlightStateId], 
+      [Log].[InstSilverlightVersionId] AS [InstSilverlightVersionId], 
+      [Log].[SessClosed] AS [SessClosed], 
+      [Log].[SessDurationSeconds] AS [SessDurationSeconds], 
+      [Log].[SessLogCount] AS [SessLogCount], 
+      [Log].[SessLogDropped] AS [SessLogDropped], 
+      [Log].[SessLogFailedSendCount] AS [SessLogFailedSendCount], 
+      [Log].[SessPollingInterval] AS [SessPollingInterval], 
+      [Log].[SessScopeId] AS [SessScopeId], 
+      [Log].[VidAudioBufferSize] AS [VidAudioBufferSize], 
+      [Log].[VidAudioDownloadLatency] AS [VidAudioDownloadLatency], 
+      [Log].[VidBitRate] AS [VidBitRate], 
+      [Log].[VidBitRateChangeCount] AS [VidBitRateChangeCount], 
+      [Log].[VidBufferingMilliseconds] AS [VidBufferingMilliseconds], 
+      [Log].[VidBufferSize] AS [VidBufferSize], 
+      [Log].[VidCDNBlocked] AS [VidCDNBlocked], 
+      [Log].[VidChunkId] AS [VidChunkId], 
+      [Log].[VidCPULoad] AS [VidCPULoad], 
+      [Log].[VidDownloadLatency] AS [VidDownloadLatency], 
+      [Log].[VidDroppedFrames] AS [VidDroppedFrames], 
+      [Log].[VidDurationSeconds] AS [VidDurationSeconds], 
+      [Log].[VidDVRUseCount] AS [VidDVRUseCount], 
+      [Log].[VidEdgeIPId] AS [VidEdgeIPId], 
+      [Log].[VidFullScreenCount] AS [VidFullScreenCount], 
+      [Log].[VidGPUId] AS [VidGPUId], 
+      [Log].[VidHttpErrorCount] AS [VidHttpErrorCount], 
+      [Log].[VidId] AS [VidId], 
+      [Log].[VidPerceivedBandwidth] AS [VidPerceivedBandwidth], 
+      [Log].[VidQualityId] AS [VidQualityId], 
+      [Log].[VidQualityWindow] AS [VidQualityWindow], 
+      [Log].[VidRenderedFrames] AS [VidRenderedFrames], 
+      [Log].[VidRendererId] AS [VidRendererId], 
+      [Log].[VidScopeId] AS [VidScopeId], 
+      [Log].[VidSessionId] AS [VidSessionId], 
+      [Log].[VidTimeLineMarker] AS [VidTimeLineMarker], 
+      [Log].[VidTrace] AS [VidTrace], 
+      [Log].[VidTypeId] AS [VidTypeId], 
+      [Log].[VidUrlId] AS [VidUrlId], 
+      [Log].[LogColumnSet] AS [LogColumnSet]
+      FROM [MediaAx].[Log] AS [Log]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="LogApplications" EntityType="AppReporting.Store.LogApplications" store:Type="Tables" Schema="MediaAx" />
+          <EntitySet Name="LogBrowsers" EntityType="AppReporting.Store.LogBrowsers" store:Type="Tables" Schema="MediaAx" />
+          <EntitySet Name="LogPlatforms" EntityType="AppReporting.Store.LogPlatforms" store:Type="Tables" Schema="MediaAx" />
+          <AssociationSet Name="FK_Log_InstSilverlightStates" Association="AppReporting.Store.FK_Log_InstSilverlightStates">
+            <End Role="InstSilverlightStates" EntitySet="InstSilverlightStates" />
+            <End Role="Log" EntitySet="Log" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Log_LogApplications" Association="AppReporting.Store.FK_Log_LogApplications">
+            <End Role="LogApplications" EntitySet="LogApplications" />
+            <End Role="Log" EntitySet="Log" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Log_LogBrowsers" Association="AppReporting.Store.FK_Log_LogBrowsers">
+            <End Role="LogBrowsers" EntitySet="LogBrowsers" />
+            <End Role="Log" EntitySet="Log" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Log_Platforms" Association="AppReporting.Store.FK_Log_Platforms">
+            <End Role="LogPlatforms" EntitySet="LogPlatforms" />
+            <End Role="Log" EntitySet="Log" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="InstSilverlightStates">
+          <Key>
+            <PropertyRef Name="InstSilverlightStateId" />
+          </Key>
+          <Property Name="InstSilverlightStateId" Type="int" Nullable="false" />
+          <Property Name="InstSilverlightState" Type="nvarchar" Nullable="false" MaxLength="450" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'MediaAx.MediaAx.Log' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="LogId" />
+            <PropertyRef Name="DayOfMonthGMT-7" />
+            <PropertyRef Name="DayOfMonthGMT-8" />
+            <PropertyRef Name="TimeSlice01GMT-7" />
+            <PropertyRef Name="TimeSlice01GMT-8" />
+            <PropertyRef Name="LogApplicationId" />
+            <PropertyRef Name="LogAreaId" />
+            <PropertyRef Name="LogBrowserId" />
+            <PropertyRef Name="LogClientAddressId" />
+            <PropertyRef Name="LogCreated" />
+            <PropertyRef Name="LogMessageKey" />
+            <PropertyRef Name="LogPlatformId" />
+            <PropertyRef Name="LogServerTime" />
+            <PropertyRef Name="LogSessionKey" />
+          </Key>
+          <Property Name="LogId" Type="bigint" Nullable="false" />
+          <Property Name="DayOfMonthGMT-7" Type="date" Nullable="false" />
+          <Property Name="DayOfMonthGMT-8" Type="date" Nullable="false" />
+          <Property Name="TimeSlice01GMT-7" Type="time" Nullable="false" Precision="0" />
+          <Property Name="TimeSlice01GMT-8" Type="time" Nullable="false" Precision="0" />
+          <Property Name="LogApplicationId" Type="int" Nullable="false" />
+          <Property Name="LogAreaId" Type="int" Nullable="false" />
+          <Property Name="LogBrowserId" Type="int" Nullable="false" />
+          <Property Name="LogClientAddressId" Type="int" Nullable="false" />
+          <Property Name="LogCreated" Type="datetimeoffset" Nullable="false" />
+          <Property Name="LogMessageKey" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LogOffsetTicks" Type="bigint" />
+          <Property Name="LogPlatformId" Type="int" Nullable="false" />
+          <Property Name="LogPlayerKey" Type="uniqueidentifier" />
+          <Property Name="LogRelatedMessageKey" Type="uniqueidentifier" />
+          <Property Name="LogServerTime" Type="datetimeoffset" Nullable="false" />
+          <Property Name="LogSessionKey" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AppDurationSeconds" Type="int" />
+          <Property Name="AppScopeId" Type="int" />
+          <Property Name="InstReferrerUrlId" Type="int" />
+          <Property Name="InstScopeId" Type="int" />
+          <Property Name="InstSilverlightStateId" Type="int" />
+          <Property Name="InstSilverlightVersionId" Type="int" />
+          <Property Name="SessClosed" Type="bit" />
+          <Property Name="SessDurationSeconds" Type="int" />
+          <Property Name="SessLogCount" Type="int" />
+          <Property Name="SessLogDropped" Type="int" />
+          <Property Name="SessLogFailedSendCount" Type="int" />
+          <Property Name="SessPollingInterval" Type="int" />
+          <Property Name="SessScopeId" Type="int" />
+          <Property Name="VidAudioBufferSize" Type="int" />
+          <Property Name="VidAudioDownloadLatency" Type="int" />
+          <Property Name="VidBitRate" Type="int" />
+          <Property Name="VidBitRateChangeCount" Type="int" />
+          <Property Name="VidBufferingMilliseconds" Type="bigint" />
+          <Property Name="VidBufferSize" Type="int" />
+          <Property Name="VidCDNBlocked" Type="bit" />
+          <Property Name="VidChunkId" Type="nvarchar" MaxLength="450" />
+          <Property Name="VidCPULoad" Type="smallint" />
+          <Property Name="VidDownloadLatency" Type="int" />
+          <Property Name="VidDroppedFrames" Type="smallint" />
+          <Property Name="VidDurationSeconds" Type="int" />
+          <Property Name="VidDVRUseCount" Type="int" />
+          <Property Name="VidEdgeIPId" Type="int" />
+          <Property Name="VidFullScreenCount" Type="smallint" />
+          <Property Name="VidGPUId" Type="int" />
+          <Property Name="VidHttpErrorCount" Type="int" />
+          <Property Name="VidId" Type="int" />
+          <Property Name="VidPerceivedBandwidth" Type="bigint" />
+          <Property Name="VidQualityId" Type="int" />
+          <Property Name="VidQualityWindow" Type="int" />
+          <Property Name="VidRenderedFrames" Type="smallint" />
+          <Property Name="VidRendererId" Type="int" />
+          <Property Name="VidScopeId" Type="int" />
+          <Property Name="VidSessionId" Type="bigint" />
+          <Property Name="VidTimeLineMarker" Type="bigint" />
+          <Property Name="VidTrace" Type="nvarchar(max)" />
+          <Property Name="VidTypeId" Type="int" />
+          <Property Name="VidUrlId" Type="int" />
+          <Property Name="LogColumnSet" Type="xml" />
+        </EntityType>
+        <EntityType Name="LogApplications">
+          <Key>
+            <PropertyRef Name="LogApplicationId" />
+          </Key>
+          <Property Name="LogApplicationId" Type="int" Nullable="false" />
+          <Property Name="LogApplicationName" Type="nvarchar" Nullable="false" MaxLength="225" />
+          <Property Name="LogApplicationVersion" Type="nvarchar" Nullable="false" MaxLength="225" />
+        </EntityType>
+        <EntityType Name="LogBrowsers">
+          <Key>
+            <PropertyRef Name="LogBrowserId" />
+          </Key>
+          <Property Name="LogBrowserId" Type="int" Nullable="false" />
+          <Property Name="LogBrowserName" Type="nvarchar" Nullable="false" MaxLength="225" />
+          <Property Name="LogBrowserVersion" Type="nvarchar" Nullable="false" MaxLength="225" />
+        </EntityType>
+        <EntityType Name="LogPlatforms">
+          <Key>
+            <PropertyRef Name="LogPlatformId" />
+          </Key>
+          <Property Name="LogPlatformId" Type="int" Nullable="false" />
+          <Property Name="LogPlatformName" Type="nvarchar" Nullable="false" MaxLength="450" />
+        </EntityType>
+        <Association Name="FK_Log_InstSilverlightStates">
+          <End Role="InstSilverlightStates" Type="AppReporting.Store.InstSilverlightStates" Multiplicity="0..1" />
+          <End Role="Log" Type="AppReporting.Store.Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InstSilverlightStates">
+              <PropertyRef Name="InstSilverlightStateId" />
+            </Principal>
+            <Dependent Role="Log">
+              <PropertyRef Name="InstSilverlightStateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Log_LogApplications">
+          <End Role="LogApplications" Type="AppReporting.Store.LogApplications" Multiplicity="1" />
+          <End Role="Log" Type="AppReporting.Store.Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LogApplications">
+              <PropertyRef Name="LogApplicationId" />
+            </Principal>
+            <Dependent Role="Log">
+              <PropertyRef Name="LogApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Log_LogBrowsers">
+          <End Role="LogBrowsers" Type="AppReporting.Store.LogBrowsers" Multiplicity="1" />
+          <End Role="Log" Type="AppReporting.Store.Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LogBrowsers">
+              <PropertyRef Name="LogBrowserId" />
+            </Principal>
+            <Dependent Role="Log">
+              <PropertyRef Name="LogBrowserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Log_Platforms">
+          <End Role="LogPlatforms" Type="AppReporting.Store.LogPlatforms" Multiplicity="1" />
+          <End Role="Log" Type="AppReporting.Store.Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LogPlatforms">
+              <PropertyRef Name="LogPlatformId" />
+            </Principal>
+            <Dependent Role="Log">
+              <PropertyRef Name="LogPlatformId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AppReporting" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+        <EntityContainer Name="MediaAxEntities">
+          <EntitySet Name="InstSilverlightStates" EntityType="AppReporting.InstSilverlightStates" />
+          <EntitySet Name="Log" EntityType="AppReporting.Log" />
+          <EntitySet Name="LogApplications" EntityType="AppReporting.LogApplications" />
+          <EntitySet Name="LogBrowsers" EntityType="AppReporting.LogBrowsers" />
+          <EntitySet Name="LogPlatforms" EntityType="AppReporting.LogPlatforms" />
+          <AssociationSet Name="FK_Log_InstSilverlightStates" Association="AppReporting.FK_Log_InstSilverlightStates">
+            <End Role="InstSilverlightStates" EntitySet="InstSilverlightStates" />
+            <End Role="Log" EntitySet="Log" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Log_LogApplications" Association="AppReporting.FK_Log_LogApplications">
+            <End Role="LogApplications" EntitySet="LogApplications" />
+            <End Role="Log" EntitySet="Log" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Log_LogBrowsers" Association="AppReporting.FK_Log_LogBrowsers">
+            <End Role="LogBrowsers" EntitySet="LogBrowsers" />
+            <End Role="Log" EntitySet="Log" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Log_Platforms" Association="AppReporting.FK_Log_Platforms">
+            <End Role="LogPlatforms" EntitySet="LogPlatforms" />
+            <End Role="Log" EntitySet="Log" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="InstSilverlightStates">
+          <Key>
+            <PropertyRef Name="InstSilverlightStateId" />
+          </Key>
+          <Property Name="InstSilverlightStateId" Type="Int32" Nullable="false" />
+          <Property Name="InstSilverlightState" Type="String" Nullable="false" MaxLength="450" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Log" Relationship="AppReporting.FK_Log_InstSilverlightStates" FromRole="InstSilverlightStates" ToRole="Log" />
+        </EntityType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="LogId" />
+            <PropertyRef Name="DayOfMonthGMT_7" />
+            <PropertyRef Name="DayOfMonthGMT_8" />
+            <PropertyRef Name="TimeSlice01GMT_7" />
+            <PropertyRef Name="TimeSlice01GMT_8" />
+            <PropertyRef Name="LogApplicationId" />
+            <PropertyRef Name="LogAreaId" />
+            <PropertyRef Name="LogBrowserId" />
+            <PropertyRef Name="LogClientAddressId" />
+            <PropertyRef Name="LogCreated" />
+            <PropertyRef Name="LogMessageKey" />
+            <PropertyRef Name="LogPlatformId" />
+            <PropertyRef Name="LogServerTime" />
+            <PropertyRef Name="LogSessionKey" />
+          </Key>
+          <Property Name="LogId" Type="Int64" Nullable="false" />
+          <Property Name="DayOfMonthGMT_7" Type="DateTime" Nullable="false" />
+          <Property Name="DayOfMonthGMT_8" Type="DateTime" Nullable="false" />
+          <Property Name="TimeSlice01GMT_7" Type="Time" Nullable="false" />
+          <Property Name="TimeSlice01GMT_8" Type="Time" Nullable="false" />
+          <Property Name="LogApplicationId" Type="Int32" Nullable="false" />
+          <Property Name="LogAreaId" Type="Int32" Nullable="false" />
+          <Property Name="LogBrowserId" Type="Int32" Nullable="false" />
+          <Property Name="LogClientAddressId" Type="Int32" Nullable="false" />
+          <Property Name="LogCreated" Type="DateTimeOffset" Nullable="false" />
+          <Property Name="LogMessageKey" Type="Guid" Nullable="false" />
+          <Property Name="LogOffsetTicks" Type="Int64" />
+          <Property Name="LogPlatformId" Type="Int32" Nullable="false" />
+          <Property Name="LogPlayerKey" Type="Guid" />
+          <Property Name="LogRelatedMessageKey" Type="Guid" />
+          <Property Name="LogServerTime" Type="DateTimeOffset" Nullable="false" />
+          <Property Name="LogSessionKey" Type="Guid" Nullable="false" />
+          <Property Name="AppDurationSeconds" Type="Int32" />
+          <Property Name="AppScopeId" Type="Int32" />
+          <Property Name="InstReferrerUrlId" Type="Int32" />
+          <Property Name="InstScopeId" Type="Int32" />
+          <Property Name="InstSilverlightVersionId" Type="Int32" />
+          <Property Name="SessClosed" Type="Boolean" />
+          <Property Name="SessDurationSeconds" Type="Int32" />
+          <Property Name="SessLogCount" Type="Int32" />
+          <Property Name="SessLogDropped" Type="Int32" />
+          <Property Name="SessLogFailedSendCount" Type="Int32" />
+          <Property Name="SessPollingInterval" Type="Int32" />
+          <Property Name="SessScopeId" Type="Int32" />
+          <Property Name="VidAudioBufferSize" Type="Int32" />
+          <Property Name="VidAudioDownloadLatency" Type="Int32" />
+          <Property Name="VidBitRate" Type="Int32" />
+          <Property Name="VidBitRateChangeCount" Type="Int32" />
+          <Property Name="VidBufferingMilliseconds" Type="Int64" />
+          <Property Name="VidBufferSize" Type="Int32" />
+          <Property Name="VidCDNBlocked" Type="Boolean" />
+          <Property Name="VidChunkId" Type="String" MaxLength="450" Unicode="true" FixedLength="false" />
+          <Property Name="VidCPULoad" Type="Int16" />
+          <Property Name="VidDownloadLatency" Type="Int32" />
+          <Property Name="VidDroppedFrames" Type="Int16" />
+          <Property Name="VidDurationSeconds" Type="Int32" />
+          <Property Name="VidDVRUseCount" Type="Int32" />
+          <Property Name="VidEdgeIPId" Type="Int32" />
+          <Property Name="VidFullScreenCount" Type="Int16" />
+          <Property Name="VidGPUId" Type="Int32" />
+          <Property Name="VidHttpErrorCount" Type="Int32" />
+          <Property Name="VidId" Type="Int32" />
+          <Property Name="VidPerceivedBandwidth" Type="Int64" />
+          <Property Name="VidQualityId" Type="Int32" />
+          <Property Name="VidQualityWindow" Type="Int32" />
+          <Property Name="VidRenderedFrames" Type="Int16" />
+          <Property Name="VidRendererId" Type="Int32" />
+          <Property Name="VidScopeId" Type="Int32" />
+          <Property Name="VidSessionId" Type="Int64" />
+          <Property Name="VidTimeLineMarker" Type="Int64" />
+          <Property Name="VidTrace" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="VidTypeId" Type="Int32" />
+          <Property Name="VidUrlId" Type="Int32" />
+          <Property Name="LogColumnSet" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="InstSilverlightStates" Relationship="AppReporting.FK_Log_InstSilverlightStates" FromRole="Log" ToRole="InstSilverlightStates" />
+          <NavigationProperty Name="LogApplications" Relationship="AppReporting.FK_Log_LogApplications" FromRole="Log" ToRole="LogApplications" />
+          <NavigationProperty Name="LogBrowsers" Relationship="AppReporting.FK_Log_LogBrowsers" FromRole="Log" ToRole="LogBrowsers" />
+          <NavigationProperty Name="LogPlatforms" Relationship="AppReporting.FK_Log_Platforms" FromRole="Log" ToRole="LogPlatforms" />
+        </EntityType>
+        <EntityType Name="LogApplications">
+          <Key>
+            <PropertyRef Name="LogApplicationId" />
+          </Key>
+          <Property Name="LogApplicationId" Type="Int32" Nullable="false" />
+          <Property Name="LogApplicationName" Type="String" Nullable="false" MaxLength="225" Unicode="true" FixedLength="false" />
+          <Property Name="LogApplicationVersion" Type="String" Nullable="false" MaxLength="225" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Log" Relationship="AppReporting.FK_Log_LogApplications" FromRole="LogApplications" ToRole="Log" />
+        </EntityType>
+        <EntityType Name="LogBrowsers">
+          <Key>
+            <PropertyRef Name="LogBrowserId" />
+          </Key>
+          <Property Name="LogBrowserId" Type="Int32" Nullable="false" />
+          <Property Name="LogBrowserName" Type="String" Nullable="false" MaxLength="225" Unicode="true" FixedLength="false" />
+          <Property Name="LogBrowserVersion" Type="String" Nullable="false" MaxLength="225" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Log" Relationship="AppReporting.FK_Log_LogBrowsers" FromRole="LogBrowsers" ToRole="Log" />
+        </EntityType>
+        <EntityType Name="LogPlatforms">
+          <Key>
+            <PropertyRef Name="LogPlatformId" />
+          </Key>
+          <Property Name="LogPlatformId" Type="Int32" Nullable="false" />
+          <Property Name="LogPlatformName" Type="String" Nullable="false" MaxLength="450" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Log" Relationship="AppReporting.FK_Log_Platforms" FromRole="LogPlatforms" ToRole="Log" />
+        </EntityType>
+        <Association Name="FK_Log_InstSilverlightStates">
+          <End Role="InstSilverlightStates" Type="AppReporting.InstSilverlightStates" Multiplicity="0..1" />
+          <End Role="Log" Type="AppReporting.Log" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Log_LogApplications">
+          <End Role="LogApplications" Type="AppReporting.LogApplications" Multiplicity="1" />
+          <End Role="Log" Type="AppReporting.Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LogApplications">
+              <PropertyRef Name="LogApplicationId" />
+            </Principal>
+            <Dependent Role="Log">
+              <PropertyRef Name="LogApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Log_LogBrowsers">
+          <End Role="LogBrowsers" Type="AppReporting.LogBrowsers" Multiplicity="1" />
+          <End Role="Log" Type="AppReporting.Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LogBrowsers">
+              <PropertyRef Name="LogBrowserId" />
+            </Principal>
+            <Dependent Role="Log">
+              <PropertyRef Name="LogBrowserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Log_Platforms">
+          <End Role="LogPlatforms" Type="AppReporting.LogPlatforms" Multiplicity="1" />
+          <End Role="Log" Type="AppReporting.Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LogPlatforms">
+              <PropertyRef Name="LogPlatformId" />
+            </Principal>
+            <Dependent Role="Log">
+              <PropertyRef Name="LogPlatformId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+        <EntityContainerMapping StorageEntityContainer="AppReportingStoreContainer" CdmEntityContainer="MediaAxEntities">
+          <EntitySetMapping Name="InstSilverlightStates">
+            <EntityTypeMapping TypeName="IsTypeOf(AppReporting.InstSilverlightStates)">
+              <MappingFragment StoreEntitySet="InstSilverlightStates">
+                <ScalarProperty Name="InstSilverlightStateId" ColumnName="InstSilverlightStateId" />
+                <ScalarProperty Name="InstSilverlightState" ColumnName="InstSilverlightState" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Log">
+            <EntityTypeMapping TypeName="IsTypeOf(AppReporting.Log)">
+              <MappingFragment StoreEntitySet="Log">
+                <ScalarProperty Name="LogId" ColumnName="LogId" />
+                <ScalarProperty Name="DayOfMonthGMT_7" ColumnName="DayOfMonthGMT-7" />
+                <ScalarProperty Name="DayOfMonthGMT_8" ColumnName="DayOfMonthGMT-8" />
+                <ScalarProperty Name="TimeSlice01GMT_7" ColumnName="TimeSlice01GMT-7" />
+                <ScalarProperty Name="TimeSlice01GMT_8" ColumnName="TimeSlice01GMT-8" />
+                <ScalarProperty Name="LogApplicationId" ColumnName="LogApplicationId" />
+                <ScalarProperty Name="LogAreaId" ColumnName="LogAreaId" />
+                <ScalarProperty Name="LogBrowserId" ColumnName="LogBrowserId" />
+                <ScalarProperty Name="LogClientAddressId" ColumnName="LogClientAddressId" />
+                <ScalarProperty Name="LogCreated" ColumnName="LogCreated" />
+                <ScalarProperty Name="LogMessageKey" ColumnName="LogMessageKey" />
+                <ScalarProperty Name="LogOffsetTicks" ColumnName="LogOffsetTicks" />
+                <ScalarProperty Name="LogPlatformId" ColumnName="LogPlatformId" />
+                <ScalarProperty Name="LogPlayerKey" ColumnName="LogPlayerKey" />
+                <ScalarProperty Name="LogRelatedMessageKey" ColumnName="LogRelatedMessageKey" />
+                <ScalarProperty Name="LogServerTime" ColumnName="LogServerTime" />
+                <ScalarProperty Name="LogSessionKey" ColumnName="LogSessionKey" />
+                <ScalarProperty Name="AppDurationSeconds" ColumnName="AppDurationSeconds" />
+                <ScalarProperty Name="AppScopeId" ColumnName="AppScopeId" />
+                <ScalarProperty Name="InstReferrerUrlId" ColumnName="InstReferrerUrlId" />
+                <ScalarProperty Name="InstScopeId" ColumnName="InstScopeId" />
+                <ScalarProperty Name="InstSilverlightVersionId" ColumnName="InstSilverlightVersionId" />
+                <ScalarProperty Name="SessClosed" ColumnName="SessClosed" />
+                <ScalarProperty Name="SessDurationSeconds" ColumnName="SessDurationSeconds" />
+                <ScalarProperty Name="SessLogCount" ColumnName="SessLogCount" />
+                <ScalarProperty Name="SessLogDropped" ColumnName="SessLogDropped" />
+                <ScalarProperty Name="SessLogFailedSendCount" ColumnName="SessLogFailedSendCount" />
+                <ScalarProperty Name="SessPollingInterval" ColumnName="SessPollingInterval" />
+                <ScalarProperty Name="SessScopeId" ColumnName="SessScopeId" />
+                <ScalarProperty Name="VidAudioBufferSize" ColumnName="VidAudioBufferSize" />
+                <ScalarProperty Name="VidAudioDownloadLatency" ColumnName="VidAudioDownloadLatency" />
+                <ScalarProperty Name="VidBitRate" ColumnName="VidBitRate" />
+                <ScalarProperty Name="VidBitRateChangeCount" ColumnName="VidBitRateChangeCount" />
+                <ScalarProperty Name="VidBufferingMilliseconds" ColumnName="VidBufferingMilliseconds" />
+                <ScalarProperty Name="VidBufferSize" ColumnName="VidBufferSize" />
+                <ScalarProperty Name="VidCDNBlocked" ColumnName="VidCDNBlocked" />
+                <ScalarProperty Name="VidChunkId" ColumnName="VidChunkId" />
+                <ScalarProperty Name="VidCPULoad" ColumnName="VidCPULoad" />
+                <ScalarProperty Name="VidDownloadLatency" ColumnName="VidDownloadLatency" />
+                <ScalarProperty Name="VidDroppedFrames" ColumnName="VidDroppedFrames" />
+                <ScalarProperty Name="VidDurationSeconds" ColumnName="VidDurationSeconds" />
+                <ScalarProperty Name="VidDVRUseCount" ColumnName="VidDVRUseCount" />
+                <ScalarProperty Name="VidEdgeIPId" ColumnName="VidEdgeIPId" />
+                <ScalarProperty Name="VidFullScreenCount" ColumnName="VidFullScreenCount" />
+                <ScalarProperty Name="VidGPUId" ColumnName="VidGPUId" />
+                <ScalarProperty Name="VidHttpErrorCount" ColumnName="VidHttpErrorCount" />
+                <ScalarProperty Name="VidId" ColumnName="VidId" />
+                <ScalarProperty Name="VidPerceivedBandwidth" ColumnName="VidPerceivedBandwidth" />
+                <ScalarProperty Name="VidQualityId" ColumnName="VidQualityId" />
+                <ScalarProperty Name="VidQualityWindow" ColumnName="VidQualityWindow" />
+                <ScalarProperty Name="VidRenderedFrames" ColumnName="VidRenderedFrames" />
+                <ScalarProperty Name="VidRendererId" ColumnName="VidRendererId" />
+                <ScalarProperty Name="VidScopeId" ColumnName="VidScopeId" />
+                <ScalarProperty Name="VidSessionId" ColumnName="VidSessionId" />
+                <ScalarProperty Name="VidTimeLineMarker" ColumnName="VidTimeLineMarker" />
+                <ScalarProperty Name="VidTrace" ColumnName="VidTrace" />
+                <ScalarProperty Name="VidTypeId" ColumnName="VidTypeId" />
+                <ScalarProperty Name="VidUrlId" ColumnName="VidUrlId" />
+                <ScalarProperty Name="LogColumnSet" ColumnName="LogColumnSet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LogApplications">
+            <EntityTypeMapping TypeName="IsTypeOf(AppReporting.LogApplications)">
+              <MappingFragment StoreEntitySet="LogApplications">
+                <ScalarProperty Name="LogApplicationId" ColumnName="LogApplicationId" />
+                <ScalarProperty Name="LogApplicationName" ColumnName="LogApplicationName" />
+                <ScalarProperty Name="LogApplicationVersion" ColumnName="LogApplicationVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LogBrowsers">
+            <EntityTypeMapping TypeName="IsTypeOf(AppReporting.LogBrowsers)">
+              <MappingFragment StoreEntitySet="LogBrowsers">
+                <ScalarProperty Name="LogBrowserId" ColumnName="LogBrowserId" />
+                <ScalarProperty Name="LogBrowserName" ColumnName="LogBrowserName" />
+                <ScalarProperty Name="LogBrowserVersion" ColumnName="LogBrowserVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LogPlatforms">
+            <EntityTypeMapping TypeName="IsTypeOf(AppReporting.LogPlatforms)">
+              <MappingFragment StoreEntitySet="LogPlatforms">
+                <ScalarProperty Name="LogPlatformId" ColumnName="LogPlatformId" />
+                <ScalarProperty Name="LogPlatformName" ColumnName="LogPlatformName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_Log_InstSilverlightStates" TypeName="AppReporting.FK_Log_InstSilverlightStates" StoreEntitySet="Log">
+            <EndProperty Name="InstSilverlightStates">
+              <ScalarProperty Name="InstSilverlightStateId" ColumnName="InstSilverlightStateId" />
+            </EndProperty>
+            <EndProperty Name="Log">
+              <ScalarProperty Name="LogId" ColumnName="LogId" />
+              <ScalarProperty Name="DayOfMonthGMT_7" ColumnName="DayOfMonthGMT-7" />
+              <ScalarProperty Name="DayOfMonthGMT_8" ColumnName="DayOfMonthGMT-8" />
+              <ScalarProperty Name="TimeSlice01GMT_7" ColumnName="TimeSlice01GMT-7" />
+              <ScalarProperty Name="TimeSlice01GMT_8" ColumnName="TimeSlice01GMT-8" />
+              <ScalarProperty Name="LogApplicationId" ColumnName="LogApplicationId" />
+              <ScalarProperty Name="LogAreaId" ColumnName="LogAreaId" />
+              <ScalarProperty Name="LogBrowserId" ColumnName="LogBrowserId" />
+              <ScalarProperty Name="LogClientAddressId" ColumnName="LogClientAddressId" />
+              <ScalarProperty Name="LogCreated" ColumnName="LogCreated" />
+              <ScalarProperty Name="LogMessageKey" ColumnName="LogMessageKey" />
+              <ScalarProperty Name="LogPlatformId" ColumnName="LogPlatformId" />
+              <ScalarProperty Name="LogServerTime" ColumnName="LogServerTime" />
+              <ScalarProperty Name="LogSessionKey" ColumnName="LogSessionKey" />
+            </EndProperty>
+            <Condition ColumnName="InstSilverlightStateId" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Log_LogApplications" TypeName="AppReporting.FK_Log_LogApplications" StoreEntitySet="Log">
+            <EndProperty Name="LogApplications">
+              <ScalarProperty Name="LogApplicationId" ColumnName="LogApplicationId" />
+            </EndProperty>
+            <EndProperty Name="Log">
+              <ScalarProperty Name="LogId" ColumnName="LogId" />
+              <ScalarProperty Name="DayOfMonthGMT_7" ColumnName="DayOfMonthGMT-7" />
+              <ScalarProperty Name="DayOfMonthGMT_8" ColumnName="DayOfMonthGMT-8" />
+              <ScalarProperty Name="TimeSlice01GMT_7" ColumnName="TimeSlice01GMT-7" />
+              <ScalarProperty Name="TimeSlice01GMT_8" ColumnName="TimeSlice01GMT-8" />
+              <ScalarProperty Name="LogApplicationId" ColumnName="LogApplicationId" />
+              <ScalarProperty Name="LogAreaId" ColumnName="LogAreaId" />
+              <ScalarProperty Name="LogBrowserId" ColumnName="LogBrowserId" />
+              <ScalarProperty Name="LogClientAddressId" ColumnName="LogClientAddressId" />
+              <ScalarProperty Name="LogCreated" ColumnName="LogCreated" />
+              <ScalarProperty Name="LogMessageKey" ColumnName="LogMessageKey" />
+              <ScalarProperty Name="LogPlatformId" ColumnName="LogPlatformId" />
+              <ScalarProperty Name="LogServerTime" ColumnName="LogServerTime" />
+              <ScalarProperty Name="LogSessionKey" ColumnName="LogSessionKey" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Log_LogBrowsers" TypeName="AppReporting.FK_Log_LogBrowsers" StoreEntitySet="Log">
+            <EndProperty Name="LogBrowsers">
+              <ScalarProperty Name="LogBrowserId" ColumnName="LogBrowserId" />
+            </EndProperty>
+            <EndProperty Name="Log">
+              <ScalarProperty Name="LogId" ColumnName="LogId" />
+              <ScalarProperty Name="DayOfMonthGMT_7" ColumnName="DayOfMonthGMT-7" />
+              <ScalarProperty Name="DayOfMonthGMT_8" ColumnName="DayOfMonthGMT-8" />
+              <ScalarProperty Name="TimeSlice01GMT_7" ColumnName="TimeSlice01GMT-7" />
+              <ScalarProperty Name="TimeSlice01GMT_8" ColumnName="TimeSlice01GMT-8" />
+              <ScalarProperty Name="LogApplicationId" ColumnName="LogApplicationId" />
+              <ScalarProperty Name="LogAreaId" ColumnName="LogAreaId" />
+              <ScalarProperty Name="LogBrowserId" ColumnName="LogBrowserId" />
+              <ScalarProperty Name="LogClientAddressId" ColumnName="LogClientAddressId" />
+              <ScalarProperty Name="LogCreated" ColumnName="LogCreated" />
+              <ScalarProperty Name="LogMessageKey" ColumnName="LogMessageKey" />
+              <ScalarProperty Name="LogPlatformId" ColumnName="LogPlatformId" />
+              <ScalarProperty Name="LogServerTime" ColumnName="LogServerTime" />
+              <ScalarProperty Name="LogSessionKey" ColumnName="LogSessionKey" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Log_Platforms" TypeName="AppReporting.FK_Log_Platforms" StoreEntitySet="Log">
+            <EndProperty Name="LogPlatforms">
+              <ScalarProperty Name="LogPlatformId" ColumnName="LogPlatformId" />
+            </EndProperty>
+            <EndProperty Name="Log">
+              <ScalarProperty Name="LogId" ColumnName="LogId" />
+              <ScalarProperty Name="DayOfMonthGMT_7" ColumnName="DayOfMonthGMT-7" />
+              <ScalarProperty Name="DayOfMonthGMT_8" ColumnName="DayOfMonthGMT-8" />
+              <ScalarProperty Name="TimeSlice01GMT_7" ColumnName="TimeSlice01GMT-7" />
+              <ScalarProperty Name="TimeSlice01GMT_8" ColumnName="TimeSlice01GMT-8" />
+              <ScalarProperty Name="LogApplicationId" ColumnName="LogApplicationId" />
+              <ScalarProperty Name="LogAreaId" ColumnName="LogAreaId" />
+              <ScalarProperty Name="LogBrowserId" ColumnName="LogBrowserId" />
+              <ScalarProperty Name="LogClientAddressId" ColumnName="LogClientAddressId" />
+              <ScalarProperty Name="LogCreated" ColumnName="LogCreated" />
+              <ScalarProperty Name="LogMessageKey" ColumnName="LogMessageKey" />
+              <ScalarProperty Name="LogPlatformId" ColumnName="LogPlatformId" />
+              <ScalarProperty Name="LogServerTime" ColumnName="LogServerTime" />
+              <ScalarProperty Name="LogSessionKey" ColumnName="LogSessionKey" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram Name="ProductionDB" ZoomLevel="89">
+        <EntityTypeShape EntityType="AppReporting.InstSilverlightStates" Width="1.5" PointX="0.75" PointY="3.25" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppReporting.Log" Width="1.5" PointX="3" PointY="1.5" Height="13.13376953125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppReporting.LogApplications" Width="1.5" PointX="0.75" PointY="5" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppReporting.LogBrowsers" Width="1.5" PointX="0.75" PointY="6.875" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppReporting.LogPlatforms" Width="1.5" PointX="0.75" PointY="1.5" Height="1.5956835937499996" IsExpanded="true" />
+        <AssociationConnector Association="AppReporting.FK_Log_InstSilverlightStates" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="4.047841796875" />
+          <ConnectorPoint PointX="3" PointY="4.047841796875" /></AssociationConnector>
+        <AssociationConnector Association="AppReporting.FK_Log_LogApplications" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="5.8939925130208337" />
+          <ConnectorPoint PointX="3" PointY="5.8939925130208337" /></AssociationConnector>
+        <AssociationConnector Association="AppReporting.FK_Log_LogBrowsers" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="7.7689925130208337" />
+          <ConnectorPoint PointX="3" PointY="7.7689925130208337" /></AssociationConnector>
+        <AssociationConnector Association="AppReporting.FK_Log_Platforms" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="2.297841796875" />
+          <ConnectorPoint PointX="3" PointY="2.297841796875" /></AssociationConnector></Diagram></edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

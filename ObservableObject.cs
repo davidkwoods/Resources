@@ -1,32 +1,72 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Diagnostics;
-using System.Reflection;
+﻿using System;
+using System.ComponentModel;
 using System.Linq.Expressions;
-using Windows.UI.Core;
-using Windows.UI.Xaml.Data;
-namespace dwoodsRSS
+using System.Runtime.CompilerServices;
+
+namespace Temp
 {
-	public abstract class ObservableObject : INotifyPropertyChanged
-	{
-#region Events
-		public event PropertyChangedEventHandler PropertyChanged;
-#endregion
-#region Methods
-		protected virtual void NotifyPropertyChanged(string propertyName)
+
+	/* Proper use of properties when inheriting from ObservableObject:
+	 * 
+	 * SetProperty checks to see if the value being assigned is different or the same
+	 * as the one already there.  If it's the same, it does nothing and returns false.
+	 * If it's different, the value is assigned and OnPropertyChanged is raised.
+	 * 
+	 * Use the returned bool to trigger subsequent OnPropertyChanged events for other,
+	 * derived properties.  Use a Linq expression rather than a string to keep things
+	 * refactor-friendly.
+	 * 
+	 * Example of a simple property:
+
+		private string backerName;
+		public string PropertyName
 		{
-			if (propertyName == null)
-			throw new ArgumentNullException("propertyName");
-			PropertyChangedEventHandler propertyChangedHandler = PropertyChanged;
-			if (propertyChangedHandler != null)
+			get { return backerName; }
+			set { SetProperty(ref backerName, value); }
+		}
+
+	 * 
+	 * Example of a derived property
+	
+		private int baseBacker;
+		public int BaseProperty
+		{
+			get { return baseBacker; }
+			set
 			{
-				propertyChangedHandler(this, new PropertyChangedEventArgs(propertyName));
+				if (SetProperty(ref baseBacker, value))
+				{
+					OnPropertyChanged(() => DerivedProperty);
+				}
 			}
 		}
-		protected virtual void NotifyPropertyChanged<TProperty>(Expression<Func<TProperty>> property)
+		public int DerivedProperty
+		{
+			get { return BaseProperty * BaseProperty; }
+		}
+	*/
+
+	public abstract class ObservableObject : INotifyPropertyChanged
+	{
+		protected virtual void OnPropertyChanged(string propertyName = null)
+		{
+			if (PropertyChanged != null)
+				PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+
+		public event PropertyChangedEventHandler PropertyChanged;
+
+		protected bool SetProperty<T>(ref T propertyBacker, T value, [CallerMemberName] string propertyName = null)
+		{
+			if (Equals(propertyBacker, value))
+				return false;
+
+			propertyBacker = value;
+			OnPropertyChanged(propertyName);
+			return true;
+		}
+
+		protected virtual void OnPropertyChanged<T>(Expression<Func<T>> property)
 		{
 			var lambda = (LambdaExpression)property;
 			MemberExpression memberExpression;
@@ -39,8 +79,7 @@ namespace dwoodsRSS
 			{
 				memberExpression = (MemberExpression)lambda.Body;
 			}
-			NotifyPropertyChanged(memberExpression.Member.Name);
+			OnPropertyChanged(memberExpression.Member.Name);
 		}
-#endregion
 	}
 }

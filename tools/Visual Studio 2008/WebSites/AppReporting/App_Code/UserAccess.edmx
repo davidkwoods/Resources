@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="UserAccountsModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+        <EntityContainer Name="UserAccountsModelStoreContainer">
+          <EntitySet Name="Application" EntityType="UserAccountsModel.Store.Application" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="User" EntityType="UserAccountsModel.Store.User" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserPermission" EntityType="UserAccountsModel.Store.UserPermission" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_UserPermission_Application" Association="UserAccountsModel.Store.FK_UserPermission_Application">
+            <End Role="Application" EntitySet="Application" />
+            <End Role="UserPermission" EntitySet="UserPermission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPermission_User" Association="UserAccountsModel.Store.FK_UserPermission_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserPermission" EntitySet="UserPermission" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Application">
+          <Key>
+            <PropertyRef Name="LogApplicationId" />
+          </Key>
+          <Property Name="LogApplicationId" Type="int" Nullable="false" />
+          <Property Name="LogApplicationName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LogApplicationVersion" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="IsAdmin" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'UserAccounts.dbo.UserPermission' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="UserPermission">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="LogApplicationId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="LogApplicationId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_UserPermission_Application">
+          <End Role="Application" Type="UserAccountsModel.Store.Application" Multiplicity="1" />
+          <End Role="UserPermission" Type="UserAccountsModel.Store.UserPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Application">
+              <PropertyRef Name="LogApplicationId" />
+            </Principal>
+            <Dependent Role="UserPermission">
+              <PropertyRef Name="LogApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPermission_User">
+          <End Role="User" Type="UserAccountsModel.Store.User" Multiplicity="1" />
+          <End Role="UserPermission" Type="UserAccountsModel.Store.UserPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserPermission">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="UserAccountsModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+        <EntityContainer Name="UserAccountsEntities">
+          <EntitySet Name="Application" EntityType="UserAccountsModel.Application" />
+          <EntitySet Name="User" EntityType="UserAccountsModel.User" />
+          <AssociationSet Name="UserPermission" Association="UserAccountsModel.UserPermission">
+            <End Role="Application" EntitySet="Application" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Application">
+          <Key>
+            <PropertyRef Name="LogApplicationId" />
+          </Key>
+          <Property Name="LogApplicationId" Type="Int32" Nullable="false" />
+          <Property Name="LogApplicationName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="LogApplicationVersion" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="User" Relationship="UserAccountsModel.UserPermission" FromRole="Application" ToRole="User" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Application" Relationship="UserAccountsModel.UserPermission" FromRole="User" ToRole="Application" />
+        </EntityType>
+        <Association Name="UserPermission">
+          <End Role="Application" Type="UserAccountsModel.Application" Multiplicity="*" />
+          <End Role="User" Type="UserAccountsModel.User" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+        <EntityContainerMapping StorageEntityContainer="UserAccountsModelStoreContainer" CdmEntityContainer="UserAccountsEntities">
+          <EntitySetMapping Name="Application">
+            <EntityTypeMapping TypeName="IsTypeOf(UserAccountsModel.Application)">
+              <MappingFragment StoreEntitySet="Application">
+                <ScalarProperty Name="LogApplicationId" ColumnName="LogApplicationId" />
+                <ScalarProperty Name="LogApplicationName" ColumnName="LogApplicationName" />
+                <ScalarProperty Name="LogApplicationVersion" ColumnName="LogApplicationVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="IsTypeOf(UserAccountsModel.User)">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="UserPermission" TypeName="UserAccountsModel.UserPermission" StoreEntitySet="UserPermission">
+            <EndProperty Name="Application">
+              <ScalarProperty Name="LogApplicationId" ColumnName="LogApplicationId" />
+            </EndProperty>
+            <EndProperty Name="User">
+              <ScalarProperty Name="UserId" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram Name="UserAccess">
+        <EntityTypeShape EntityType="UserAccountsModel.Application" Width="1.5" PointX="0.75" PointY="1" Height="1.7879850260416668" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserAccountsModel.User" Width="1.5" PointX="3" PointY="0.875" Height="1.9802864583333335" IsExpanded="true" />
+        <AssociationConnector Association="UserAccountsModel.UserPermission" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="1.8939925130208333" />
+          <ConnectorPoint PointX="3" PointY="1.8939925130208333" /></AssociationConnector></Diagram></edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,34 @@
+<ArbitraryRoot>
+  <RootNode>
+    <FutureRoot>
+      <simpleNode someAttribute="something" />
+      <simpleNode>
+        Some Value.
+      </simpleNode>
+      <simpleNode SimDataInsertionPoint="" />
+      <simpleNode>
+        That last node should have stuff written to it.
+      </simpleNode>
+    </FutureRoot>
+  </RootNode>
+  <SimData Offset="15">
+    <AddedNode>
+      This node was added at 15 seconds.
+    </AddedNode>
+  </SimData>
+  <SimData Offset="20">
+    <AddedNode>
+      This node was added at 20 seconds.
+    </AddedNode>
+  </SimData>
+  <SimData Offset="25">
+    <AddedNode>
+      This node was added at 25 seconds.
+    </AddedNode>
+  </SimData>
+  <SimData Offset="45">
+    <AddedNode>
+      This node was added at 45 seconds.
+    </AddedNode>
+  </SimData>
+</ArbitraryRoot>

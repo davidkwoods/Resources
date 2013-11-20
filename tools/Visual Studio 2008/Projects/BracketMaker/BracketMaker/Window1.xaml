@@ -1,0 +1,1141 @@
+﻿<Window x:Class="BracketMaker.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Loaded="Window_Loaded"
+    Title="BracketMaker" Height="480" Width="640" MinHeight="480" MinWidth="640" KeyDown="Grid_KeyDown">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Row="0" Grid.Column="1" Margin="5" VerticalAlignment="Top" HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                    <Button Name="ButtonLoad" Click="ButtonLoad_Click" Margin="5">Load Bracket...</Button>
+                    <Button Name="ButtonSave" Click="ButtonSave_Click" Margin="5">Save Bracket and Supporting Files...</Button>
+                </StackPanel>
+                    <TextBlock HorizontalAlignment="Center">Intended directory on Build:</TextBlock>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock VerticalAlignment="Center">/DataSources/custom/</TextBlock>
+                    <TextBox Name="urlDirectory" Width="100">myState</TextBox>
+                    <TextBlock VerticalAlignment="Center">/</TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <CheckBox Name="UrlOverride" Checked="UrlOverride_Checked" Unchecked="UrlOverride_Unchecked" VerticalAlignment="Center" FlowDirection="RightToLeft">Override Directory</CheckBox>
+                    <TextBox Name="UrlOverrideBox" Width="200" IsEnabled="False">http://other.domain.com/example/</TextBox>
+                </StackPanel>
+                <!--
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <CheckBox Name="SpecifyGV" FlowDirection="RightToLeft">Specify Game Video</CheckBox>
+                    <TextBox Name="SpecifiedGV" Width="200"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <CheckBox Name="SpecifyGA" FlowDirection="RightToLeft">Specify Game Audio</CheckBox>
+                    <TextBox Name="SpecifiedGA" Width="200"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <CheckBox Name="SpecifyGH" FlowDirection="RightToLeft">Specify Game Highlight</CheckBox>
+                    <TextBox Name="SpecifiedGH" Width="200"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <CheckBox Name="SpecifyNB" FlowDirection="RightToLeft">Specify Nailbiter</CheckBox>
+                    <TextBox Name="SpecifiedNB" Width="200"></TextBox>
+                </StackPanel>
+                -->
+                <TextBox Name="infoPane" Width="300" Height="150" Margin="2" AcceptsReturn="True" HorizontalAlignment="Center" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"/>
+                <TextBlock HorizontalAlignment="Center">Shortcut: press Enter to save.</TextBlock>
+            </StackPanel>
+            
+            <StackPanel Name="EastGroup" Margin="2" Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                <StackPanel VerticalAlignment="Center">
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray"  Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game57">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+                <StackPanel Name="ESS" VerticalAlignment="Center">
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray" Margin="0,150,0,150" Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game49">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray" Margin="0,150,0,150" Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game50">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+                <StackPanel Name="ER2" VerticalAlignment="Center">
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray" Margin="0,50,0,50" Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game33">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray" Margin="0,50,0,50" Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game34">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray" Margin="0,50,0,50" Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game35">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray" Margin="0,50,0,50" Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game36">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+                <StackPanel Name="ER1" VerticalAlignment="Center">
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray"  Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game1">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray"  Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game2">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray"  Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game3">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray"  Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game4">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray"  Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game5">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray"  Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game6">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray"  Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game7">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray"  Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game8">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </StackPanel>
+            
+            <StackPanel Name="MidwestGroup" Margin="2" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                <StackPanel Name="MWR1" VerticalAlignment="Center">
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray"  Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game9">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray"  Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game10">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray"  Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game11">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray"  Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game12">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray"  Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game13">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray"  Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game14">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray"  Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game15">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray"  Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game16">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+                <StackPanel Name="MWR2" VerticalAlignment="Center">
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray" Margin="0,50,0,50" Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game37">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray" Margin="0,50,0,50" Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game38">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray" Margin="0,50,0,50" Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game39">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray" Margin="0,50,0,50" Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game40">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+                <StackPanel Name="MWSS" VerticalAlignment="Center">
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray" Margin="0,150,0,150" Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game51">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray" Margin="0,150,0,150" Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game52">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+                <StackPanel VerticalAlignment="Center">
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray"  Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game58">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </StackPanel>
+            
+            <StackPanel Name="SouthGroup" Margin="2" Grid.Row="2" Grid.Column="2" Grid.RowSpan="2" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                <StackPanel VerticalAlignment="Center">
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray"  Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game59">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+                <StackPanel Name="SSS" VerticalAlignment="Center">
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray" Margin="0,150,0,150" Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game53">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray" Margin="0,150,0,150" Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game54">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+                <StackPanel Name="SR2" VerticalAlignment="Center">
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray" Margin="0,50,0,50" Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game41">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray" Margin="0,50,0,50" Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game42">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray" Margin="0,50,0,50" Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game43">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray" Margin="0,50,0,50" Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game44">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+                <StackPanel Name="SR1" VerticalAlignment="Center">
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray"  Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game17">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray"  Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game18">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray"  Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game19">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray"  Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game20">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray"  Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game21">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray"  Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game22">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray"  Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game23">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray"  Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game24">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </StackPanel>
+            
+            <StackPanel Name="WestGroup" Margin="2" Grid.Row="2" Grid.Column="0" Grid.RowSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                <StackPanel Name="WR1" VerticalAlignment="Center">
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray"  Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game25">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray"  Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game26">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray"  Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game27">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray"  Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game28">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray"  Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game29">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray"  Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game30">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray"  Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game31">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray"  Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game32">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+                <StackPanel Name="WR2" VerticalAlignment="Center">
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray" Margin="0,50,0,50" Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game45">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray" Margin="0,50,0,50" Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game46">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray" Margin="0,50,0,50" Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game47">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray" Margin="0,50,0,50" Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game48">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+                <StackPanel Name="WSS" VerticalAlignment="Center">
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray" Margin="0,150,0,150" Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game55">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray" Margin="0,150,0,150" Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game56">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+                <StackPanel VerticalAlignment="Center">
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray"  Padding="2" VerticalAlignment="Center">
+                        <StackPanel Name="game60">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </StackPanel>
+            
+            <StackPanel Margin="2" Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock HorizontalAlignment="Center">Championship</TextBlock>
+                <Border HorizontalAlignment="Center" BorderThickness="1" BorderBrush="Gray"  Padding="2" Margin="2">
+                    <StackPanel Name="game63">
+                        <RadioButton IsChecked="True">Scheduled</RadioButton>
+                        <RadioButton>In Progress</RadioButton>
+                        <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                            <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                            <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                        </StackPanel>
+                        <CheckBox>Halftime</CheckBox>
+                    </StackPanel>
+                </Border>
+                <TextBlock Margin="0,10,0,0" HorizontalAlignment="Center">Final Four</TextBlock>
+                <StackPanel Name="FinalFourGroup" Orientation="Horizontal" HorizontalAlignment="Center" Margin="2">
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray"  Padding="2" VerticalAlignment="Top">
+                        <StackPanel Name="game61">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                    <Border HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray"  Padding="2" VerticalAlignment="Top">
+                        <StackPanel Name="game62">
+                            <RadioButton IsChecked="True">Scheduled</RadioButton>
+                            <RadioButton>In Progress</RadioButton>
+                            <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                                <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                            </StackPanel>
+                            <CheckBox>Halftime</CheckBox>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock HorizontalAlignment="Center">Opening Round</TextBlock>
+                <Border HorizontalAlignment="Center" BorderThickness="1" BorderBrush="Gray"  Padding="2">
+                    <StackPanel Name="game0">
+                        <RadioButton IsChecked="True">Scheduled</RadioButton>
+                        <RadioButton>In Progress</RadioButton>
+                        <RadioButton Checked="RadioButton_Final_Checked" Unchecked="RadioButton_Unchecked">Final</RadioButton>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                            <TextBlock VerticalAlignment="Center">Home Team</TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox LostKeyboardFocus="TextBox_LostKeyboardFocus" LostFocus="TextBox_LostFocus" Width="30" MaxLength="3">0</TextBox>
+                            <TextBlock VerticalAlignment="Center">Away Team</TextBlock>
+                        </StackPanel>
+                        <CheckBox>Halftime</CheckBox>
+                    </StackPanel>
+                </Border>
+                <TextBlock Margin="0,15,0,0" HorizontalAlignment="Center">Tournament Progression</TextBlock>
+                <TextBlock HorizontalAlignment="Center">(Overridden if any games are marked as Final)</TextBlock>
+                <RadioButton Name="PreSelectionShow" HorizontalAlignment="Center" IsChecked="True">Pre Selection Show</RadioButton>
+                <RadioButton Name="PostSelectionShow" HorizontalAlignment="Center">Post Selection Show</RadioButton>
+                <RadioButton Name="GamesStarted" HorizontalAlignment="Center">Games Have Started</RadioButton>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Window>

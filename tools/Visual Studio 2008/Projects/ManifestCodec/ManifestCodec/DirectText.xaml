@@ -1,0 +1,29 @@
+﻿<Window x:Class="ManifestCodec.DirectText"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Base64 &lt;&gt; Plain Text" Height="300" Width="600" MinHeight="300" MinWidth="600">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5">Base64</TextBlock>
+        <TextBlock Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5">Plain Text</TextBlock>
+        <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
+            <Button Click="ButtonFromXml_Click" Name="ButtonFromXml" Margin="3" Padding="5">Only Convert in &lt;f&gt; Tags</Button>
+            <Button Click="ButtonFromTxt_Click" Name="ButtonFromTxt" Margin="3" Padding="5">Convert All Text</Button>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Click="ButtonToXml_Click" Name="ButtonToXml" Margin="3" Padding="5">Only Convert in &lt;f&gt; Tags</Button>
+            <Button Click="ButtonToTxt_Click" Name="ButtonToTxt" Margin="3" Padding="5">Convert All Text</Button>
+        </StackPanel>
+        <TextBox Name="TxtBoxBase64" Grid.Row="2" Grid.Column="0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" AcceptsReturn="True"></TextBox>
+        <TextBox Name="TxtBoxPlainTxt" Grid.Row="2" Grid.Column="2" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" AcceptsReturn="True"></TextBox>
+    </Grid>
+</Window>

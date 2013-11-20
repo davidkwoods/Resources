@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Removed PreRoll & PostRoll ==> We only need these in the video feeds.
+Added Title & Description ==> We need these in both feeds.
+-->
+<selectionshow id="0000185" status="Final" available="True" islive="False">
+	<title>Selection Sunday Show</title>
+	<description>Selection Sunday Show Description</description>
+</selectionshow>

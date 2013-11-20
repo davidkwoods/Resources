@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Settings>
+	<Parameters>
+		<Parameter Name="OpeningGameRegionId" Value="4" />
+		<Parameter Name="NonFullScreenMaxPlaybackBitrate" Value="1800000" />
+		<Parameter Name="PipMinBitrate" Value="750000" />
+		<Parameter Name="EnableSmoothStreamingDiagnostics" Value="True" />
+		<Parameter Name="IsDVRModeEnabled" Value="False" />
+		<Parameter Name="IsCollegeBasketballLiveMode" Value="False" />
+		<Parameter Name="ChannelPollingInterval" Value="00:00:30" />
+		<Parameter Name="VideoPollingInterval" Value="00:00:30" />
+		<Parameter Name="PipClipsByGamePollingInterval" Value="00:00:30" />
+		<Parameter Name="AutoPlay" Value="True" />
+		<Parameter Name="ReplaySeconds" Value="15" />
+		<Parameter Name="LivePositionRange" Value="00:00:30" />
+		<Parameter Name="Volume" Value=".5" />
+		<Parameter Name="PreferenceDuration" Value="00:10:00" />
+		<Parameter Name="EstimatedDuration" Value="120" />
+		<Parameter Name="MainRetryDuration" Value="00:00:25" />
+		<Parameter Name="MainRetryInterval" Value="00:00:05" />
+		<Parameter Name="MainManualRetryDuration" Value="00:00:10" />
+		<Parameter Name="PipRetryDuration" Value="00:00:10" />
+		<Parameter Name="PipRetryInterval" Value="00:00:02" />
+		<Parameter Name="ShowMidRollMarkers" Value="True" />
+		<Parameter Name="AdMarkerOffset" Value="00:00:00" />
+		<Parameter Name="AkamaiPluginPath" Value="http://79423.analytics.edgesuite.net/SL/plugins/SSMEv3.0.711.19/MediaAnalytics.xap" />
+		<Parameter Name="AkamaiConfigurationPath" Value="http://csma82226.analytics.edgesuite.net/config/beacon-355.xml" />
+		<Parameter Name="VideoUrlFormat" Value="http://images.qa.ncaa.com/mmod/2010/xml/video/{0}.xml" />
+		<Parameter Name="PipUrlFormat" Value="http://images.ncaa.com/mmod/2010/xml/video/pips/{0}.xml" />
+		<Parameter Name="PipClipsByGameUrlFormat" Value="http://images.ncaa.com/mmod/2010/xml/video/pips/{0}.xml" />
+		<Parameter Name="VideoShareQueryString" Value="http://mmod.qa.ncaa.com/video/?vid={0}" />
+		<Parameter Name="PipShareQueryString" Value="http://mmod.qa.ncaa.com/video/?pip={0}" />
+		<Parameter Name="PlayPreRollAds" Value="True" />
+		<Parameter Name="PlayMidRollAds" Value="True" />
+		<Parameter Name="ExemptForceAdPodInterval" Value="00:00:30" />
+		<Parameter Name="PresentingSponsorId" Value="done" />
+		<Parameter Name="HalftimePresentingSponsorId" Value="done_att" />
+		<Parameter Name="DartPreRollFormat" Value="http://ad.doubleclick.net/adx/can/cbssports/;feat={0};partner={1};sz=320x240;format=smooth;ord={2}?" />
+		<Parameter Name="DartMidRollFormat" Value="http://ad.doubleclick.net/adx/skyscrapers.ncaasports.com/collegebasketball/mmod_companion;feat=mmod;adv={0};sz=160x600;ord={1}?" />
+		<Parameter Name="DartPartner" Value="cbs_dev" />
+		<Parameter Name="TimeServerFormat" Value="http://vod.mmod.ncaa.com/time/{0}" />
+		<Parameter Name="TokenServerFormat" Value="http://vod.mmod.ncaa.com/beacon/{0}" />
+		<!-- External link Urls -->
+		<Parameter Name="TournamentLeadersPointsUrl" Value="http://www.cbssports.com/collegebasketball/stats/leaders/NCAAB/PTSAVG/mayhem/yearly" />
+		<Parameter Name="TournamentLeadersReboundsUrl" Value="http://www.cbssports.com/collegebasketball/stats/leaders/NCAAB/REBAVG/mayhem/yearly" />
+		<Parameter Name="TournamentLeadersAssistsUrl" Value="http://www.cbssports.com/collegebasketball/stats/leaders/NCAAB/ASTAVG/mayhem/yearly" />
+		<Parameter Name="TournamentLeaders3PtsMadeUrl" Value="http://www.cbssports.com/collegebasketball/stats/leaders/NCAAB/TPPCT/mayhem/yearly" />
+		<Parameter Name="TeamLogoUrlFormat" Value="http://sports.cbsimg.net/images/cbss/ui2/logos/collegebasketball/64x/{0}.png"/>
+		<Parameter Name="NCAAShopUrl" Value="http://www.shopncaasports.com/default.aspx/source/NCAA-012610-CollegeHoops-728.jpg" />
+		<Parameter Name="NCAAPressConferencesUrl" Value="http://www.ncaa.com/ot/PostGameCentral.html" />
+		<Parameter Name="NCAAVaultVideo" Value="http://vault.ncaa.com/"/>
+		<Parameter Name="NCAAUrl" Value="http://www.ncaa.com/" />
+		<Parameter Name="CbsSportsUrl" Value="http://www.cbssports.com" />
+		<Parameter Name="ShowAudioUrlFormat" Value=""/>
+		<Parameter Name="GameStatsUrlFormat" Value="http://www.cbssports.com/collegebasketball/gamecenter/live/{0}"/>
+		<Parameter Name="GamePreviewUrlFormat" Value="http://www.cbssports.com/collegebasketball/gamecenter/preview/{0}"/>
+		<Parameter Name="GameAnalysisUrlFormat" Value="http://www.cbssports.com/collegebasketball/mayhem/edge/{0}/{1}/{2}"/>
+		<Parameter Name="TeamPageUri" Value="http://www.cbssports.com/collegebasketball/teams/page/{0}" />
+		<Parameter Name="TeamMessageBoardUri" Value="http://www.cbssports.com/collegebasketball/teams/board/{0}" />
+		<Parameter Name="FacebookConnectUrl" Value="http://mmod.ncaa.com/video/livefeed" />
+		<Parameter Name="FacebookConnectDimensions" Value="400;300" />
+		<Parameter Name="TermsOfServiceUrl" Value="http://mmod.ncaa.com/eula" />
+		<Parameter Name="HelpUrl" Value="https://mmodplus.custhelp.com" />
+		<Parameter Name="HelpDimensions" Value="600;640" />
+		<Parameter Name="ReminderUrl" Value="http://mmod.ncaa.com/email/notify" />
+		<Parameter Name="BaseDataWarehouseTrackingFormat" Value="http://dw.com.com/levt/video/e.gif?ts={0}&amp;event={1}&amp;siteid=188&amp;componentid=1d812cad4bdf531cf95622174c1958ce&amp;mapp=MMODPlayer;SMF;1_0_0_0&amp;part=cbssports&amp;playertime={2}&amp;mednum={3}" />
+		<Parameter Name="MediaDataWarehouseTrackingFormat" Value="&amp;medid={0}&amp;medtitle={1}&amp;medlength={2}&amp;medtime={3}" />
+		<Parameter Name="GestureValueDataWarehouseTrackingFormat" Value="&amp;gestval={0}" />
+		<!-- End External link Urls -->
+		<!-- Sponsor links -->
+		<Parameter Name="AttTrackingPixel1" Value="http://ad.doubleclick.net/ad/ncaasports/;adid=222526906;sz=1x1;ord={0}?" />
+		<Parameter Name="AttTrackingPixel2" Value="http://view.atdmt.com/CNT/view/193185102/direct;wi.1;hi.1/01/{0}?" />
+		<Parameter Name="CokeTrackingPixel1" Value="http://ad.doubleclick.net/ad/ncaasports/;adid=222423945;sz=1x1;ord={0}?" />
+		<Parameter Name="CokeTrackingPixel2" Value="http://ad.doubleclick.net/ad/N4390.cbssports.comOX5267/B4195882.19;sz=1x1;ord={0}?" />
+		<Parameter Name="CapitalOneTrackingPixel1" Value="http://ad.doubleclick.net/ad/ncaasports/;adid=222920832;sz=1x1;ord={0}?" />
+		<Parameter Name="CapitalOneTrackingPixel2" Value="http://view.atdmt.com/VKI/view/208016647/direct;at.CR_BAN_MM_IB_CBS_MMOD_Player_CPM_1_1_TXT/01/{0}?" />
+		<Parameter Name="StateFarmTrackingPixel" Value="http://ad.doubleclick.net/ad/N1823.CBSSports/B4205216.17;sz=1x1;ord={0}?" />
+		<Parameter Name="ExxonTrackingPixel" Value="http://ad.doubleclick.net/ad/N884.CBSSports/B4249326.7;sz=1x1;ord={0}?" />
+		<Parameter Name="AttClickUrl" Value="http://ad.doubleclick.net/clk;222526906;31708918;k?http://clk.atdmt.com/CNT/go/193185102/direct;wi.1;hi.1/01/" />
+		<Parameter Name="CokeClickUrl" Value="http://ad.doubleclick.net/clk;222423945;31708918;j?http://ad.doubleclick.net/clk;222429610;44944941;g" />
+		<Parameter Name="CapitalOneClickUrl" Value="http://ad.doubleclick.net/clk;222920832;31708918;g?http://clk.atdmt.com/VKI/go/208016647/direct;at.CR_BAN_MM_IB_CBS_MMOD_Player_CPM_1_1_TXT;ct.1/01/" />
+		<Parameter Name="StateFarmClickUrl" Value="http://ad.doubleclick.net/clk;222692781;45453599;w" />
+		<Parameter Name="ExxonClickUrl" Value="http://ad.doubleclick.net/clk;222671085;45623636;h" />
+		<!-- End Sponsor links -->
+	</Parameters>
+	<DataSources>
+		<DataSource Name="SettingsSource" Url="http://images.qa.ncaa.com/video/hq/DataSources/Settings.xml" Interval="00:01:00" />
+		<DataSource Name="ChannelsSource" Url="http://images.qa.ncaa.com/mmod/2010/xml/Channels.xml" Interval="00:10:00" />
+		<DataSource Name="TournamentLeadersSource" Url="http://images.qa.ncaa.com/mmod/2010/xml/TournamentLeaders.xml" Interval="00:01:00" />
+		<DataSource Name="BracketSource" Url="http://images.qa.ncaa.com/mmod/2010/xml/QABracket.xml" Interval="00:00:30" />
+		<DataSource Name="AlertSource" Url="http://images.qa.ncaa.com/mmod/2010/xml/Alert.xml" Interval="00:00:30" />
+		<DataSource Name="TodaysActionSource" Url="http://images.ncaa.com/mmod/2010/xml/channel/TodaysAction.xml" Interval="00:00:30" />
+		<DataSource Name="WhatsHotSource" Url="http://images.qa.ncaa.com/mmod/2010/xml/channel/WhatsHot.xml" Interval="00:10:00" />
+		<DataSource Name="ShareTargetsSource" Url="http://images.qa.ncaa.com/video/hq/DataSources/ShareTargets.xml" Interval="01:00:00" />
+	</DataSources>
+</Settings>

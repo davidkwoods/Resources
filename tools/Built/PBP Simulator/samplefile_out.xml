@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FutureRoot>
+  <simpleNode someAttribute="something" />
+  <simpleNode>
+        Some Value.
+      </simpleNode>
+  <simpleNode>
+    <AddedNode>
+      This node was added at 15 seconds.
+    </AddedNode>
+    <AddedNode>
+      This node was added at 20 seconds.
+    </AddedNode>
+    <AddedNode>
+      This node was added at 25 seconds.
+    </AddedNode>
+    <AddedNode>
+      This node was added at 45 seconds.
+    </AddedNode>
+  </simpleNode>
+  <simpleNode>
+        That last node should have stuff written to it.
+      </simpleNode>
+</FutureRoot>

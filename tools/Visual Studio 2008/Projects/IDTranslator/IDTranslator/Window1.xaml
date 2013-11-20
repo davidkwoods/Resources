@@ -1,0 +1,42 @@
+﻿<Window x:Class="IDTranslator.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Loaded="Window_Loaded"
+    Title="Video ID Translator" MinHeight="250" MinWidth="500" Width="500" Height="250">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="61"/>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="100"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" >File URL:</Label>
+        <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" >Local File:</Label>
+        <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right">Asset ID:</Label>
+        <Label Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" >Clip ID:</Label>
+        <TextBox TextChanged="TextChanged" Grid.Row="0" Grid.Column="1" Name="TextBoxFileURL" Margin="5"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Name="TextBoxLocalFile" IsEnabled="False"/>
+        <TextBox TextChanged="TextChanged" KeyDown="TextBox_KeyDown" Grid.Row="2" Grid.Column="1" Name="TextBoxAssetId" Margin="5" IsEnabled="False"/>
+        <TextBox TextChanged="TextChanged" KeyDown="TextBox_KeyDown" Grid.Row="3" Grid.Column="1" Name="TextBoxClipId" Margin="5" IsEnabled="False"/>
+        <Button Name="ButtonDownload" Click="ButtonDownload_Click" Grid.Row="0" Grid.Column="2" Margin="5">Download</Button>
+        <Button Name="ButtonCached" Click="ButtonCached_Click" Grid.Row="1" Grid.Column="2" Margin="5">Parse Local File</Button>
+        
+        <!-- The function called by pressing this button attempts to find the given Asset ID to its left in the xml file, and return the matching Clip ID-->
+        <Button Name="ButtonFindClipId" Click="ButtonFindClipId_Click" Grid.Row="2" Grid.Column="2" Margin="5" IsEnabled="False">Find Clip ID</Button>
+        
+        <!-- The function called by pressing this button attempts to find the given Clip ID to its left in the xml file, and return the matching Asset ID-->
+        <Button Name="ButtonFindAssetId" Click="ButtonFindAssetId_Click" Grid.Row="3" Grid.Column="2" Margin="5" IsEnabled="False">Find Asset ID</Button>
+        
+        <ScrollViewer Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <TextBlock Name="StatusText" Padding="3"/>
+        </ScrollViewer>
+        <ProgressBar Name="DownloadBar" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3"/>
+    </Grid>
+</Window>

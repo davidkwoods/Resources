@@ -1,0 +1,43 @@
+﻿<Window x:Class="ManifestCodec.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Icon="icon.ico"
+    Title="Base64 Encoder/Decoder" MinHeight="277" MinWidth="500" Height="280" Width="500">
+    <Grid>
+        <StackPanel>
+            <StackPanel Margin="3" Orientation="Horizontal">
+                <Label FontWeight="Bold" VerticalAlignment="Center" HorizontalContentAlignment="Right"  Width="80">Input File:</Label>
+                <TextBox Name="InputTextbox" Margin="3" Width="300"></TextBox>
+                <Button Name="InputButton" Margin="3" Width="75" Padding="3" Click="InputButton_Click">Choose...</Button>
+            </StackPanel>
+            <StackPanel Margin="3" Orientation="Horizontal">
+                <Label FontWeight="Bold" VerticalAlignment="Center" Width="80">Output File:</Label>
+                <TextBox Name="OutputTextbox" Margin="3" Width="300"></TextBox>
+                <Button Name="OutputButton" Margin="3" Width="75" Padding="3" Click="OutputButton_Click">Choose...</Button>
+            </StackPanel>
+            <StackPanel Margin="3" Orientation="Horizontal">
+                <Button Click="TextConverterButton_Click" Name="TextConverterButton" Margin="10" Padding="3" Height="40">Copy and Paste Window</Button>
+                <StackPanel Margin="80,3,3,3" Width="143">
+                    <Label FontWeight="Bold">Process</Label>
+                    <RadioButton Click="ChoiceChanged" Name="OptionDecode" Margin="3" GroupName="CodecChoice" IsChecked="true">Decode</RadioButton>
+                    <RadioButton Click="ChoiceChanged" Name="OptionEncode" Margin="3" GroupName="CodecChoice">Encode</RadioButton>
+                    <RadioButton Click="ChoiceChanged" Name="OptionFormat" Margin="3" GroupName="CodecChoice">Clean Up Format</RadioButton>
+                </StackPanel>
+                <!--
+                <StackPanel Margin="3" Width="150">
+                    <Label FontWeight="Bold">File Type (NYI)</Label>
+                    <RadioButton Click="ChoiceChanged" IsEnabled="False" Name="OptionManifest" GroupName="FileChoice" Margin="3" IsChecked="True">Video Manifest</RadioButton>
+                    <RadioButton Click="ChoiceChanged" IsEnabled="False" Name="OptionPBP"  GroupName="FileChoice" Margin="3">Play By Play</RadioButton>
+                    <RadioButton Click="ChoiceChanged" IsEnabled="False" Name="OptionMatch" GroupName="FileChoice" Margin="3">Match Tracker</RadioButton>
+                    <RadioButton Click="ChoiceChanged" IsEnabled="False" Name="OptionAd" GroupName="FileChoice" Margin="3">Ad Insertion</RadioButton>
+                </StackPanel>
+                -->
+                <Button Click="ProcessButton_Click" Name="ProcessButton" Margin="3" Height="40" Width="75" Padding="3">Process File</Button>
+            </StackPanel>
+            <StackPanel Height="59" Orientation="Horizontal">
+                <Label VerticalAlignment="Bottom" FontWeight="Bold">Status:</Label>
+                <TextBox Background="LightBlue"  VerticalAlignment="Bottom" Width="400" Name="StatusText">Standing By.</TextBox>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

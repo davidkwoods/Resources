@@ -1,0 +1,627 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ncaab_brackets xmlns:fn="http://www.w3.org/2005/02/xpath-functions" xmlns:ns0="http://xml.cbssports.com/schema/bracket001" season="2010" tournament="Division I Men's">
+  <opening_game id="0" abbr="NCAAB_20100301_MOREHDST@ALST" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+    <venue>Joe Flynn Memorial Arena</venue>
+    <gamevideo id="gv0" available="False" isLive="True" />
+    <fullgameaudio id="ga0" available="False" isLive="True" />
+    <gamehighlights id="gh0" available="False" isLive="False" />
+    <nailbiter id="nb0" available="False" isLive="False" />
+    <hometeam id="21387" abbr="ALST" score="0" winner="No" seed="16" Logo="http://logourl">Alabama St.</hometeam>
+    <awayteam id="21329" abbr="MOREHDST" score="0" winner="No" seed="16" Logo="http://logourl">Morehead St.</awayteam>
+  </opening_game>
+  <round name="First Round" start="03/19/09" end="03/20/09" status="SCHEDULED">
+    <region id="3" name="East">
+      <game id="1" abbr="NCAAB_20100301_ETNST@PITT" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv1" available="False" isLive="True" />
+        <fullgameaudio id="ga1" available="False" isLive="True" />
+        <gamehighlights id="gh1" available="False" isLive="False" />
+        <nailbiter id="nb1" available="False" isLive="False" />
+        <hometeam id="21165" abbr="PITT" score="0" winner="No" seed="1" Logo="http://logourl">Pittsburgh</hometeam>
+        <awayteam id="21369" abbr="ETNST" score="0" winner="No" seed="16" Logo="http://logourl">E. Tenn. St.</awayteam>
+      </game>
+      <game id="2" abbr="NCAAB_20100301_TN@OKST" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv2" available="False" isLive="True" />
+        <fullgameaudio id="ga2" available="False" isLive="True" />
+        <gamehighlights id="gh2" available="False" isLive="False" />
+        <nailbiter id="nb2" available="False" isLive="False" />
+        <hometeam id="21209" abbr="OKST" score="0" winner="No" seed="8" Logo="http://logourl">Oklahoma St.</hometeam>
+        <awayteam id="21362" abbr="TN" score="0" winner="No" seed="9" Logo="http://logourl">Tennessee</awayteam>
+      </game>
+      <game id="3" abbr="NCAAB_20100301_WI@FLST" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv3" available="False" isLive="True" />
+        <fullgameaudio id="ga3" available="False" isLive="True" />
+        <gamehighlights id="gh3" available="False" isLive="False" />
+        <nailbiter id="nb3" available="False" isLive="False" />
+        <hometeam id="21131" abbr="FLST" score="0" winner="No" seed="5" Logo="http://logourl">Florida St.</hometeam>
+        <awayteam id="21200" abbr="WI" score="0" winner="No" seed="12" Logo="http://logourl">Wisconsin</awayteam>
+      </game>
+      <game id="4" abbr="NCAAB_20100301_PORTST@XAVIER" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv4" available="False" isLive="True" />
+        <fullgameaudio id="ga4" available="False" isLive="True" />
+        <gamehighlights id="gh4" available="False" isLive="False" />
+        <nailbiter id="nb4" available="False" isLive="False" />
+        <hometeam id="21149" abbr="XAVIER" score="0" winner="No" seed="4" Logo="http://logourl">Xavier</hometeam>
+        <awayteam id="21181" abbr="PORTST" score="0" winner="No" seed="13" Logo="http://logourl">Portland St.</awayteam>
+      </game>
+      <game id="5" abbr="NCAAB_20100301_VACOMM@UCLA" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv5" available="False" isLive="True" />
+        <fullgameaudio id="ga5" available="False" isLive="True" />
+        <gamehighlights id="gh5" available="False" isLive="False" />
+        <nailbiter id="nb5" available="False" isLive="False" />
+        <hometeam id="21341" abbr="UCLA" score="0" winner="No" seed="6" Logo="http://logourl">UCLA</hometeam>
+        <awayteam id="21232" abbr="VACOMM" score="0" winner="No" seed="11" Logo="http://logourl">VCU</awayteam>
+      </game>
+      <game id="6" abbr="NCAAB_20100301_AMER@NOVA" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv6" available="False" isLive="True" />
+        <fullgameaudio id="ga6" available="False" isLive="True" />
+        <gamehighlights id="gh6" available="False" isLive="False" />
+        <nailbiter id="nb6" available="False" isLive="False" />
+        <hometeam id="21171" abbr="NOVA" score="0" winner="No" seed="3" Logo="http://logourl">Villanova</hometeam>
+        <awayteam id="21225" abbr="AMER" score="0" winner="No" seed="14" Logo="http://logourl">American</awayteam>
+      </game>
+      <game id="7" abbr="NCAAB_20100301_MN@TX" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv7" available="False" isLive="True" />
+        <fullgameaudio id="ga7" available="False" isLive="True" />
+        <gamehighlights id="gh7" available="False" isLive="False" />
+        <nailbiter id="nb7" available="False" isLive="False" />
+        <hometeam id="21210" abbr="TX" score="0" winner="No" seed="7" Logo="http://logourl">Texas</hometeam>
+        <awayteam id="21195" abbr="MN" score="0" winner="No" seed="10" Logo="http://logourl">Minnesota</awayteam>
+      </game>
+      <game id="8" abbr="NCAAB_20100301_BING@DUKE" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv8" available="False" isLive="True" />
+        <fullgameaudio id="ga8" available="False" isLive="True" />
+        <gamehighlights id="gh8" available="False" isLive="False" />
+        <nailbiter id="nb8" available="False" isLive="False" />
+        <hometeam id="21130" abbr="DUKE" score="0" winner="No" seed="2" Logo="http://logourl">Duke</hometeam>
+        <awayteam id="160867" abbr="BING" score="0" winner="No" seed="15" Logo="http://logourl">Binghamton</awayteam>
+      </game>
+    </region>
+    <region id="1" name="Midwest">
+      <game id="9" abbr="NCAAB_20100301_@LOU" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv9" available="False" isLive="True" />
+        <fullgameaudio id="ga9" available="False" isLive="True" />
+        <gamehighlights id="gh9" available="False" isLive="False" />
+        <nailbiter id="nb9" available="False" isLive="False" />
+        <hometeam id="21238" abbr="LOU" score="0" winner="No" seed="1" Logo="http://logourl">Louisville</hometeam>
+        <awayteam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></awayteam>
+      </game>
+      <game id="10" abbr="NCAAB_20100301_SIE@OHST" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv10" available="False" isLive="True" />
+        <fullgameaudio id="ga10" available="False" isLive="True" />
+        <gamehighlights id="gh10" available="False" isLive="False" />
+        <nailbiter id="nb10" available="False" isLive="False" />
+        <hometeam id="21197" abbr="OHST" score="0" winner="No" seed="8" Logo="http://logourl">Ohio St.</hometeam>
+        <awayteam id="21262" abbr="SIE" score="0" winner="No" seed="9" Logo="http://logourl">Siena</awayteam>
+      </game>
+      <game id="11" abbr="NCAAB_20100301_UT@AZ" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv11" available="False" isLive="True" />
+        <fullgameaudio id="ga11" available="False" isLive="True" />
+        <gamehighlights id="gh11" available="False" isLive="False" />
+        <nailbiter id="nb11" available="False" isLive="False" />
+        <hometeam id="21335" abbr="AZ" score="0" winner="No" seed="12" Logo="http://logourl">Arizona</hometeam>
+        <awayteam id="21437" abbr="UT" score="0" winner="No" seed="5" Logo="http://logourl">Utah</awayteam>
+      </game>
+      <game id="12" abbr="NCAAB_20100301_CLEVST@WF" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv12" available="False" isLive="True" />
+        <fullgameaudio id="ga12" available="False" isLive="True" />
+        <gamehighlights id="gh12" available="False" isLive="False" />
+        <nailbiter id="nb12" available="False" isLive="False" />
+        <hometeam id="21137" abbr="WF" score="0" winner="No" seed="4" Logo="http://logourl">Wake Forest</hometeam>
+        <awayteam id="21297" abbr="CLEVST" score="0" winner="No" seed="13" Logo="http://logourl">Cleveland St.</awayteam>
+      </game>
+      <game id="13" abbr="NCAAB_20100301_DAY@WV" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv13" available="False" isLive="True" />
+        <fullgameaudio id="ga13" available="False" isLive="True" />
+        <gamehighlights id="gh13" available="False" isLive="False" />
+        <nailbiter id="nb13" available="False" isLive="False" />
+        <hometeam id="21172" abbr="WV" score="0" winner="No" seed="6" Logo="http://logourl">West Virginia</hometeam>
+        <awayteam id="21138" abbr="DAY" score="0" winner="No" seed="11" Logo="http://logourl">Dayton</awayteam>
+      </game>
+      <game id="14" abbr="NCAAB_20100301_NDS@KS" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv14" available="False" isLive="True" />
+        <fullgameaudio id="ga14" available="False" isLive="True" />
+        <gamehighlights id="gh14" available="False" isLive="False" />
+        <nailbiter id="nb14" available="False" isLive="False" />
+        <hometeam id="21204" abbr="KS" score="0" winner="No" seed="3" Logo="http://logourl">Kansas</hometeam>
+        <awayteam id="160983" abbr="NDS" score="0" winner="No" seed="14" Logo="http://logourl">N. Dakota St.</awayteam>
+      </game>
+      <game id="15" abbr="NCAAB_20100301_USC@BC" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv15" available="False" isLive="True" />
+        <fullgameaudio id="ga15" available="False" isLive="True" />
+        <gamehighlights id="gh15" available="False" isLive="False" />
+        <nailbiter id="nb15" available="False" isLive="False" />
+        <hometeam id="21160" abbr="BC" score="0" winner="No" seed="7" Logo="http://logourl">Boston Coll.</hometeam>
+        <awayteam id="21342" abbr="USC" score="0" winner="No" seed="10" Logo="http://logourl">Southern Cal.</awayteam>
+      </game>
+      <game id="16" abbr="NCAAB_20100301_ROB@MIST" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv16" available="False" isLive="True" />
+        <fullgameaudio id="ga16" available="False" isLive="True" />
+        <gamehighlights id="gh16" available="False" isLive="False" />
+        <nailbiter id="nb16" available="False" isLive="False" />
+        <hometeam id="21194" abbr="MIST" score="0" winner="No" seed="2" Logo="http://logourl">Michigan St.</hometeam>
+        <awayteam id="21319" abbr="ROB" score="0" winner="No" seed="15" Logo="http://logourl">Robert Morris</awayteam>
+      </game>
+    </region>
+    <region id="4" name="South">
+      <game id="17" abbr="NCAAB_20100301_RADFRD@NC" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv17" available="False" isLive="True" />
+        <fullgameaudio id="ga17" available="False" isLive="True" />
+        <gamehighlights id="gh17" available="False" isLive="False" />
+        <nailbiter id="nb17" available="False" isLive="False" />
+        <hometeam id="21134" abbr="NC" score="0" winner="No" seed="1" Logo="http://logourl">North Carolina</hometeam>
+        <awayteam id="21186" abbr="RADFRD" score="0" winner="No" seed="16" Logo="http://logourl">Radford</awayteam>
+      </game>
+      <game id="18" abbr="NCAAB_20100301_BUT@LSU" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv18" available="False" isLive="True" />
+        <fullgameaudio id="ga18" available="False" isLive="True" />
+        <gamehighlights id="gh18" available="False" isLive="False" />
+        <nailbiter id="nb18" available="False" isLive="False" />
+        <hometeam id="21358" abbr="LSU" score="0" winner="No" seed="8" Logo="http://logourl">LSU</hometeam>
+        <awayteam id="21296" abbr="BUT" score="0" winner="No" seed="9" Logo="http://logourl">Butler</awayteam>
+      </game>
+      <game id="19" abbr="NCAAB_20100301_WKTY@IL" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv19" available="False" isLive="True" />
+        <fullgameaudio id="ga19" available="False" isLive="True" />
+        <gamehighlights id="gh19" available="False" isLive="False" />
+        <nailbiter id="nb19" available="False" isLive="False" />
+        <hometeam id="21190" abbr="IL" score="0" winner="No" seed="5" Logo="http://logourl">Illinois</hometeam>
+        <awayteam id="21403" abbr="WKTY" score="0" winner="No" seed="12" Logo="http://logourl">Western Ky.</awayteam>
+      </game>
+      <game id="20" abbr="NCAAB_20100301_AKR@GONZAG" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv20" available="False" isLive="True" />
+        <fullgameaudio id="ga20" available="False" isLive="True" />
+        <gamehighlights id="gh20" available="False" isLive="False" />
+        <nailbiter id="nb20" available="False" isLive="False" />
+        <hometeam id="21415" abbr="GONZAG" score="0" winner="No" seed="4" Logo="http://logourl">Gonzaga</hometeam>
+        <awayteam id="21264" abbr="AKR" score="0" winner="No" seed="13" Logo="http://logourl">Akron</awayteam>
+      </game>
+      <game id="21" abbr="NCAAB_20100301_TEMP@AZST" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv21" available="False" isLive="True" />
+        <fullgameaudio id="ga21" available="False" isLive="True" />
+        <gamehighlights id="gh21" available="False" isLive="False" />
+        <nailbiter id="nb21" available="False" isLive="False" />
+        <hometeam id="21336" abbr="AZST" score="0" winner="No" seed="6" Logo="http://logourl">Arizona St.</hometeam>
+        <awayteam id="21147" abbr="TEMP" score="0" winner="No" seed="11" Logo="http://logourl">Temple</awayteam>
+      </game>
+      <game id="22" abbr="NCAAB_20100301_SFA@SYR" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv22" available="False" isLive="True" />
+        <fullgameaudio id="ga22" available="False" isLive="True" />
+        <gamehighlights id="gh22" available="False" isLive="False" />
+        <nailbiter id="nb22" available="False" isLive="False" />
+        <hometeam id="21170" abbr="SYR" score="0" winner="No" seed="3" Logo="http://logourl">Syracuse</hometeam>
+        <awayteam id="21383" abbr="SFA" score="0" winner="No" seed="14" Logo="http://logourl">S. F. Austin</awayteam>
+      </game>
+      <game id="23" abbr="NCAAB_20100301_MI@CLEM" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv23" available="False" isLive="True" />
+        <fullgameaudio id="ga23" available="False" isLive="True" />
+        <gamehighlights id="gh23" available="False" isLive="False" />
+        <nailbiter id="nb23" available="False" isLive="False" />
+        <hometeam id="21129" abbr="CLEM" score="0" winner="No" seed="7" Logo="http://logourl">Clemson</hometeam>
+        <awayteam id="21193" abbr="MI" score="0" winner="No" seed="10" Logo="http://logourl">Michigan</awayteam>
+      </game>
+      <game id="24" abbr="NCAAB_20100301_MRGNST@OK" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv24" available="False" isLive="True" />
+        <fullgameaudio id="ga24" available="False" isLive="True" />
+        <gamehighlights id="gh24" available="False" isLive="False" />
+        <nailbiter id="nb24" available="False" isLive="False" />
+        <hometeam id="21208" abbr="OK" score="0" winner="No" seed="2" Logo="http://logourl">Oklahoma</hometeam>
+        <awayteam id="21291" abbr="MRGNST" score="0" winner="No" seed="15" Logo="http://logourl">Morgan St.</awayteam>
+      </game>
+    </region>
+    <region id="2" name="West">
+      <game id="25" abbr="NCAAB_20100301_TNCHAT@CT" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv25" available="False" isLive="True" />
+        <fullgameaudio id="ga25" available="False" isLive="True" />
+        <gamehighlights id="gh25" available="False" isLive="False" />
+        <nailbiter id="nb25" available="False" isLive="False" />
+        <hometeam id="21161" abbr="CT" score="0" winner="No" seed="1" Logo="http://logourl">Connecticut</hometeam>
+        <awayteam id="21366" abbr="TNCHAT" score="0" winner="No" seed="16" Logo="http://logourl">Chattanooga</awayteam>
+      </game>
+      <game id="26" abbr="NCAAB_20100301_TXAM@BYU" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv26" available="False" isLive="True" />
+        <fullgameaudio id="ga26" available="False" isLive="True" />
+        <gamehighlights id="gh26" available="False" isLive="False" />
+        <nailbiter id="nb26" available="False" isLive="False" />
+        <hometeam id="21424" abbr="BYU" score="0" winner="No" seed="8" Logo="http://logourl">BYU</hometeam>
+        <awayteam id="21211" abbr="TXAM" score="0" winner="No" seed="9" Logo="http://logourl">Texas A&amp;M</awayteam>
+      </game>
+      <game id="27" abbr="NCAAB_20100301_NIA@PUR" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv27" available="False" isLive="True" />
+        <fullgameaudio id="ga27" available="False" isLive="True" />
+        <gamehighlights id="gh27" available="False" isLive="False" />
+        <nailbiter id="nb27" available="False" isLive="False" />
+        <hometeam id="21199" abbr="PUR" score="0" winner="No" seed="5" Logo="http://logourl">Purdue</hometeam>
+        <awayteam id="21310" abbr="NIA" score="0" winner="No" seed="12" Logo="http://logourl">Northern Iowa</awayteam>
+      </game>
+      <game id="28" abbr="NCAAB_20100301_MSST@WA" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv28" available="False" isLive="True" />
+        <fullgameaudio id="ga28" available="False" isLive="True" />
+        <gamehighlights id="gh28" available="False" isLive="False" />
+        <nailbiter id="nb28" available="False" isLive="False" />
+        <hometeam id="21343" abbr="WA" score="0" winner="No" seed="4" Logo="http://logourl">Washington</hometeam>
+        <awayteam id="21360" abbr="MSST" score="0" winner="No" seed="13" Logo="http://logourl">Mississippi St.</awayteam>
+      </game>
+      <game id="29" abbr="NCAAB_20100301_UTST@MARQET" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv29" available="False" isLive="True" />
+        <fullgameaudio id="ga29" available="False" isLive="True" />
+        <gamehighlights id="gh29" available="False" isLive="False" />
+        <nailbiter id="nb29" available="False" isLive="False" />
+        <hometeam id="21239" abbr="MARQET" score="0" winner="No" seed="6" Logo="http://logourl">Marquette</hometeam>
+        <awayteam id="21224" abbr="UTST" score="0" winner="No" seed="11" Logo="http://logourl">Utah St.</awayteam>
+      </game>
+      <game id="30" abbr="NCAAB_20100301_CORN@MO" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv30" available="False" isLive="True" />
+        <fullgameaudio id="ga30" available="False" isLive="True" />
+        <gamehighlights id="gh30" available="False" isLive="False" />
+        <nailbiter id="nb30" available="False" isLive="False" />
+        <hometeam id="21206" abbr="MO" score="0" winner="No" seed="3" Logo="http://logourl">Missouri</hometeam>
+        <awayteam id="21248" abbr="CORN" score="0" winner="No" seed="14" Logo="http://logourl">Cornell</awayteam>
+      </game>
+      <game id="31" abbr="NCAAB_20100301_MD@CA" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv31" available="False" isLive="True" />
+        <fullgameaudio id="ga31" available="False" isLive="True" />
+        <gamehighlights id="gh31" available="False" isLive="False" />
+        <nailbiter id="nb31" available="False" isLive="False" />
+        <hometeam id="21337" abbr="CA" score="0" winner="No" seed="7" Logo="http://logourl">California</hometeam>
+        <awayteam id="21133" abbr="MD" score="0" winner="No" seed="10" Logo="http://logourl">Maryland</awayteam>
+      </game>
+      <game id="32" abbr="NCAAB_20100301_CSNTH@MEM" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv32" available="False" isLive="True" />
+        <fullgameaudio id="ga32" available="False" isLive="True" />
+        <gamehighlights id="gh32" available="False" isLive="False" />
+        <nailbiter id="nb32" available="False" isLive="False" />
+        <hometeam id="21240" abbr="MEM" score="0" winner="No" seed="2" Logo="http://logourl">Memphis</hometeam>
+        <awayteam id="21177" abbr="CSNTH" score="0" winner="No" seed="15" Logo="http://logourl">CS Northridge</awayteam>
+      </game>
+    </region>
+  </round>
+  <round name="Second Round" start="03/21/09" end="03/22/09" status="SCHEDULED">
+    <region id="3" name="East">
+      <game id="33" abbr="NCAAB_20100301_@" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv33" available="False" isLive="True" />
+        <fullgameaudio id="ga33" available="False" isLive="True" />
+        <gamehighlights id="gh33" available="False" isLive="False" />
+        <nailbiter id="nb33" available="False" isLive="False" />
+        <hometeam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></hometeam>
+        <awayteam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></awayteam>
+      </game>
+      <game id="34" abbr="NCAAB_20100301_@" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv34" available="False" isLive="True" />
+        <fullgameaudio id="ga34" available="False" isLive="True" />
+        <gamehighlights id="gh34" available="False" isLive="False" />
+        <nailbiter id="nb34" available="False" isLive="False" />
+        <hometeam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></hometeam>
+        <awayteam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></awayteam>
+      </game>
+      <game id="35" abbr="NCAAB_20100301_@" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv35" available="False" isLive="True" />
+        <fullgameaudio id="ga35" available="False" isLive="True" />
+        <gamehighlights id="gh35" available="False" isLive="False" />
+        <nailbiter id="nb35" available="False" isLive="False" />
+        <hometeam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></hometeam>
+        <awayteam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></awayteam>
+      </game>
+      <game id="36" abbr="NCAAB_20100301_@" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv36" available="False" isLive="True" />
+        <fullgameaudio id="ga36" available="False" isLive="True" />
+        <gamehighlights id="gh36" available="False" isLive="False" />
+        <nailbiter id="nb36" available="False" isLive="False" />
+        <hometeam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></hometeam>
+        <awayteam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></awayteam>
+      </game>
+    </region>
+    <region id="1" name="Midwest">
+      <game id="37" abbr="NCAAB_20100301_@" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv37" available="False" isLive="True" />
+        <fullgameaudio id="ga37" available="False" isLive="True" />
+        <gamehighlights id="gh37" available="False" isLive="False" />
+        <nailbiter id="nb37" available="False" isLive="False" />
+        <hometeam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></hometeam>
+        <awayteam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></awayteam>
+      </game>
+      <game id="38" abbr="NCAAB_20100301_@" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv38" available="False" isLive="True" />
+        <fullgameaudio id="ga38" available="False" isLive="True" />
+        <gamehighlights id="gh38" available="False" isLive="False" />
+        <nailbiter id="nb38" available="False" isLive="False" />
+        <hometeam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></hometeam>
+        <awayteam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></awayteam>
+      </game>
+      <game id="39" abbr="NCAAB_20100301_@" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv39" available="False" isLive="True" />
+        <fullgameaudio id="ga39" available="False" isLive="True" />
+        <gamehighlights id="gh39" available="False" isLive="False" />
+        <nailbiter id="nb39" available="False" isLive="False" />
+        <hometeam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></hometeam>
+        <awayteam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></awayteam>
+      </game>
+      <game id="40" abbr="NCAAB_20100301_@" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv40" available="False" isLive="True" />
+        <fullgameaudio id="ga40" available="False" isLive="True" />
+        <gamehighlights id="gh40" available="False" isLive="False" />
+        <nailbiter id="nb40" available="False" isLive="False" />
+        <hometeam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></hometeam>
+        <awayteam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></awayteam>
+      </game>
+    </region>
+    <region id="4" name="South">
+      <game id="41" abbr="NCAAB_20100301_@" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv41" available="False" isLive="True" />
+        <fullgameaudio id="ga41" available="False" isLive="True" />
+        <gamehighlights id="gh41" available="False" isLive="False" />
+        <nailbiter id="nb41" available="False" isLive="False" />
+        <hometeam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></hometeam>
+        <awayteam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></awayteam>
+      </game>
+      <game id="42" abbr="NCAAB_20100301_@" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv42" available="False" isLive="True" />
+        <fullgameaudio id="ga42" available="False" isLive="True" />
+        <gamehighlights id="gh42" available="False" isLive="False" />
+        <nailbiter id="nb42" available="False" isLive="False" />
+        <hometeam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></hometeam>
+        <awayteam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></awayteam>
+      </game>
+      <game id="43" abbr="NCAAB_20100301_@" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv43" available="False" isLive="True" />
+        <fullgameaudio id="ga43" available="False" isLive="True" />
+        <gamehighlights id="gh43" available="False" isLive="False" />
+        <nailbiter id="nb43" available="False" isLive="False" />
+        <hometeam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></hometeam>
+        <awayteam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></awayteam>
+      </game>
+      <game id="44" abbr="NCAAB_20100301_@" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv44" available="False" isLive="True" />
+        <fullgameaudio id="ga44" available="False" isLive="True" />
+        <gamehighlights id="gh44" available="False" isLive="False" />
+        <nailbiter id="nb44" available="False" isLive="False" />
+        <hometeam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></hometeam>
+        <awayteam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></awayteam>
+      </game>
+    </region>
+    <region id="2" name="West">
+      <game id="45" abbr="NCAAB_20100301_@" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv45" available="False" isLive="True" />
+        <fullgameaudio id="ga45" available="False" isLive="True" />
+        <gamehighlights id="gh45" available="False" isLive="False" />
+        <nailbiter id="nb45" available="False" isLive="False" />
+        <hometeam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></hometeam>
+        <awayteam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></awayteam>
+      </game>
+      <game id="46" abbr="NCAAB_20100301_@" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv46" available="False" isLive="True" />
+        <fullgameaudio id="ga46" available="False" isLive="True" />
+        <gamehighlights id="gh46" available="False" isLive="False" />
+        <nailbiter id="nb46" available="False" isLive="False" />
+        <hometeam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></hometeam>
+        <awayteam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></awayteam>
+      </game>
+      <game id="47" abbr="NCAAB_20100301_@" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv47" available="False" isLive="True" />
+        <fullgameaudio id="ga47" available="False" isLive="True" />
+        <gamehighlights id="gh47" available="False" isLive="False" />
+        <nailbiter id="nb47" available="False" isLive="False" />
+        <hometeam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></hometeam>
+        <awayteam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></awayteam>
+      </game>
+      <game id="48" abbr="NCAAB_20100301_@" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv48" available="False" isLive="True" />
+        <fullgameaudio id="ga48" available="False" isLive="True" />
+        <gamehighlights id="gh48" available="False" isLive="False" />
+        <nailbiter id="nb48" available="False" isLive="False" />
+        <hometeam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></hometeam>
+        <awayteam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></awayteam>
+      </game>
+    </region>
+  </round>
+  <round name="Regionals" start="03/26/09" end="03/27/09" status="SCHEDULED">
+    <region id="3" name="East">
+      <game id="49" abbr="NCAAB_20100301_@" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv49" available="False" isLive="True" />
+        <fullgameaudio id="ga49" available="False" isLive="True" />
+        <gamehighlights id="gh49" available="False" isLive="False" />
+        <nailbiter id="nb49" available="False" isLive="False" />
+        <hometeam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></hometeam>
+        <awayteam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></awayteam>
+      </game>
+      <game id="50" abbr="NCAAB_20100301_@" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv50" available="False" isLive="True" />
+        <fullgameaudio id="ga50" available="False" isLive="True" />
+        <gamehighlights id="gh50" available="False" isLive="False" />
+        <nailbiter id="nb50" available="False" isLive="False" />
+        <hometeam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></hometeam>
+        <awayteam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></awayteam>
+      </game>
+    </region>
+    <region id="1" name="Midwest">
+      <game id="51" abbr="NCAAB_20100301_@" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv51" available="False" isLive="True" />
+        <fullgameaudio id="ga51" available="False" isLive="True" />
+        <gamehighlights id="gh51" available="False" isLive="False" />
+        <nailbiter id="nb51" available="False" isLive="False" />
+        <hometeam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></hometeam>
+        <awayteam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></awayteam>
+      </game>
+      <game id="52" abbr="NCAAB_20100301_@" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv52" available="False" isLive="True" />
+        <fullgameaudio id="ga52" available="False" isLive="True" />
+        <gamehighlights id="gh52" available="False" isLive="False" />
+        <nailbiter id="nb52" available="False" isLive="False" />
+        <hometeam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></hometeam>
+        <awayteam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></awayteam>
+      </game>
+    </region>
+    <region id="4" name="South">
+      <game id="53" abbr="NCAAB_20100301_@" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv53" available="False" isLive="True" />
+        <fullgameaudio id="ga53" available="False" isLive="True" />
+        <gamehighlights id="gh53" available="False" isLive="False" />
+        <nailbiter id="nb53" available="False" isLive="False" />
+        <hometeam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></hometeam>
+        <awayteam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></awayteam>
+      </game>
+      <game id="54" abbr="NCAAB_20100301_@" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv54" available="False" isLive="True" />
+        <fullgameaudio id="ga54" available="False" isLive="True" />
+        <gamehighlights id="gh54" available="False" isLive="False" />
+        <nailbiter id="nb54" available="False" isLive="False" />
+        <hometeam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></hometeam>
+        <awayteam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></awayteam>
+      </game>
+    </region>
+    <region id="2" name="West">
+      <game id="55" abbr="NCAAB_20100301_@" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv55" available="False" isLive="True" />
+        <fullgameaudio id="ga55" available="False" isLive="True" />
+        <gamehighlights id="gh55" available="False" isLive="False" />
+        <nailbiter id="nb55" available="False" isLive="False" />
+        <hometeam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></hometeam>
+        <awayteam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></awayteam>
+      </game>
+      <game id="56" abbr="NCAAB_20100301_@" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv56" available="False" isLive="True" />
+        <fullgameaudio id="ga56" available="False" isLive="True" />
+        <gamehighlights id="gh56" available="False" isLive="False" />
+        <nailbiter id="nb56" available="False" isLive="False" />
+        <hometeam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></hometeam>
+        <awayteam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></awayteam>
+      </game>
+    </region>
+  </round>
+  <round name="Regionals" start="03/28/09" end="03/29/09" status="SCHEDULED">
+    <region id="3" name="East">
+      <game id="57" abbr="NCAAB_20100301_@" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv57" available="False" isLive="True" />
+        <fullgameaudio id="ga57" available="False" isLive="True" />
+        <gamehighlights id="gh57" available="False" isLive="False" />
+        <nailbiter id="nb57" available="False" isLive="False" />
+        <hometeam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></hometeam>
+        <awayteam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></awayteam>
+      </game>
+    </region>
+    <region id="1" name="Midwest">
+      <game id="58" abbr="NCAAB_20100301_@" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv58" available="False" isLive="True" />
+        <fullgameaudio id="ga58" available="False" isLive="True" />
+        <gamehighlights id="gh58" available="False" isLive="False" />
+        <nailbiter id="nb58" available="False" isLive="False" />
+        <hometeam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></hometeam>
+        <awayteam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></awayteam>
+      </game>
+    </region>
+    <region id="4" name="South">
+      <game id="59" abbr="NCAAB_20100301_@" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv59" available="False" isLive="True" />
+        <fullgameaudio id="ga59" available="False" isLive="True" />
+        <gamehighlights id="gh59" available="False" isLive="False" />
+        <nailbiter id="nb59" available="False" isLive="False" />
+        <hometeam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></hometeam>
+        <awayteam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></awayteam>
+      </game>
+    </region>
+    <region id="2" name="West">
+      <game id="60" abbr="NCAAB_20100301_@" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv60" available="False" isLive="True" />
+        <fullgameaudio id="ga60" available="False" isLive="True" />
+        <gamehighlights id="gh60" available="False" isLive="False" />
+        <nailbiter id="nb60" available="False" isLive="False" />
+        <hometeam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></hometeam>
+        <awayteam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></awayteam>
+      </game>
+    </region>
+  </round>
+  <round name="Semifinals" start="04/04/09" end="04/04/09" status="SCHEDULED">
+    <region name="FinalFour" id="5">
+      <game id="61" abbr="NCAAB_20100301_@" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv61" available="False" isLive="True" />
+        <fullgameaudio id="ga61" available="False" isLive="True" />
+        <gamehighlights id="gh61" available="False" isLive="False" />
+        <nailbiter id="nb61" available="False" isLive="False" />
+        <hometeam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></hometeam>
+        <awayteam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></awayteam>
+      </game>
+      <game id="62" abbr="NCAAB_20100301_@" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv62" available="False" isLive="True" />
+        <fullgameaudio id="ga62" available="False" isLive="True" />
+        <gamehighlights id="gh62" available="False" isLive="False" />
+        <nailbiter id="nb62" available="False" isLive="False" />
+        <hometeam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></hometeam>
+        <awayteam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></awayteam>
+      </game>
+    </region>
+  </round>
+  <round name="National Championship" start="04/06/09" end="04/06/09" status="SCHEDULED">
+    <region name="FinalFour" id="5">
+      <game id="63" abbr="NCAAB_20100301_@" start_time="03/01/10 12:11 ET" location="Dayton, Ohio" status="SCHEDULED">
+        <venue>Joe Flynn Memorial Arena</venue>
+        <gamevideo id="gv63" available="False" isLive="True" />
+        <fullgameaudio id="ga63" available="False" isLive="True" />
+        <gamehighlights id="gh63" available="False" isLive="False" />
+        <nailbiter id="nb63" available="False" isLive="False" />
+        <hometeam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></hometeam>
+        <awayteam id="0" abbr="" score="0" winner="No" seed="0" Logo="http://logourl"></awayteam>
+      </game>
+    </region>
+  </round>
+</ncaab_brackets>
