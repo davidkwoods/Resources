@@ -1,6 +1,6 @@
 [core]
 	autocrlf = false
-	editor = 'C:\\Program Files (x86)\\Notepad++\\notepad++.exe' -multiInst -notabbar -nosession -noPlugin
+	editor = 'C:\\Program Files (x86)\\Notepad++\\notepad++.exe' -multiInst -nosession -noPlugin
 [user]
 	name = David Woods
 	email = ***@hotmail.com
@@ -8,7 +8,7 @@
 	user = ***
 	token = ***
 [merge]
-  tool = SemanticMerge
+  tool = p4merge
 [mergetool "p4merge"]
 	cmd = "p4merge.exe $BASE $LOCAL $REMOTE $MERGED"
 [mergetool "SemanticMerge"]
@@ -17,7 +17,7 @@
   trustExitCode = false
   cmd = \"C:\\Users\\David\\AppData\\Local\\PlasticSCM4\\semanticmerge\\semanticmergetool.exe\" -b=\"$BASE\" -d=\"$LOCAL\" -s=\"$REMOTE\" -r=\"$MERGED\" -l=csharp -emt=\"mergetool.exe -b=\"\"@basefile\"\" -bn=\"\"@basesymbolic\"\" -s=\"\"@sourcefile\"\" -sn=\"\"@sourcesymbolic\"\" -d=\"\"@destinationfile\"\" -dn=\"\"@destinationsymbolic\"\" -r=\"\"@output\"\" -t=\"\"@filetype\"\" -i=\"\"@comparationmethod\"\" -e=\"\"@fileencoding\"\"\" -edt=\"mergetool.exe  -s=\"\"@sourcefile\"\" -sn=\"\"@sourcesymbolic\"\" -d=\"\"@destinationfile\"\" -dn=\"\"@destinationsymbolic\"\" -t=\"\"@filetype\"\" -i=\"\"@comparationmethod\"\" -e=\"\"@fileencoding\"\"\"
 [diff]
-	tool = SemanticMerge
+	tool = p4merge
 [difftool "p4merge"]
 	cmd = "p4merge.exe $LOCAL $REMOTE"
 [difftool "SemanticMerge"]
@@ -29,4 +29,12 @@
 	helper = !'C:\\Users\\David\\AppData\\Roaming\\GitCredStore\\git-credential-winstore.exe'
 [alias]
 	logg = log --graph --full-history --all --color --pretty=format:\"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s\"
-	loggg = log --graph --full-history --all --color --pretty=format:\"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%cN:% s\"
+	logd = log --graph --full-history --all --color --pretty=format:\"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%cr:% s\"
+	logn = log --graph --full-history --all --color --pretty=format:\"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%cN:% s\"
+	logt = log --graph --color --pretty=format:\"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%cN:% s\"
+	dift = difftool
+	difs = diff --stat
+	dif = diff --color-words
+	difc = diff --cached --color-words
+	sub = submodule update
+	wipe = reset --hard
