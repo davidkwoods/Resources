@@ -33,8 +33,8 @@
     logn = log --graph --full-history --all --color --pretty=format:\"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%cN:% s\"
     logt = log --graph --color --pretty=format:\"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%cN:% s\"
     logtd = log --graph --color --pretty=format:\"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%cr:% s\"
-    dift = difftool -t odd
-    diftc = difftool -t odd --cached
+    dift = difftool -t semanticmerge
+    diftc = difftool -t semanticmerge --cached
     difs = diff --stat
     dif = diff --color-words
     difc = diff --cached --color-words
@@ -44,23 +44,27 @@
     fa = fetch --all
     fp = fetch --prune
     fap = fetch --all --prune
+    fpa = fetch --all --prune
+    pp = pull --prune
     stat = status --short --branch
     br = branch --all
     brc = branch --all --contains
-    brp = !git branch && git branch --all --list origin/feature/* && git branch --all --list origin/personal/dwoo/*
-    sb = show-branch
-    
-    lg = !git lg1
-    lgg = !git lgg1
-    lg1 = !git lg1-specific
-    lg2 = !git lg2-specific
-    lg3 = !git lg3-specific
-    lgg1 = !git lg1-specific --all
-    lgg2 = !git lg2-specific --all
-    lgg3 = !git lg3-specific --all
-    lg1-specific = log --graph --abbrev-commit --decorate --format=format:'%C(cyan)%h%C(bold cyan)%d%C(reset) - %C(dim white)(%ar)%C(reset) %C(bold white)%s%C(reset) %C(dim white)- %an%C(reset)'
-    lg2-specific = log --graph --abbrev-commit --decorate --format=format:'%C(cyan)%h%C(bold cyan)%d%C(reset) - %C(bold green)%aD%C(reset) %C(dim white)(%ar)%C(reset)%n''          %C(bold white)%s%C(reset) %C(dim white)- %an%C(reset)'
-    lg3-specific = log --graph --abbrev-commit --decorate --format=format:'%C(cyan)%h%C(bold cyan)%d%C(reset) - %C(bold green)%aD%C(reset) %C(dim white)(%ar)%C(reset) %C(green)(committed: %cD)%C(reset)%n''          %C(bold white)%s%C(reset)%n''          %C(bold white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)'
+    brp = !git branch && echo && git branch -r --no-color --list laptop/* && git branch -r --no-color --list self/* && git branch -r --no-color --list origin/feature/* && git branch -r --no-color --list origin/personal/dwoo/*
+    sb = show-branch --no-color
+    sh = show --word-diff=color
+    unignored = ls-files -i --exclude-standard
+
+    lg   = log --graph --abbrev-commit --decorate --date=format-local:%c --format=logone
+    lg2  = log --graph --abbrev-commit --decorate --date=format-local:%c --format=logtwo
+    lg3  = log --graph --abbrev-commit --decorate --date=format-local:%c --format=logthree
+    lgg  = log --graph --abbrev-commit --decorate --date=format-local:%c --format=logone --all
+    lgg2 = log --graph --abbrev-commit --decorate --date=format-local:%c --format=logtwo --all
+    lgg3 = log --graph --abbrev-commit --decorate --date=format-local:%c --format=logthree --all
+
+[pretty]
+	logone = format:%C(cyan)%h%C(bold cyan)%d%C(reset) - %C(dim white)(%ar)%C(reset) %C(bold white)%s%C(reset) %C(dim white)- %an%C(reset)
+    logtwo = format:%C(cyan)%h%C(bold cyan)%d%C(reset) - %C(bold green)%ad%C(reset) %C(dim white)(%ar)%C(reset)%n          %C(bold white)%s%C(reset) %C(dim white)- %an%C(reset)
+    logthree = format:%C(cyan)%h%C(bold cyan)%d%C(reset) - %C(bold green)%ad%C(reset) %C(dim white)(%ar)%C(reset) %C(green)(committed: %cd)%C(reset)%n          %C(bold white)%s%C(reset)%n          %C(bold white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)
 
 #    lg1-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
 #    lg2-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
