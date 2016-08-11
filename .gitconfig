@@ -53,6 +53,7 @@
     sb = show-branch --no-color
     sh = show --word-diff=color
     unignored = ls-files -i --exclude-standard
+    scorch = clean -dxf -e /.vs*/
 
     lg   = log --graph --abbrev-commit --decorate --date=format-local:%c --format=logone
     lg2  = log --graph --abbrev-commit --decorate --date=format-local:%c --format=logtwo
