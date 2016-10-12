@@ -1,0 +1,36 @@
+Options
+    Cursor - Small
+    Buffer Size - 50
+    Num of Buffers - 4
+    Edit Options - All Checked
+    Text Selection - All Checked
+    Use Legacy Console - Unchecked
+Font
+    Consolas 14pt, not bold
+Layout
+    Buffer Width - Auto
+    Buffer Height - 3000
+    Wrap text output on resize - Checked
+    Window Width - 150
+    Window Height - 45
+Colors
+    Opacity - 95%
+    Colors (in order)
+    [
+        Background (Navy), R=1 G=36 B=86
+        DarkBlue, R=0 G=50 B=200
+        DarkGreen, R=0 G=128 B=0
+        Teal, R=0 G=128 B=128
+        DarkRed, R=160 G=0 B=0
+        DarkMagenta, R=115 G=0 B=115
+        LightGrey, R=238 G=237 B=240
+        MedGrey, R=192 G=192 B=192
+        DarkGrey, R=128 G=128 B=128
+        Blue, R=0 G=115 B=255
+        Green, R=0 G=255 B=0
+        LightBlue, R=0 G=255 B=255
+        Red, R=255 G=0 B=0
+        Magenta, R=255 G=0 B=255
+        Yellow, R=255 G=255 B=0
+        White, R=255 G=255 B=255
+    ]
