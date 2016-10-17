@@ -46,26 +46,28 @@ Function Push-GitUpstream ([switch]$Force)
     {
         if ($status.Upstream)
         {
+            $upstream = $status.Upstream.Split("/")[0]
+            $upstreamPath = $status.Upstream.Replace($upstream + "/", '')
             if ($Force)
             {
-                git push origin HEAD:$($status.Upstream.Replace('origin/', '')) -f
+                git push $upstream HEAD:$upstreamPath -f
             }
             else
             {
-                git push origin HEAD:$($status.Upstream.Replace('origin/', ''))
+                git push $upstream HEAD:$upstreamPath
             }
         }
     }
 }
 
-Function Push-Personal
+Function Push-Personal ([string] $Repo = "origin")
 {
     $status = Get-GitStatus
     if ($status)
     {
         $branch = $status.Branch
         $upstreamBranch = "personal/dwoo/$branch"
-        git push -u origin ${branch}:$upstreamBranch
+        git push -u $Repo ${branch}:$upstreamBranch
     }
 }
 
