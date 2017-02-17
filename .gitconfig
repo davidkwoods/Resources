@@ -30,10 +30,10 @@
 [alias]
     dift = difftool -t semanticmerge
     diftc = difftool -t semanticmerge --cached
-    difs = diff -M --stat=170
+    difs = diff -M --stat=170 --dirstat
     dif = diff -M --color-words
     difc = diff -M --cached --color-words
-    difcs = diff -M --cached --stat=170
+    difcs = diff -M --cached --stat=170 --dirstat
     sub = submodule update
     wipe = reset --hard
     fa = fetch --all
@@ -41,8 +41,8 @@
     fap = fetch --all --prune
     fpa = fetch --all --prune
     mu = merge HEAD@{u}
-    fpp = !git fetch --prune self || git fetch --prune origin
-    fpm = !git fetch --prune || git merge --ff-only HEAD@{u}
+    fpp = !git fetch --prune self && git fetch --prune origin
+    fpm = !git fetch --prune && git merge --ff-only HEAD@{u}
     fppm = !git fetch --prune self && git fetch --prune origin && git merge --ff-only HEAD@{u}
     fpam = !git fetch --prune --all || git merge --ff-only HEAD@{u}
     fapm = !git fetch --prune --all || git merge --ff-only HEAD@{u}
@@ -50,33 +50,43 @@
     stat = status --short --branch
     br = !git branch && echo && git branch -r
     brc = branch --all --contains
-    brp = !git branch && echo && git branch -r --list laptop/* && git branch -r --list self/* && git branch -r --list origin/feature/* && git branch -r --list origin/personal/dwoo/*
+    brp = !git branch && echo && git branch -r --list laptop/* && git branch -r --list self/* && git branch -r --list origin/feature/* && git branch -r --list origin/release/* && git branch -r --list origin/personal/dwoo/*
+    bv = branch -vv
     sb = show-branch --current
     count = !sh -c 'git rev-list --left-right --count ${1-HEAD@\\{u\\}}...${2-HEAD}' -
-    sh = show -M --word-diff=color
-    shs = show -M --shortstat
-    shd = show -M --dirstat
-    shss = show -M --name-status
-    shf = show -M --stat=170
+    sh = show -M --word-diff=color --pretty=mysummary
+    shs = show -M --shortstat --dirstat --pretty=mysummary
+    shd = show -M --dirstat --pretty=mysummary
+    shss = show -M --name-status --pretty=mysummary
+    shf = show -M --stat=170 --dirstat  --pretty=mysummary
     unignored = ls-files -i --exclude-standard
     ignored = clean -ndx
     ignoredd = ls-files --others -i --exclude-standard
-    scorch = clean -dxf -e /.vs*/
-    scorchh = clean -dxf -e /.vs*/ -e /Binaries/
+    scorch = clean -dxf -e /.vs*/ -e /**/*.lock.json -e /**/*.nuget.targets -e /**/project.json
+    scorchh = clean -dxf -e /.vs*/ -e /**/*.lock.json -e /**/*.nuget.targets -e /**/project.json -e /Binaries/
     amend = !sh -c 'git commit --amend ${1+-m} \"${1---reuse-message=HEAD}\"' -
 
-    lg   = log --graph --abbrev-commit --decorate --date=format-local:%c -M --format=logone
-    lg2  = log --graph --abbrev-commit --decorate --date=format-local:%c -M --format=logtwo
-    lg3  = log --graph --abbrev-commit --decorate --date=format-local:%c -M --format=logthree
-    lgg  = log --graph --abbrev-commit --decorate --date=format-local:%c -M --format=logone --all
-    lgg2 = log --graph --abbrev-commit --decorate --date=format-local:%c -M --format=logtwo --all
-    lgg3 = log --graph --abbrev-commit --decorate --date=format-local:%c -M --format=logthree --all
+    follow  = log --follow --date=format-local:%c --format=logone
+    follow2 = log --follow --date=format-local:%c --format=logtwo
+    follow3 = log --follow --date=format-local:%c --format=logthree
+
+    lg   = log --graph --date=format-local:%c -M -i --format=logone
+    lg2  = log --graph --date=format-local:%c -M -i --format=logtwo
+    lg3  = log --graph --date=format-local:%c -M -i --format=logthree
+    lgg  = log --graph --date=format-local:%c -M -i --format=logone --all
+    lgg2 = log --graph --date=format-local:%c -M -i --format=logtwo --all
+    lgg3 = log --graph --date=format-local:%c -M -i --format=logthree --all
+    lgu   = log --graph --date=format-local:%c -M -i --format=logone HEAD@{u}
+    lgu2  = log --graph --date=format-local:%c -M -i --format=logtwo HEAD@{u}
+    lgu3  = log --graph --date=format-local:%c -M -i --format=logthree HEAD@{u}
 
 [pretty]
     logone = format:%C(cyan)%h%C(bold cyan)%d%C(reset) - %C(dim white)(%ar)%C(reset) %C(bold white)%s%C(reset) %C(dim white)- %an%C(reset)
     logtwo = format:%C(cyan)%h%C(bold cyan)%d%C(reset) - %C(bold green)%ad%C(reset) %C(dim white)(%ar)%C(reset)%n          %C(bold white)%s%C(reset) %C(dim white)- %an%C(reset)
     logthree = format:%C(cyan)%h%C(bold cyan)%d%C(reset) - %C(bold green)%ad%C(reset) %C(dim white)(%ar)%C(reset) %C(green)(committed: %cd)%C(reset)%n          %C(bold white)%s%C(reset)%n          %C(bold white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)
+    mysummary = format:%C(cyan) %H%n%C(bold cyan)%d%n %C(bold green)%ad%C(reset) %C(dim white)(%ar)%C(reset) %C(green)(committed: %cd)%n %C(bold white)%an <%ae> %C(dim white)(committer: %cn <%ce>)%n%n    %C(bold white)%s%n%n    %b%C(reset)
 
 #    lg1-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
 #    lg2-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
 #    lg3-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(bold cyan)(committed: %cD)%C(reset) %C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset)%n''          %C(dim white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)'
+

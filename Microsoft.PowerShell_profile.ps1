@@ -3,10 +3,15 @@ Set-Alias stp "C:\tools\StackParser\bin\StackParser.exe"
 Set-Alias mergeit "Merge-GitUpstream"
 Set-Alias pushit "Push-GitUpstream"
 Set-Alias pushp "Push-Personal"
+Set-Alias pushr "Push-Release"
+Set-Alias pushh "Push-Hotfix"
 Set-Alias pullit "Fetch-All-Prune-Merge"
 Set-Alias touch "Touch-File"
 Set-Alias gitkk "Gitk-All"
 Set-Alias findf "Find-InFiles"
+Set-Alias pruneit "Remove-DeadBranches"
+Set-Alias cleanit "Clean-RestoreNuget"
+Set-Alias diffit "Diff-Commit"
 
 $desktop = Get-Item ([Environment]::GetFolderPath("Desktop"))
 
@@ -25,6 +30,11 @@ Function Touch-File
     {
         New-Item -Type File -Name $file
     }
+}
+
+Function Diff-Commit([string] $Commit = "HEAD")
+{
+    odd -git ${Commit}^ $Commit
 }
 
 Function Merge-GitUpstream
@@ -62,12 +72,39 @@ Function Push-GitUpstream ([switch]$Force)
 
 Function Push-Personal ([string] $Repo = "origin")
 {
+    Push-Prefix "personal/dwoo" $Repo
+}
+
+Function Push-Release ([string] $Repo = "origin")
+{
+    Push-Prefix "release" $Repo
+}
+
+Function Push-Hotfix ([string] $Repo = "origin")
+{
+    Push-Prefix "hotfix" $Repo
+}
+
+Function Push-Prefix([string] $Prefix, [string] $Repo = "origin")
+{
     $status = Get-GitStatus
     if ($status)
     {
         $branch = $status.Branch
-        $upstreamBranch = "personal/dwoo/$branch"
+        $upstreamBranch = "${Prefix}/$branch"
         git push -u $Repo ${branch}:$upstreamBranch
+    }
+    else
+    {
+        Write-Host "Not in a Git repo"
+    }
+}
+
+Function Remove-DeadBranches()
+{
+    if (Get-GitStatus)
+    {
+        git branch -vv | ?{$_.Contains(": gone]")} | %{git branch -D ($_.Split(' ',[StringSplitOptions]'RemoveEmptyEntries')[0])}
     }
 }
 
@@ -87,6 +124,17 @@ Function Fetch-All-Prune-Merge ([switch]$All)
 Function Gitk-All
 {
 	gitk --all
+}
+
+Function Clean-RestoreNuget([switch] $Scorch)
+{
+    if ($Scorch) {
+        git scorch
+    }
+    else {
+        git clean -dxf
+    }
+    gci *.sln | %{nuget restore $_}
 }
 
 Function Find-InFiles([string]$Pattern)
