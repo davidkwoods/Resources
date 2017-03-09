@@ -52,6 +52,7 @@
     brc = branch --all --contains
     brp = !git branch && echo && git branch -r --list laptop/* && git branch -r --list self/* && git branch -r --list origin/feature/* && git branch -r --list origin/release/* && git branch -r --list origin/personal/dwoo/*
     bv = branch -vv
+    tc = tag --contains
     sb = show-branch --current
     count = !sh -c 'git rev-list --left-right --count ${1-HEAD@\\{u\\}}...${2-HEAD}' -
     sh = show -M --word-diff=color --pretty=mysummary
@@ -62,8 +63,8 @@
     unignored = ls-files -i --exclude-standard
     ignored = clean -ndx
     ignoredd = ls-files --others -i --exclude-standard
-    scorch = clean -dxf -e /.vs*/ -e /**/*.lock.json -e /**/*.nuget.targets -e /**/project.json
-    scorchh = clean -dxf -e /.vs*/ -e /**/*.lock.json -e /**/*.nuget.targets -e /**/project.json -e /Binaries/
+    scorch = clean -dxf -e /**/.vs*/ -e /**/*.lock.json -e /**/*.nuget.targets -e /**/project.json
+    scorchh = clean -dxf -e /**/.vs*/ -e /**/*.lock.json -e /**/*.nuget.targets -e /**/project.json -e /Binaries/
     amend = !sh -c 'git commit --amend ${1+-m} \"${1---reuse-message=HEAD}\"' -
 
     follow  = log --follow --date=format-local:%c --format=logone
@@ -76,9 +77,9 @@
     lgg  = log --graph --date=format-local:%c -M -i --format=logone --all
     lgg2 = log --graph --date=format-local:%c -M -i --format=logtwo --all
     lgg3 = log --graph --date=format-local:%c -M -i --format=logthree --all
-    lgu   = log --graph --date=format-local:%c -M -i --format=logone HEAD@{u}
-    lgu2  = log --graph --date=format-local:%c -M -i --format=logtwo HEAD@{u}
-    lgu3  = log --graph --date=format-local:%c -M -i --format=logthree HEAD@{u}
+    lgu  = !sh -c 'git log --graph --date=format-local:%c -M -i --format=logone ${1-HEAD}@{u}' -
+    lgu2 = !sh -c 'git log --graph --date=format-local:%c -M -i --format=logtwo ${1-HEAD}@{u}' -
+    lgu3 = !sh -c 'git log --graph --date=format-local:%c -M -i --format=logthree ${1-HEAD}@{u}' -
 
 [pretty]
     logone = format:%C(cyan)%h%C(bold cyan)%d%C(reset) - %C(dim white)(%ar)%C(reset) %C(bold white)%s%C(reset) %C(dim white)- %an%C(reset)
