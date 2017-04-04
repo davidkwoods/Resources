@@ -15,6 +15,8 @@ Set-Alias diffit "Diff-Commit"
 
 $desktop = Get-Item ([Environment]::GetFolderPath("Desktop"))
 
+$env:Path += ";C:\Tools\NuGet;"
+
 Function Touch-File
 {
     $file = $args[0]
@@ -143,7 +145,7 @@ Function Find-InFiles([string]$Pattern)
 }
 
 # Load posh-git example profile
-. 'C:\Git\posh-git\profile.example.ps1'
+Import-Module "C:\Git\posh-git\src\posh-git.psd1"
 
 
 # Chocolatey profile

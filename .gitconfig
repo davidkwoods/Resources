@@ -1,32 +1,50 @@
 [core]
-	autocrlf = false
-	editor = 'C:\\Program Files (x86)\\Notepad++\\notepad++.exe' -multiInst -nosession -noPlugin
+    autocrlf = false
+    editor = 'C:\\Program Files (x86)\\Notepad++\\notepad++.exe' -multiInst -nosession -noPlugin
 [user]
-	name = David Woods
-	email = ***@hotmail.com
+    name = David Woods
+    email = ***@hotmail.com
 [github]
-	user = ***
-	token = ***
-[merge]
-  tool = p4merge
-[mergetool "p4merge"]
-	cmd = "p4merge.exe $BASE $LOCAL $REMOTE $MERGED"
-[mergetool "SemanticMerge"]
-  path = C:\\Users\\David\\AppData\\Local\\PlasticSCM4\\semanticmerge\\semanticmergetool.exe
-  keepBackup = false
-  trustExitCode = false
-  cmd = \"C:\\Users\\David\\AppData\\Local\\PlasticSCM4\\semanticmerge\\semanticmergetool.exe\" -b=\"$BASE\" -d=\"$LOCAL\" -s=\"$REMOTE\" -r=\"$MERGED\" -l=csharp -emt=\"mergetool.exe -b=\"\"@basefile\"\" -bn=\"\"@basesymbolic\"\" -s=\"\"@sourcefile\"\" -sn=\"\"@sourcesymbolic\"\" -d=\"\"@destinationfile\"\" -dn=\"\"@destinationsymbolic\"\" -r=\"\"@output\"\" -t=\"\"@filetype\"\" -i=\"\"@comparationmethod\"\" -e=\"\"@fileencoding\"\"\" -edt=\"mergetool.exe  -s=\"\"@sourcefile\"\" -sn=\"\"@sourcesymbolic\"\" -d=\"\"@destinationfile\"\" -dn=\"\"@destinationsymbolic\"\" -t=\"\"@filetype\"\" -i=\"\"@comparationmethod\"\" -e=\"\"@fileencoding\"\"\"
-[diff]
-	tool = p4merge
-[difftool "p4merge"]
-	cmd = "p4merge.exe $LOCAL $REMOTE"
-[difftool "SemanticMerge"]
-  path = C:\\Users\\David\\AppData\\Local\\PlasticSCM4\\semanticmerge\\semanticmergetool.exe
-  cmd = \"C:\\Users\\David\\AppData\\Local\\PlasticSCM4\\semanticmerge\\semanticmergetool.exe\" -s=$LOCAL -d=$REMOTE
+    user = ***
+    token = ***
 [push]
-	default = simple
+    default = upstream
 [credential]
-	helper = !'C:\\Users\\David\\AppData\\Roaming\\GitCredStore\\git-credential-winstore.exe'
+    helper = manager
+
+[diff]
+    tool = vsdiffmerge
+    renameLimit = 1000000
+[merge]
+    tool = semanticmerge
+    renameLimit = 1000000
+[difftool]
+#    prompt = false
+[difftool "semanticmerge"]
+    cmd = \"C:\\Users\\dwoo\\AppData\\Local\\semanticmerge\\semanticmergetool.exe\" -s \"$LOCAL\" -d \"$REMOTE\"
+[difftool "odd"]
+    cmd = odd $LOCAL $REMOTE
+    keepBackup = false
+    trustExitCode = true
+[difftool "bc"]
+    path = C:\\Program Files\\Beyond Compare 4\\BComp.exe
+    keepBackup = false
+    trustExitCode = true
+[difftool "vsdiffmerge"]
+    cmd = \"C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\Common7\\IDE\\vsdiffmerge.exe\" \"$LOCAL\" \"$REMOTE\" //t
+    keepbackup = false
+
+[mergetool]
+#    prompt = false
+    keepbackup = false
+[mergetool "semanticmerge"]
+    cmd = \"C:\\Users\\dwoo\\AppData\\Local\\semanticmerge\\semanticmergetool.exe\" -s \"$LOCAL\" -d \"$REMOTE\" -b \"$BASE\" -r \"$MERGED\"
+    trustexitcode = true
+[mergetool "bc"]
+    path = C:\\Program Files\\Beyond Compare 4\\BComp.exe
+    keepBackup = false
+    trustExitCode = true
+
 [alias]
     dift = difftool -t semanticmerge
     diftc = difftool -t semanticmerge --cached
@@ -36,24 +54,25 @@
     difcs = diff -M --cached --stat=170 --dirstat
     sub = submodule update
     wipe = reset --hard
+    nuke = "!git scorch ; git reset --hard HEAD@{u}"
     fa = fetch --all
     fp = fetch --prune
     fap = fetch --all --prune
     fpa = fetch --all --prune
+    fpp = "!git fetch --prune self ; git fetch --prune origin"
+    fpm = "!git fetch --prune ; git merge --ff-only HEAD@{u}"
+    fppm = "!git fetch --prune self ; git fetch --prune origin && git merge --ff-only HEAD@{u}"
+    fpam = "!git fetch --prune --all ; git merge --ff-only HEAD@{u}"
+    fapm = "!git fetch --prune --all ; git merge --ff-only HEAD@{u}"
     mu = merge HEAD@{u}
-    fpp = !git fetch --prune self && git fetch --prune origin
-    fpm = !git fetch --prune && git merge --ff-only HEAD@{u}
-    fppm = !git fetch --prune self && git fetch --prune origin && git merge --ff-only HEAD@{u}
-    fpam = !git fetch --prune --all || git merge --ff-only HEAD@{u}
-    fapm = !git fetch --prune --all || git merge --ff-only HEAD@{u}
     pp = pull --prune
     stat = status --short --branch
-    br = !git branch && echo && git branch -r
+    br = "!git branch ; echo ; git branch -r"
     brc = branch --all --contains
-    brp = !git branch && echo && git branch -r --list laptop/* && git branch -r --list self/* && git branch -r --list origin/feature/* && git branch -r --list origin/release/* && git branch -r --list origin/personal/dwoo/*
+    brp = "!git branch ; echo ; git branch -r --list laptop/* ; git branch -r --list self/* ; git branch -r --list origin/feature/* ; git branch -r --list origin/release/* ; git branch -r --list origin/personal/dwoo/*"
     bv = branch -vv
     tc = tag --contains
-    sb = show-branch --current
+    sb = show-branch --current --sha1-name
     count = !sh -c 'git rev-list --left-right --count ${1-HEAD@\\{u\\}}...${2-HEAD}' -
     sh = show -M --word-diff=color --pretty=mysummary
     shs = show -M --shortstat --dirstat --pretty=mysummary
@@ -80,12 +99,15 @@
     lgu  = !sh -c 'git log --graph --date=format-local:%c -M -i --format=logone ${1-HEAD}@{u}' -
     lgu2 = !sh -c 'git log --graph --date=format-local:%c -M -i --format=logtwo ${1-HEAD}@{u}' -
     lgu3 = !sh -c 'git log --graph --date=format-local:%c -M -i --format=logthree ${1-HEAD}@{u}' -
+    
+    lgcolors = log --graph --date=format-local:%c -M -i --format=colortest
 
 [pretty]
-    logone = format:%C(cyan)%h%C(bold cyan)%d%C(reset) - %C(dim white)(%ar)%C(reset) %C(bold white)%s%C(reset) %C(dim white)- %an%C(reset)
-    logtwo = format:%C(cyan)%h%C(bold cyan)%d%C(reset) - %C(bold green)%ad%C(reset) %C(dim white)(%ar)%C(reset)%n          %C(bold white)%s%C(reset) %C(dim white)- %an%C(reset)
-    logthree = format:%C(cyan)%h%C(bold cyan)%d%C(reset) - %C(bold green)%ad%C(reset) %C(dim white)(%ar)%C(reset) %C(green)(committed: %cd)%C(reset)%n          %C(bold white)%s%C(reset)%n          %C(bold white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)
-    mysummary = format:%C(cyan) %H%n%C(bold cyan)%d%n %C(bold green)%ad%C(reset) %C(dim white)(%ar)%C(reset) %C(green)(committed: %cd)%n %C(bold white)%an <%ae> %C(dim white)(committer: %cn <%ce>)%n%n    %C(bold white)%s%n%n    %b%C(reset)
+    logone = format:%C(bold blue)%h%C(bold cyan)%d%C(reset) - %C(dim white)(%ar)%C(reset) %C(bold white)%s%C(reset) %C(dim white)- %an%C(reset)
+    logtwo = format:%C(bold blue)%h%C(bold cyan)%d%C(reset) - %C(bold green)%ad%C(reset) %C(dim white)(%ar)%C(reset)%n          %C(bold white)%s%C(reset) %C(dim white)- %an%C(reset)
+    logthree = format:%C(bold blue)%h%C(bold cyan)%d%C(reset) - %C(bold green)%ad%C(reset) %C(dim white)(%ar)%C(reset) %C(green)(committed: %cd)%C(reset)%n          %C(bold white)%s%C(reset)%n          %C(bold white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)
+    mysummary = format:%C(bold blue) %H%n%C(bold cyan)%d%n %C(bold green)%ad%C(reset) %C(dim white)(%ar)%C(reset) %C(green)(committed: %cd)%n %C(bold white)%an <%ae> %C(dim white)(committer: %cn <%ce>)%n%n%C(bold white)%s%n%+b%C(reset)
+    colortest = format:%C(bold white)bold white %C(dim)dim white %C(bold normal)bold normal %C(dim)dim normal %C(bold black)bold black %C(dim)dim black%n%C(bold red)bold red %C(dim)dim red %C(bold green)bold green %C(dim)dim green %C(bold yellow)bold yellow %C(dim)dim yellow%n%C(bold blue)bold blue %C(dim)dim blue %C(bold magenta)bold magenta %C(dim)dim magenta %C(bold cyan)bold cyan %C(dim)dim cyan%Creset
 
 #    lg1-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
 #    lg2-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
