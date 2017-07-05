@@ -17,131 +17,126 @@ $desktop = Get-Item ([Environment]::GetFolderPath("Desktop"))
 
 $env:Path += ";C:\Tools\NuGet;"
 
-Function Touch-File
-{
+Function Touch-File {
     $file = $args[0]
     if($file -eq $null) {
         throw "No filename supplied"
     }
 
-    if(Test-Path $file)
-    {
+    if(Test-Path $file) {
         (Get-ChildItem $file).LastWriteTime = Get-Date
     }
-    else
-    {
+    else {
         New-Item -Type File -Name $file
     }
 }
 
-Function Diff-Commit([string] $Commit = "HEAD")
-{
+Function Diff-Commit([string] $Commit = "HEAD") {
     odd -git ${Commit}^ $Commit
 }
 
-Function Merge-GitUpstream
-{
+Function Merge-GitUpstream {
     $status = Get-GitStatus
-    if ($status)
-    {
-        if ($status.Upstream)
-        {
+    if ($status) {
+        if ($status.Upstream) {
             git merge --no-commit $status.Upstream
         }
     }
 }
 
-Function Push-GitUpstream ([switch]$Force)
-{
+Function Push-GitUpstream ([switch]$Force) {
     $status = Get-GitStatus
-    if ($status)
-    {
-        if ($status.Upstream)
-        {
+    if ($status) {
+        if ($status.Upstream) {
             $upstream = $status.Upstream.Split("/")[0]
             $upstreamPath = $status.Upstream.Replace($upstream + "/", '')
-            if ($Force)
-            {
+            if ($Force) {
                 git push $upstream HEAD:$upstreamPath -f
             }
-            else
-            {
+            else {
                 git push $upstream HEAD:$upstreamPath
             }
         }
     }
 }
 
-Function Push-Personal ([string] $Repo = "origin")
-{
+Function Push-Personal ([string] $Repo = "origin") {
     Push-Prefix "personal/dwoo" $Repo
 }
 
-Function Push-Release ([string] $Repo = "origin")
-{
+Function Push-Release ([string] $Repo = "origin") {
     Push-Prefix "release" $Repo
 }
 
-Function Push-Hotfix ([string] $Repo = "origin")
-{
+Function Push-Hotfix ([string] $Repo = "origin") {
     Push-Prefix "hotfix" $Repo
 }
 
-Function Push-Prefix([string] $Prefix, [string] $Repo = "origin")
-{
+Function Push-Prefix([string] $Prefix, [string] $Repo = "origin") {
     $status = Get-GitStatus
-    if ($status)
-    {
+    if ($status) {
         $branch = $status.Branch
         $upstreamBranch = "${Prefix}/$branch"
         git push -u $Repo ${branch}:$upstreamBranch
     }
-    else
-    {
+    else {
         Write-Host "Not in a Git repo"
     }
 }
 
-Function Remove-DeadBranches()
-{
-    if (Get-GitStatus)
-    {
+Function Remove-DeadBranches() {
+    if (Get-GitStatus) {
         git branch -vv | ?{$_.Contains(": gone]")} | %{git branch -D ($_.Split(' ',[StringSplitOptions]'RemoveEmptyEntries')[0])}
     }
 }
 
-Function Fetch-All-Prune-Merge ([switch]$All)
-{
-    if ($All)
-    {
+Function Fetch-All-Prune-Merge ([switch]$All) {
+    if ($All) {
         git fetch --all --prune
     }
-    else
-    {
+    else {
         git fetch --prune
     }
+    
     Merge-GitUpstream
 }
 
-Function Gitk-All
-{
+Function Gitk-All {
 	gitk --all
 }
 
-Function Clean-RestoreNuget([switch] $Scorch)
-{
+Function Clean-RestoreNuget([switch] $Scorch) {
     if ($Scorch) {
         git scorch
     }
     else {
         git clean -dxf
     }
+    
     gci *.sln | %{nuget restore $_}
 }
 
-Function Find-InFiles([string]$Pattern)
-{
-    Get-ChildItem -recurse | Select-String $Pattern -List | select -ExpandProperty Path
+Function Find-InFiles ([string[]]$Patterns, [Parameter(ValueFromPipeline=$true)]$Files, [switch]$Regex) {
+    Begin {
+        $Patterns = @($Patterns)
+        if (!$Regex) {
+            for($i = 0; $i -lt $Patterns.Count; $i++) {
+                $Patterns[$i] = [regex]::Escape($Patterns[$i])
+            }
+        }
+        
+        $filler = ')|('
+        $Pattern = "($($Patterns -join $filler))"
+    }
+    
+    Process {
+        if ($Files) {
+            $Files | Select-String $Pattern -List | select -ExpandProperty Path
+        }
+        else {
+            gci -Recurse | Select-String $Pattern -List | select -ExpandProperty Path
+        }
+    }
 }
 
 # Load posh-git example profile
