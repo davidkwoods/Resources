@@ -15,7 +15,7 @@ Layout
     Window Height - 45
 Colors
     Opacity - 95%
-    Colors (in order)
+    Colors (in order from left to right, RGB)
     [
         1       36      86
         0       80      220

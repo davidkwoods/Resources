@@ -1,0 +1,9 @@
+*.cs        diff=csharp
+*.csproj    diff=html
+*.nuspec    diff=html
+*.targets   diff=html
+*.resx      diff=html
+*.config    diff=html
+*.xml       diff=html
+*.html      diff=html
+*.xib       diff=html
