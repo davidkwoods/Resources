@@ -74,7 +74,9 @@
     bv = branch -vv
     tc = tag --contains
     sb = show-branch --current --sha1-name
-    count = !sh -c 'git rev-list --left-right --count ${1-HEAD@\\{u\\}}...${2-HEAD}' -
+    count = "!sh -c 'echo ${1-HEAD@\\{u\\}}...${2-HEAD}; git rev-list --left-right --count ${1-HEAD@\\{u\\}}...${2-HEAD}' -"
+    countleft = !sh -c 'git rev-list --count ${1} ^${2}' -
+    countright = !sh -c 'git rev-list --count ^${1} ${2}' -
     sh = show -M --word-diff=color --pretty=mysummary
     shs = show -M --shortstat --dirstat --pretty=mysummary
     shd = show -M --dirstat --pretty=mysummary
@@ -90,6 +92,9 @@
     follow  = log --follow --date=format-local:%c --format=logone
     follow2 = log --follow --date=format-local:%c --format=logtwo
     follow3 = log --follow --date=format-local:%c --format=logthree
+    followw  = log --follow --date=format-local:%c --format=logone --all
+    followw2 = log --follow --date=format-local:%c --format=logtwo --all
+    followw3 = log --follow --date=format-local:%c --format=logthree --all
 
     lg   = log --graph --date=format-local:%c -M -i --format=logone
     lg2  = log --graph --date=format-local:%c -M -i --format=logtwo
