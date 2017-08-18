@@ -12,6 +12,7 @@ Set-Alias findf "Find-InFiles"
 Set-Alias pruneit "Remove-DeadBranches"
 Set-Alias cleanit "Clean-RestoreNuget"
 Set-Alias diffit "Diff-Commit"
+Set-Alias mklink "Make-Link"
 
 $desktop = Get-Item ([Environment]::GetFolderPath("Desktop"))
 
@@ -137,6 +138,34 @@ Function Find-InFiles ([string[]]$Patterns, [Parameter(ValueFromPipeline=$true)]
             gci -Recurse | Select-String $Pattern -List | select -ExpandProperty Path
         }
     }
+}
+
+function Test-IsAdmin() 
+{
+    # Get the current ID and its security principal
+    $windowsID = [System.Security.Principal.WindowsIdentity]::GetCurrent()
+    $windowsPrincipal = new-object System.Security.Principal.WindowsPrincipal($windowsID)
+    
+    # Get the Admin role security principal
+    $adminRole=[System.Security.Principal.WindowsBuiltInRole]::Administrator
+    
+    # Are we an admin role?
+    $windowsPrincipal.IsInRole($adminRole)
+}
+
+Function Make-Link($source, $dest, [switch]$Hard) {
+    if ($Hard) {
+        New-Item -Type HardLink -Path $dest -Value $source | Out-Null
+    }
+    elseif (Test-IsAdmin) {
+        New-Item -Type SymbolicLink -Path $dest -Value $source | Out-Null
+    }
+    else {
+        [string[]]$argList = ('-NoLogo', '-NoProfile', '-ExecutionPolicy Bypass', "-Command `"& {cd $pwd; New-Item -Type SymbolicLink -Path $dest -Value $source}`"")
+        Start-Process PowerShell.exe -Verb Runas -WindowStyle Hidden -Wait -ArgumentList $argList
+    }
+    
+    gi $dest
 }
 
 # Load posh-git example profile
