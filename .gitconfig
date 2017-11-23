@@ -64,6 +64,10 @@
     fppm = "!git fetch --prune self ; git fetch --prune origin && git merge --ff-only HEAD@{u}"
     fpam = "!git fetch --prune --all ; git merge --ff-only HEAD@{u}"
     fapm = "!git fetch --prune --all ; git merge --ff-only HEAD@{u}"
+    fpr = "!git fetch --prune ; git rebase"
+    fppr = "!git fetch --prune self ; git fetch --prune origin && git rebase"
+    fpar = "!git fetch --prune --all ; git rebase"
+    fapr = "!git fetch --prune --all ; git rebase"
     mu = merge HEAD@{u}
     muf = !sh -c 'git branch -f ${1} ${1}@\\{u\\}' -
     pp = pull --prune
@@ -88,6 +92,7 @@
     scorch = clean -dxf -e /**/.vs*/ -e /**/*.lock.json -e /**/*.nuget.targets -e /**/project.json
     scorchh = clean -dxf -e /**/.vs*/ -e /**/*.lock.json -e /**/*.nuget.targets -e /**/project.json -e /Binaries/
     amend = !sh -c 'git commit --amend ${1+-m} \"${1---reuse-message=HEAD}\"' -
+    l = shortlog -sne
 
     follow  = log --follow --date=format-local:%c --format=logone
     follow2 = log --follow --date=format-local:%c --format=logtwo
