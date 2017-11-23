@@ -2,6 +2,8 @@
     gc = true
     editor = 'C:\\Program Files (x86)\\Notepad++\\notepad++.exe' -multiInst -nosession -noPlugin
 	attributesfile = C:\\Users\\dwoo\\.gitattributes
+# This pager line sets diff output to utf8
+    pager = LESSCHARSET=utf-8 less -R
 [user]
     name = David Woods
     email = ***@hotmail.com
