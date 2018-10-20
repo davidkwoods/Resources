@@ -31,6 +31,7 @@ namespace Temp
 
 		public abstract void Merge(MergeableObject obj);
 
+        //Added a comment here.
 		public virtual bool Equals(MergeableObject obj)
 		{
 			return this.MergeID == obj.MergeID;
