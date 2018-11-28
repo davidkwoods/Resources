@@ -1,55 +1,29 @@
 [core]
     gc = true
-    editor = 'C:\\Program Files (x86)\\Notepad++\\notepad++.exe' -multiInst -nosession -noPlugin
-	attributesfile = C:\\Users\\dwoo\\.gitattributes
+    editor = gedit -s
 # This pager line sets diff output to utf8
     pager = LESSCHARSET=utf-8 less -R
-    autocrlf = true
+    autocrlf = false
+    filemode = false
 [user]
     name = David Woods
-    email = ***@hotmail.com
+    email = dwoo@microsoft.com
 [push]
     default = upstream
 [credential]
-    helper = manager
+    helper = store
 [commit]
-	cleanup = scissors
+    cleanup = scissors
+[rebase]
+    useBuiltin = true
+[stash]
+    useBuiltin = true
 
-[diff]
-    tool = vsdiffmerge
-    renameLimit = 1000000
-[merge]
-    tool = semanticmerge
-    renameLimit = 1000000
-[difftool]
-    prompt = false
-[difftool "semanticmerge"]
-    cmd = \"C:\\Users\\dwoo\\AppData\\Local\\semanticmerge\\semanticmergetool.exe\" -s \"$LOCAL\" -d \"$REMOTE\"
-[difftool "odd"]
-    cmd = odd $LOCAL $REMOTE
-    keepBackup = false
-    trustExitCode = true
-[difftool "bc"]
-    path = C:\\Program Files\\Beyond Compare 4\\BComp.exe
-    keepBackup = false
-    trustExitCode = true
-[difftool "vsdiffmerge"]
-    cmd = \"C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\Common7\\IDE\\vsdiffmerge.exe\" \"$LOCAL\" \"$REMOTE\" //t
-    keepbackup = false
-
-[mergetool]
-#    prompt = false
-    keepbackup = false
-[mergetool "semanticmerge"]
-    cmd = \"C:\\Users\\dwoo\\AppData\\Local\\semanticmerge\\semanticmergetool.exe\" -s \"$LOCAL\" -d \"$REMOTE\" -b \"$BASE\" -r \"$MERGED\"
-    trustexitcode = true
-[mergetool "xmerge"]
-    cmd = \"C:\\Users\\dwoo\\AppData\\Local\\semanticmerge\\mergetool.exe\" -s=\"$LOCAL\" -d=\"$REMOTE\" -b=\"$BASE\" -r=\"$MERGED\"
-    trustexitcode = true
-[mergetool "bc"]
-    path = C:\\Program Files\\Beyond Compare 4\\BComp.exe
-    keepBackup = false
-    trustExitCode = true
+[color "diff"]
+	oldMoved = dim blue
+    newMoved = bold blue
+    oldMovedAlternative = dim cyan
+    newMovedAlternative = bold cyan
 
 [alias]
     dift = difftool -d -t odd
@@ -64,8 +38,9 @@
     sub = submodule update
     wipe = reset --hard
     nuke = "!git scorch ; git reset --hard HEAD@{u}"
-    scorch = clean -dxf -e /**/.vs*/ -e /**/*.lock.json -e /**/*.nuget.targets -e /**/project.json
-    scorchh = clean -dxf -e /**/.vs*/ -e /**/*.lock.json -e /**/*.nuget.targets -e /**/project.json -e /Binaries/
+    scorch = clean -dxf -e /**/.vs*/ -e /**/*.lock.json -e /**/*.nuget.targets -e /**/project.json -e /**/packages/
+    scorchh = clean -dxf -e /**/.vs*/ -e /**/*.lock.json -e /**/*.nuget.targets -e /**/project.json -e /Binaries/ -e /**/packages/
+    scorchj = clean -dxf -e /**/.vs*/ -e /**/.project -e /**/.settings/ -e /**/.classpath -e /**/.factorypath
     fa = fetch --all
     fp = fetch --prune
     fap = fetch --all --prune
@@ -85,7 +60,7 @@
     stat = status --short --branch
     br = "!git branch ; echo ; git branch -r"
     brc = branch --all --contains
-    brp = "!git branch ; echo ; git branch -r --list laptop/* ; git branch -r --list self/* ; git branch -r --list origin/feature/* ; git branch -r --list origin/release/* ; git branch -r --list origin/personal/dwoo/*"
+    brp = "!git branch ; echo ; git branch -r --list laptop/* ; git branch -r --list self/* ; git branch -r --list origin/feature/* ; git branch -r --list origin/release/* ; git branch -r --list origin/user/dwoo/*"
     bv = branch -vv
     tc = tag --contains
     btc = "!sh -c 'git branch --all --contains ${1}; echo; echo "Tags:"; git tag --contains ${1}' -"
@@ -104,6 +79,7 @@
     amend = !sh -c 'git commit --amend ${1+-m} \"${1---reuse-message=HEAD}\"' -
     l = shortlog -sne
     anchor = branch --no-track
+    umerge = mergetool --tool unity -- **/*.unity
     mergebc = mergetool --tool bc
     xmerge = mergetool -t xmerge
 
@@ -138,7 +114,3 @@
     logthree = format:%C(bold blue)%h%C(bold cyan)%d%C(reset) - %C(bold green)%ad%C(reset) %C(dim white)(%ar)%C(reset) %C(green)(committed: %cd)%C(reset)%n          %C(bold white)%s%C(reset)%n          %C(bold white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)
     mysummary = format:%C(bold blue) %H%n%C(bold cyan)%d%n %C(bold green)%aI%C(reset) %C(dim white)(%ar)%C(reset) %C(green)(committed: %cd)%n %C(bold white)%an <%ae> %C(dim white)(committer: %cn <%ce>)%n%n%C(bold white)%s%n%+b%C(reset)
     colortest = format:%C(bold white)bold white %C(dim)dim white %C(bold normal)bold normal %C(dim)dim normal %C(bold black)bold black %C(dim)dim black%n%C(bold red)bold red %C(dim)dim red %C(bold green)bold green %C(dim)dim green %C(bold yellow)bold yellow %C(dim)dim yellow%n%C(bold blue)bold blue %C(dim)dim blue %C(bold magenta)bold magenta %C(dim)dim magenta %C(bold cyan)bold cyan %C(dim)dim cyan%Creset
-
-#    lg1-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
-#    lg2-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
-#    lg3-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(bold cyan)(committed: %cD)%C(reset) %C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset)%n''          %C(dim white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)'
