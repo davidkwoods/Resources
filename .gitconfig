@@ -14,6 +14,10 @@
     helper = manager
 [commit]
 	cleanup = scissors
+[rebase]
+    useBuiltin = true
+[stash]
+    useBuiltin = true
 
 [diff]
     tool = vsdiffmerge
