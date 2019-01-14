@@ -58,6 +58,7 @@
     muf = !sh -c 'git branch -f ${1} ${1}@\\{u\\}' -
     pp = pull --prune
     stat = status --short --branch
+    statc = "!echo 'Conflicted Files:'; git diff --name-only --diff-filter=U"
     br = "!git branch ; echo ; git branch -r"
     brc = branch --all --contains
     brp = "!git branch ; echo ; git branch -r --list laptop/* ; git branch -r --list self/* ; git branch -r --list origin/feature/* ; git branch -r --list origin/release/* ; git branch -r --list origin/user/dwoo/*"
@@ -105,7 +106,7 @@
     lgu  = !sh -c 'git log --graph --date=format-local:%c -M -i --format=logone ${1-HEAD}@{u}' -
     lgu2 = !sh -c 'git log --graph --date=format-local:%c -M -i --format=logtwo ${1-HEAD}@{u}' -
     lgu3 = !sh -c 'git log --graph --date=format-local:%c -M -i --format=logthree ${1-HEAD}@{u}' -
-    
+
     lgcolors = log --graph --date=format-local:%c -M -i --format=colortest
 
 [pretty]
