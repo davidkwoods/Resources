@@ -7,3 +7,8 @@
 *.xml       diff=html
 *.html      diff=html
 *.xib       diff=html
+*.h         diff=cpp
+*.cpp       diff=cpp
+*.c         diff=cpp
+*.java      diff=java
+*.py        diff=python
