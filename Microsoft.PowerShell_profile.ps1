@@ -87,7 +87,8 @@ Function Push-Prefix([string] $Prefix, [string] $Repo = "origin") {
 
 Function Remove-DeadBranches() {
     if (Get-GitStatus) {
-        git branch -vv | ?{$_.Contains(": gone]")} | %{git branch -D ($_.Split(' ',[StringSplitOptions]'RemoveEmptyEntries')[0])}
+        #git branch -vv | ?{$_.Contains(": gone]")} | %{git branch -D ($_.Split(' ',[StringSplitOptions]'RemoveEmptyEntries')[0])}
+		git branch -vv | %{if ($_ -match "^[\+\*]? +(.*?) +.+?(?:\[.+?: gone\])") {$matches[1]}} | %{git branch -D $_}
     }
 }
 
