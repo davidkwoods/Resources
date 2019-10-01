@@ -1,5 +1,4 @@
 Set-Alias npp "C:\Program Files (x86)\Notepad++\notepad++.exe"
-Set-Alias stp "C:\tools\StackParser\bin\StackParser.exe"
 Set-Alias mergeit "Merge-GitUpstream"
 Set-Alias pushit "Push-GitUpstream"
 Set-Alias pushp "Push-Personal"
@@ -12,15 +11,28 @@ Set-Alias findf "Find-InFiles"
 Set-Alias pruneit "Remove-DeadBranches"
 Set-Alias cleanit "Clean-RestoreNuget"
 Set-Alias diffit "Diff-Commit"
+Set-Alias blame "Blame-File"
 Set-Alias mklink "Make-Link"
 
 $desktop = Get-Item ([Environment]::GetFolderPath("Desktop"))
 
-$env:Path += ";C:\Tools\NuGet;"
+$env:Path += ";C:\Tools\NuGet\bin;"
+
+function timeit {
+    param(
+        [Parameter(Mandatory=$true)]
+        [ScriptBlock] $Action
+    )
+    
+    $stopwatch = [System.Diagnostics.Stopwatch]::StartNew()
+    $Action.Invoke()
+    $stopwatch.Stop()
+    $stopwatch
+}
 
 Function Touch-File {
     $file = $args[0]
-    if($file -eq $null) {
+    if($null -eq $file) {
         throw "No filename supplied"
     }
 
@@ -28,12 +40,21 @@ Function Touch-File {
         (Get-ChildItem $file).LastWriteTime = Get-Date
     }
     else {
-        New-Item -Type File -Name $file
+        New-Item -Type File -Path $file
     }
 }
 
 Function Diff-Commit([string] $Commit = "HEAD") {
     odd -git ${Commit}^ $Commit
+}
+
+Function Blame-File($file) {
+    $filename = (gi $file).Name
+    $name = "blame_$($filename)_$(New-Guid).txt"
+    git blame -- $file > $name
+    npp $name
+    Start-Sleep -s 2
+    Remove-Item $name
 }
 
 Function Merge-GitUpstream {
@@ -62,7 +83,7 @@ Function Push-GitUpstream ([switch]$Force) {
 }
 
 Function Push-Personal ([string] $Repo = "origin") {
-    Push-Prefix "personal/dwoo" $Repo
+    Push-Prefix "user/dwoo" $Repo
 }
 
 Function Push-Release ([string] $Repo = "origin") {
@@ -87,8 +108,7 @@ Function Push-Prefix([string] $Prefix, [string] $Repo = "origin") {
 
 Function Remove-DeadBranches() {
     if (Get-GitStatus) {
-        #git branch -vv | ?{$_.Contains(": gone]")} | %{git branch -D ($_.Split(' ',[StringSplitOptions]'RemoveEmptyEntries')[0])}
-		git branch -vv | %{if ($_ -match "^[\+\*]? +(.*?) +.+?(?:\[.+?: gone\])") {$matches[1]}} | %{git branch -D $_}
+        git branch -vv | ForEach-Object{if ($_ -match "^[\+\*]? +(.*?) +.+?(?:\[.+?: gone\])") {$matches[1]}} | ForEach-Object{git branch -D $_}
     }
 }
 
@@ -115,7 +135,7 @@ Function Clean-RestoreNuget([switch] $Scorch) {
         git clean -dxf
     }
     
-    gci *.sln | %{nuget restore $_}
+    Get-ChildItem *.sln | %{nuget restore $_}
 }
 
 Function Find-InFiles ([string[]]$Patterns, [Parameter(ValueFromPipeline=$true)]$Files, [switch]$Regex) {
@@ -133,10 +153,10 @@ Function Find-InFiles ([string[]]$Patterns, [Parameter(ValueFromPipeline=$true)]
     
     Process {
         if ($Files) {
-            $Files | Select-String $Pattern -List | select -ExpandProperty Path
+            $Files | Select-String $Pattern -List | Select-Object -ExpandProperty Path
         }
         else {
-            gci -Recurse | Select-String $Pattern -List | select -ExpandProperty Path
+            Get-ChildItem -Recurse | Select-String $Pattern -List | Select-Object -ExpandProperty Path
         }
     }
 }
@@ -154,19 +174,35 @@ function Test-IsAdmin()
     $windowsPrincipal.IsInRole($adminRole)
 }
 
-Function Make-Link($source, $dest, [switch]$Hard) {
+Function Make-Link {
+    param(
+        [ValidateScript({Test-Path $_})]
+        $Source,
+
+        [ValidateScript({!(Test-Path $_)})]
+        $Dest,
+        
+        [switch]$Hard
+        )
+    $sourcePath = (Get-Item $Source).FullName
     if ($Hard) {
-        New-Item -Type HardLink -Path $dest -Value $source | Out-Null
+        [void](New-Item -Type HardLink -Path $Dest -Value $sourcePath)
     }
     elseif (Test-IsAdmin) {
-        New-Item -Type SymbolicLink -Path $dest -Value $source | Out-Null
+        [void](New-Item -Type SymbolicLink -Path $Dest -Value $sourcePath)
     }
     else {
-        [string[]]$argList = ('-NoLogo', '-NoProfile', '-ExecutionPolicy Bypass', "-Command `"& {cd $pwd; New-Item -Type SymbolicLink -Path $dest -Value $source}`"")
+        [string[]]$argList = ('-NoLogo', '-NoProfile', '-ExecutionPolicy Bypass', "-Command `"& {cd $pwd; New-Item -Type SymbolicLink -Path $Dest -Value $sourcePath}`"")
         Start-Process PowerShell.exe -Verb Runas -WindowStyle Hidden -Wait -ArgumentList $argList
     }
     
-    gi $dest
+    Get-Item $Dest
+}
+
+function elevate {
+    $here = Get-Location
+    $args = ("-NoExit","-Command `"pushd '$here'`"")
+    Start-Process PowerShell.exe -Verb RunAs -ArgumentList $args
 }
 
 # Load posh-git example profile
