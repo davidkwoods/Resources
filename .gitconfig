@@ -28,7 +28,7 @@
 [difftool]
     prompt = false
 [difftool "semanticmerge"]
-    cmd = \"C:\\Users\\dwoo\\AppData\\Local\\semanticmerge\\semanticmergetool.exe\" -s \"$LOCAL\" -d \"$REMOTE\"
+    cmd = \"C:\\Users\\dwoo\\AppData\\Local\\semanticmerge\\semanticmergetool.exe\" -s \"$LOCAL\" -d \"$REMOTE\" --nolangwarn
 [difftool "odd"]
     cmd = odd $LOCAL $REMOTE
     keepBackup = false
@@ -45,7 +45,7 @@
 #    prompt = false
     keepbackup = false
 [mergetool "semanticmerge"]
-    cmd = \"C:\\Users\\dwoo\\AppData\\Local\\semanticmerge\\semanticmergetool.exe\" -s \"$LOCAL\" -d \"$REMOTE\" -b \"$BASE\" -r \"$MERGED\"
+    cmd = \"C:\\Users\\dwoo\\AppData\\Local\\semanticmerge\\semanticmergetool.exe\" -s \"$LOCAL\" -d \"$REMOTE\" -b \"$BASE\" -r \"$MERGED\" --nolangwarn
     trustexitcode = true
 [mergetool "xmerge"]
     cmd = \"C:\\Users\\dwoo\\AppData\\Local\\semanticmerge\\mergetool.exe\" -s=\"$LOCAL\" -d=\"$REMOTE\" -b=\"$BASE\" -r=\"$MERGED\"
@@ -56,15 +56,29 @@
     trustExitCode = true
 
 [alias]
+    current-branch = "!git rev-parse --abbrev-ref HEAD"
     dift = difftool -d -t odd
     diftc = difftool -d -t odd --cached
+    diftu = !sh -c 'git difftool -d -t odd ${1-HEAD}@\\{u\\} ${1-HEAD}' -
+    diftf = !sh -c 'git difftool -d -t odd ${1-$(git current-branch)}.fork ${1-$(git current-branch)}' -
     diffit = !sh -c 'git difftool -d -t odd ${1-HEAD}^ ${1-HEAD}' -
     difs = diff -M --stat=170 --dirstat
     dif = diff -M --color-words
     difc = diff -M --cached --color-words
+    difu = !sh -c 'git diff -M --color-words ${1-HEAD}@\\{u\\} ${1-HEAD}' -
+    difus = !sh -c 'git diff -M --stat=170 --dirstat ${1-HEAD}@\\{u\\} ${1-HEAD}' -
+    difsu = !sh -c 'git diff -M --stat=170 --dirstat ${1-HEAD}@\\{u\\} ${1-HEAD}' -
     difm = diff -M --color-moved
     difcm = diff -M --cached --color-moved
     difcs = diff -M --cached --stat=170 --dirstat
+    difb = !sh -c 'git diff -M --color-words ${1-master}...${2-HEAD}' -
+    difsb = !sh -c 'git diff -M --stat=170 --dirstat ${1-master}...${2-HEAD}' -
+    difbs = !sh -c 'git diff -M --stat=170 --dirstat ${1-master}...${2-HEAD}' -
+    diftb = !sh -c 'git difftool -d -t odd ${1-master}...${2-HEAD}' -
+    difbt = !sh -c 'git difftool -d -t odd ${1-master}...${2-HEAD}' -
+    difd = diff --dirstat
+    difcd = diff --cached --dirstat
+    cpdiff = !sh -c 'git range-diff ${1}^..${1} ${2}^..${2}' -
     sub = submodule update
     wipe = reset --hard
     nuke = "!git scorch ; git reset --hard HEAD@{u}"
@@ -88,9 +102,10 @@
     pp = pull --prune
     stat = status --short --branch
     statc = "!echo 'Conflicted Files:'; git diff --name-only --diff-filter=U"
+    fork = "!sh -c 'git checkout -b ${1}; git branch -t ${1}.fork ${1}' -"
     br = "!git branch ; echo ; git branch -r"
     brc = branch --all --contains
-    brp = "!git branch ; echo ; git branch -r --list laptop/* ; git branch -r --list self/* ; git branch -r --list origin/feature/* ; git branch -r --list origin/release/* ; git branch -r --list origin/personal/dwoo/*"
+    brp = "!git branch ; echo ; git branch -r --list self/* ; git branch -r --list origin/feature/* ; git branch -r --list origin/release/* ; git branch -r --list origin/user/dwoo/*"
     bv = branch -vv
     tc = tag --contains
     btc = "!sh -c 'git branch --all --contains ${1}; echo; echo "Tags:"; git tag --contains ${1}' -"
@@ -108,7 +123,8 @@
     ignoredd = ls-files --others -i --exclude-standard
     amend = !sh -c 'git commit --amend ${1+-m} \"${1---reuse-message=HEAD}\"' -
     l = shortlog -sne
-    anchor = branch --no-track
+    anchor = branch -f --no-track
+    anchorr = branch -f --no-track anchor
     mergebc = mergetool --tool bc
     xmerge = mergetool -t xmerge
 
@@ -134,8 +150,16 @@
     lgu  = !sh -c 'git log --graph --date=format-local:%c -M -i --format=logone ${1-HEAD}@{u}' -
     lgu2 = !sh -c 'git log --graph --date=format-local:%c -M -i --format=logtwo ${1-HEAD}@{u}' -
     lgu3 = !sh -c 'git log --graph --date=format-local:%c -M -i --format=logthree ${1-HEAD}@{u}' -
-
-    lgcolors = log --graph --date=format-local:%c -M -i --format=colortest
+    lgt  = !sh -c 'git log --graph --date=format-local:%c -M -i --format=logone ${1-$(git current-branch).fork}..${1-$(git current-branch)}' -
+    lgt2 = !sh -c 'git log --graph --date=format-local:%c -M -i --format=logtwo ${1-$(git current-branch).fork}..${1-$(git current-branch)}' -
+    lgt3 = !sh -c 'git log --graph --date=format-local:%c -M -i --format=logthree ${1-$(git current-branch).fork}..${1-$(git current-branch)}' -
+    lgo   = log --date=format-local:%c -M -i --format=logone
+    lgo2  = log --date=format-local:%c -M -i --format=logtwo
+    lgo3  = log --date=format-local:%c -M -i --format=logthree
+    lgs = log --graph --date=format-local:%c --format=logone -20
+    lgc = log --graph --date=format-local:%c --format=logone -5
+    
+    lgcolors = log --graph --date=format-local:%c -M -i --format=colortest -5
 
 [pretty]
     logone = format:%C(bold blue)%h%C(bold cyan)%d%C(reset) - %C(dim white)(%ar)%C(reset) %C(bold white)%s%C(reset) %C(dim white)- %an%C(reset)

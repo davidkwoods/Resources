@@ -4,3 +4,6 @@ function elevate {
     $args = ("-NoExit","-Command `"pushd '$here'`"")
     Start-Process pwsh.exe -Verb RunAs -ArgumentList $args
 }
+
+Import-Module oh-my-posh
+Set-Theme PsCore
