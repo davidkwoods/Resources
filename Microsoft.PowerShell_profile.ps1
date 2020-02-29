@@ -11,6 +11,7 @@ Set-Alias findf "Find-InFiles"
 Set-Alias pruneit "Remove-DeadBranches"
 Set-Alias cleanit "Clean-RestoreNuget"
 Set-Alias diffit "Diff-Commit"
+Set-Alias diffitf "Diff-Fork"
 Set-Alias blame "Blame-File"
 Set-Alias mklink "Make-Link"
 
@@ -48,13 +49,20 @@ Function Diff-Commit([string] $Commit = "HEAD") {
     odd -git ${Commit}^ $Commit
 }
 
+Function Diff-Fork([string] $branch) {
+    if (!$branch) {
+        $branch = (Get-GitStatus).Branch
+    }
+    odd -git "$branch.fork" $branch
+}
+
 Function Blame-File($file) {
     $filename = (gi $file).Name
     $name = "blame_$($filename)_$(New-Guid).txt"
     git blame -- $file > $name
     npp $name
     Start-Sleep -s 2
-    Remove-Item $name
+    del $name
 }
 
 Function Merge-GitUpstream {
@@ -109,6 +117,12 @@ Function Push-Prefix([string] $Prefix, [string] $Repo = "origin") {
 Function Remove-DeadBranches() {
     if (Get-GitStatus) {
         git branch -vv | ForEach-Object{if ($_ -match "^[\+\*]? +(.*?) +.+?(?:\[.+?: gone\])") {$matches[1]}} | ForEach-Object{git branch -D $_}
+        
+        # Run a second time for fork branches that may now be missing their main branch.
+        git branch -vv | ForEach-Object{if ($_ -match "^[\+\*]? +(.*?) +.+?(?:\[.+?: gone\])") {$matches[1]}} | ForEach-Object{git branch -D $_}
+        
+        #$remainingBranches = git branch | ForEach-Object{$_.Split(' ')[-1]}
+        #$remainingBranches | Where-Object{$_.Contains(".fork") -and -not $remainingBranches.Contains($_.Replace(".fork", ""))} | ForEach-Object{git branch -D $_}
     }
 }
 
@@ -189,7 +203,7 @@ Function Make-Link {
         [void](New-Item -Type HardLink -Path $Dest -Value $sourcePath)
     }
     elseif (Test-IsAdmin) {
-        [void](New-Item -Type SymbolicLink -Path $Dest -Value $sourcePath)
+        [void](New-Item -Type SymbolicLink -Path $Dest -Value $sourcePath | Out-Null)
     }
     else {
         [string[]]$argList = ('-NoLogo', '-NoProfile', '-ExecutionPolicy Bypass', "-Command `"& {cd $pwd; New-Item -Type SymbolicLink -Path $Dest -Value $sourcePath}`"")
