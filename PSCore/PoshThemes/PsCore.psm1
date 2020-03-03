@@ -3,6 +3,7 @@
 # This belongs in the $ThemeSettings.MyThemesLocation directory after installing Oh My Posh
 # See https://www.hanselman.com/blog/HowToMakeAPrettyPromptInWindowsTerminalWithPowerlineNerdFontsCascadiaCodeWSLAndOhmyposh.aspx
 # and https://github.com/JanDeDobbeleer/oh-my-posh
+# Maybe try Consolas NF (https://github.com/Znuff/consolas-powerline) instead of Hanselman's recommended Delugia Nerd Font
 function Write-Theme {
     param(
         [bool]
