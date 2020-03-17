@@ -162,8 +162,8 @@
     lgcolors = log --graph --date=format-local:%c -M -i --format=colortest -5
 
 [pretty]
-    logone = format:%C(bold blue)%h%C(bold cyan)%d%C(reset) - %C(dim white)(%ar)%C(reset) %C(bold white)%s%C(reset) %C(dim white)- %an%C(reset)
-    logtwo = format:%C(bold blue)%h%C(bold cyan)%d%C(reset) - %C(bold green)%ad%C(reset) %C(dim white)(%ar)%C(reset)%n          %C(bold white)%s%C(reset) %C(dim white)- %an%C(reset)
+    logone = format:%C(bold blue)%h%C(bold cyan)%d%C(reset) - %C(dim white)(%ar)%C(reset) %C(bold white)%s%C(reset) %C(dim white)- %an <%ae>%C(reset)
+    logtwo = format:%C(bold blue)%h%C(bold cyan)%d%C(reset) - %C(bold green)%ad%C(reset) %C(dim white)(%ar)%C(reset)%n          %C(bold white)%s%C(reset) %C(dim white)- %an <%ae>%C(reset)
     logthree = format:%C(bold blue)%h%C(bold cyan)%d%C(reset) - %C(bold green)%ad%C(reset) %C(dim white)(%ar)%C(reset) %C(green)(committed: %cd)%C(reset)%n          %C(bold white)%s%C(reset)%n          %C(bold white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)
     mysummary = format:%C(bold blue) %H%n%C(bold cyan)%d%n %C(bold green)%aI%C(reset) %C(dim white)(%ar)%C(reset) %C(green)(committed: %cd)%n %C(bold white)%an <%ae> %C(dim white)(committer: %cn <%ce>)%n%n%C(bold white)%s%n%+b%C(reset)
     colortest = format:%C(bold white)bold white %C(dim)dim white %C(bold normal)bold normal %C(dim)dim normal %C(bold black)bold black %C(dim)dim black%n%C(bold red)bold red %C(dim)dim red %C(bold green)bold green %C(dim)dim green %C(bold yellow)bold yellow %C(dim)dim yellow%n%C(bold blue)bold blue %C(dim)dim blue %C(bold magenta)bold magenta %C(dim)dim magenta %C(bold cyan)bold cyan %C(dim)dim cyan%Creset
