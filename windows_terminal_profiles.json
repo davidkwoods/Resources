@@ -212,7 +212,7 @@
             "commandline" : "C:\\Program Files\\PowerShell\\6\\pwsh.exe",
             "cursorColor" : "#FFFFFF",
             "cursorShape" : "bar",
-            "fontFace" : "Consolas NF",
+            "fontFace" : "Cascadia Mono PL",
             "fontSize" : 10,
             "guid" : "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
             "historySize" : 9001,
