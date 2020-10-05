@@ -14,6 +14,7 @@ Set-Alias diffit "Diff-Commit"
 Set-Alias diffitf "Diff-Fork"
 Set-Alias blame "Blame-File"
 Set-Alias mklink "Make-Link"
+Set-Alias wh "where.exe"
 
 $desktop = Get-Item ([Environment]::GetFolderPath("Desktop"))
 

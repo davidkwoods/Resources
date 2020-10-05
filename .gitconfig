@@ -57,11 +57,12 @@
 
 [alias]
     current-branch = "!git rev-parse --abbrev-ref HEAD"
-    dift = difftool -d -t odd
-    diftc = difftool -d -t odd --cached
-    diftu = !sh -c 'git difftool -d -t odd ${1-HEAD}@\\{u\\} ${1-HEAD}' -
-    diftf = !sh -c 'git difftool -d -t odd ${1-$(git current-branch)}.fork ${1-$(git current-branch)}' -
-    diffit = !sh -c 'git difftool -d -t odd ${1-HEAD}^ ${1-HEAD}' -
+    dift = !sh -c 'git difftool -d -t odd "$@" &' -
+    diftx = !sh -c 'git difftool -t semanticmerge "$@" &' -
+    diftc = !sh -c 'git difftool -d -t odd --cached &' -
+    diftu = !sh -c 'git difftool -d -t odd ${1-HEAD}@\\{u\\} ${1-HEAD} &' -
+    diftf = !sh -c 'git difftool -d -t odd ${1-$(git current-branch)}.fork ${1-$(git current-branch)} &' -
+    diffit = !sh -c 'git difftool -d -t odd ${1-HEAD}^ ${1-HEAD} &' -
     difs = diff -M --stat=170 --dirstat
     dif = diff -M --color-words
     difc = diff -M --cached --color-words
@@ -74,8 +75,8 @@
     difb = !sh -c 'git diff -M --color-words ${1-master}...${2-HEAD}' -
     difsb = !sh -c 'git diff -M --stat=170 --dirstat ${1-master}...${2-HEAD}' -
     difbs = !sh -c 'git diff -M --stat=170 --dirstat ${1-master}...${2-HEAD}' -
-    diftb = !sh -c 'git difftool -d -t odd ${1-master}...${2-HEAD}' -
-    difbt = !sh -c 'git difftool -d -t odd ${1-master}...${2-HEAD}' -
+    diftb = !sh -c 'git difftool -d -t odd ${1-master}...${2-HEAD} &' -
+    difbt = !sh -c 'git difftool -d -t odd ${1-master}...${2-HEAD} &' -
     difd = diff --dirstat
     difcd = diff --cached --dirstat
     cpdiff = !sh -c 'git range-diff ${1}^..${1} ${2}^..${2}' -
@@ -89,15 +90,15 @@
     fap = fetch --all --prune
     fpa = fetch --all --prune
     fpp = "!git fetch --prune self ; git fetch --prune origin"
-    fpm = "!git fetch --prune ; git merge --ff-only HEAD@{u}"
-    fppm = "!git fetch --prune self ; git fetch --prune origin && git merge --ff-only HEAD@{u}"
-    fpam = "!git fetch --prune --all ; git merge --ff-only HEAD@{u}"
-    fapm = "!git fetch --prune --all ; git merge --ff-only HEAD@{u}"
+    fpm = "!git fetch --prune ; git merge -n --ff-only HEAD@{u}"
+    fppm = "!git fetch --prune self ; git fetch --prune origin && git merge -n --ff-only HEAD@{u}"
+    fpam = "!git fetch --prune --all ; git merge -n --ff-only HEAD@{u}"
+    fapm = "!git fetch --prune --all ; git merge -n --ff-only HEAD@{u}"
     fpr = "!git fetch --prune ; git rebase"
     fppr = "!git fetch --prune self ; git fetch --prune origin && git rebase"
     fpar = "!git fetch --prune --all ; git rebase"
     fapr = "!git fetch --prune --all ; git rebase"
-    mu = merge HEAD@{u}
+    mu = merge -n HEAD@{u}
     muf = !sh -c 'git branch -f ${1} ${1}@\\{u\\}' -
     pp = pull --prune
     stat = status --short --branch
@@ -118,6 +119,7 @@
     shd = show -M --dirstat --pretty=mysummary
     shss = show -M --name-status --pretty=mysummary
     shf = show -M --stat=170 --dirstat  --pretty=mysummary
+    shff = !sh -c 'git diff-tree --no-commit-id --name-only --line-prefix="$(git rev-parse --show-toplevel)/" -r ${1-HEAD}' -
     unignored = ls-files -i --exclude-standard
     ignored = clean -ndx
     ignoredd = ls-files --others -i --exclude-standard
@@ -127,6 +129,8 @@
     anchorr = branch -f --no-track anchor
     mergebc = mergetool --tool bc
     xmerge = mergetool -t xmerge
+    wip = commit -m "WIP"
+    getpr = !sh -c 'git fetch origin +refs/pull/${1}/merge:pr-${1}' -
 
     follow  = log --follow --date=format-local:%c --format=logone
     follow2 = log --follow --date=format-local:%c --format=logtwo
@@ -158,8 +162,12 @@
     lgo3  = log --date=format-local:%c -M -i --format=logthree
     lgs = log --graph --date=format-local:%c --format=logone -20
     lgc = log --graph --date=format-local:%c --format=logone -5
+    lgos = log --date=format-local:%c --format=logone -20
+    lgoc = log --date=format-local:%c --format=logone -5
     
     lgcolors = log --graph --date=format-local:%c -M -i --format=colortest -5
+    lgv = log --graph --date=format-local:%c -M -i --format=logone -- src/version.py
+    lgvv = log --graph --date=format-local:%c -M -i --format=logone --all -- src/version.py
 
 [pretty]
     logone = format:%C(bold blue)%h%C(bold cyan)%d%C(reset) - %C(dim white)(%ar)%C(reset) %C(bold white)%s%C(reset) %C(dim white)- %an <%ae>%C(reset)
