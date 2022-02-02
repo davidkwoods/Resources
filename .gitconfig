@@ -4,20 +4,28 @@
 	attributesfile = C:\\Users\\dwoo\\.gitattributes
 # This pager line sets diff output to utf8
     pager = LESSCHARSET=utf-8 less -R
+# This pager line sets diff output to utf8, and fixes window sizes since pwsh 7.1.3 is playing funny
+#    pager = LESSCHARSET=utf-8 COLUMNS=170 LINES=44 less -MR
     autocrlf = true
+# FSMonitor spawns a long-lived git process for each repo visited when enabled.  Maybe best to enable it only on specific repos.
+#	useBuiltinFSMonitor = true
+    untrackedCache = true
+    longpaths = true
 [user]
     name = David Woods
     email = ***@hotmail.com
 [push]
     default = upstream
 [credential]
-    helper = manager
+    helper = manager-core
 [commit]
 	cleanup = scissors
 [rebase]
     useBuiltin = true
 [stash]
     useBuiltin = true
+[rerere]
+	enabled = false
 
 [diff]
     tool = vsdiffmerge
@@ -28,7 +36,9 @@
 [difftool]
     prompt = false
 [difftool "semanticmerge"]
-    cmd = \"C:\\Users\\dwoo\\AppData\\Local\\semanticmerge\\semanticmergetool.exe\" -s \"$LOCAL\" -d \"$REMOTE\" --nolangwarn
+    # cmd = \"C:\\Users\\dwoo\\AppData\\Local\\semanticmerge\\semanticmergetool.exe\" -s \"$LOCAL\" -d \"$REMOTE\" --nolangwarn
+    cmd = \"C:\\Users\\dwoo\\AppData\\Local\\semanticmerge\\semanticmergetool.exe\" -s \"$LOCAL\" -d \"$REMOTE\" --nolangwarn -edt=\"mergetool.exe  -s=\"\"@sourcefile\"\" -sn=\"\"@sourcesymbolic\"\" -d=\"\"@destinationfile\"\" -dn=\"\"@destinationsymbolic\"\" -t=\"\"@filetype\"\" -i=\"\"@comparationmethod\"\" -e=\"\"@fileencoding\"\"\"
+    trustExitCode = true
 [difftool "odd"]
     cmd = odd $LOCAL $REMOTE
     keepBackup = false
@@ -45,10 +55,11 @@
 #    prompt = false
     keepbackup = false
 [mergetool "semanticmerge"]
-    cmd = \"C:\\Users\\dwoo\\AppData\\Local\\semanticmerge\\semanticmergetool.exe\" -s \"$LOCAL\" -d \"$REMOTE\" -b \"$BASE\" -r \"$MERGED\" --nolangwarn
+    cmd = \"C:\\Users\\dwoo\\AppData\\Local\\semanticmerge\\semanticmergetool.exe\" -s \"$REMOTE\" -d \"$LOCAL\" -b \"$BASE\" -r \"$MERGED\" --nolangwarn
+    # cmd = \"C:\\Users\\dwoo\\AppData\\Local\\semanticmerge\\semanticmergetool.exe\" -b=\"$BASE\" -d=\"$LOCAL\" -s=\"$REMOTE\" -r=\"$MERGED\" -l=csharp -emt=\"mergetool.exe -b=\"\"@basefile\"\" -bn=\"\"@basesymbolic\"\" -s=\"\"@sourcefile\"\" -sn=\"\"@sourcesymbolic\"\" -d=\"\"@destinationfile\"\" -dn=\"\"@destinationsymbolic\"\" -r=\"\"@output\"\" -t=\"\"@filetype\"\" -i=\"\"@comparationmethod\"\" -e=\"\"@fileencoding\"\"\" -edt=\"mergetool.exe  -s=\"\"@sourcefile\"\" -sn=\"\"@sourcesymbolic\"\" -d=\"\"@destinationfile\"\" -dn=\"\"@destinationsymbolic\"\" -t=\"\"@filetype\"\" -i=\"\"@comparationmethod\"\" -e=\"\"@fileencoding\"\"\"
     trustexitcode = true
 [mergetool "xmerge"]
-    cmd = \"C:\\Users\\dwoo\\AppData\\Local\\semanticmerge\\mergetool.exe\" -s=\"$LOCAL\" -d=\"$REMOTE\" -b=\"$BASE\" -r=\"$MERGED\"
+    cmd = \"C:\\Users\\dwoo\\AppData\\Local\\semanticmerge\\mergetool.exe\" -s=\"$REMOTE\" -d=\"$LOCAL\" -b=\"$BASE\" -r=\"$MERGED\"
     trustexitcode = true
 [mergetool "bc"]
     path = C:\\Program Files\\Beyond Compare 4\\BComp.exe
@@ -112,6 +123,8 @@
     br = "!git branch ; echo ; git branch -r"
     brc = branch --all --contains
     brp = "!git branch ; echo ; git branch -r --list self/* ; git branch -r --list origin/feature/* ; git branch -r --list origin/release/* ; git branch -r --list origin/user/dwoo/*"
+    brint = branch -r --list origin/int/cr/*/main
+    brrel = branch -r --list origin/integration/official/*
     brstab = branch -a --list *master-to-master/*
     bv = branch -vv
     tc = tag --contains
@@ -137,7 +150,7 @@
 	anchorr = branch -f --no-track anchor
     mergebc = mergetool --tool bc
     xmerge = mergetool -t xmerge
-    wip = commit -m "WIP"
+    wip = !sh -c 'git commit -m \"[WIP] ${1-Work in progress}\"' -
     getpr = !git fetch origin +refs/pull/${1}/merge:PR-${1}
     co = checkout
     cob = checkout --no-track -b
