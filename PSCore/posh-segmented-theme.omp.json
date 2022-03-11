@@ -1,135 +1,116 @@
 {
-  "final_space": false,
-  "osc99": false,
-  "console_title": true,
-  "console_title_style": "template",
-  "console_title_template": "{{if .Root}}(Admin){{end}} {{.Path}}",
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
   "blocks": [
     {
-      "type": "prompt",
       "alignment": "left",
-      "horizontal_offset": 0,
-      "vertical_offset": 0,
       "segments": [
         {
-          "type": "exit",
-          "style": "plain",
           "foreground": "#FF8080",
+		  "foreground_templates": [
+			"{{ if gt .Code 0 }}lightRed{{ else }}lightGreen{{ end }}"
+		  ],
           "properties": {
-            "prefix": " ",
-            "display_exit_code": true,
-            "always_numeric": true
-          }
+            "always_enabled": false,
+            "template": "\ue20f {{ if gt .Code 0 }}\uf00d {{ .Code }}{{ else }}\uf42e{{ end }}"
+          },
+          "style": "plain",
+          "type": "exit"
         },
         {
-          "type": "root",
-          "style": "plain",
-          "powerline_symbol": "",
-          "invert_powerline": false,
           "foreground": "#FFEE58",
-          "foreground_templates": null,
-          "background": "",
-          "background_templates": null,
-          "leading_diamond": "",
-          "trailing_diamond": "",
-          "properties": null
-        },
-        {
-          "type": "session",
-          "style": "plain",
-          "powerline_symbol": "",
-          "invert_powerline": false,
-          "foreground": "#ffffff",
-          "foreground_templates": null,
-          "background": "",
-          "background_templates": null,
-          "leading_diamond": "",
-          "trailing_diamond": "",
-          "properties": null
-        },
-        {
-          "type": "path",
-          "style": "powerline",
-          "powerline_symbol": "",
-          "invert_powerline": false,
-          "foreground": "white",
-          "foreground_templates": null,
-          "background": "blue",
-          "background_templates": null,
-          "leading_diamond": "",
-          "trailing_diamond": "",
           "properties": {
-            "style": "full"
-          }
+            "template": " \uf0e7 "
+          },
+          "style": "plain",
+          "type": "root"
         },
         {
-          "type": "git",
+          "foreground": "#ffffff",
+          "properties": {
+            "template": " {{ if .SSHSession }}\uf817 {{ end }}{{ .UserName }}@{{ .HostName }} "
+          },
+          "style": "plain",
+          "type": "session"
+        },
+        {
+          "background": "blue",
+          "foreground": "white",
+          "powerline_symbol": "\ue0b0",
+          "properties": {
+            "style": "full",
+            "template": " {{ .Path }} "
+          },
           "style": "powerline",
-          "powerline_symbol": "",
-          "invert_powerline": false,
-          "foreground": "black",
-          "foreground_templates": null,
+          "type": "path"
+        },
+        {
           "background": "lightBlue",
           "background_templates": [
             "{{ if and (gt .Ahead 0) (gt .Behind 0) }}red{{ end }}",
             "{{ if gt .Ahead 0 }}green{{ end }}",
             "{{ if gt .Behind 0 }}lightRed{{ end }}"
           ],
-          "leading_diamond": "",
-          "trailing_diamond": "",
+          "foreground": "black",
+          "powerline_symbol": "\ue0b0",
           "properties": {
-            "display_status": true,
-            "template": "{{ .HEAD }}{{ .BranchStatus }}{{ if .Staging.Changed }} <background,cyan>\uE0C6 </><,cyan> \uF046 {{ .Staging.String }} </>{{ end }}{{ if .Working.Changed }}{{ if .Staging.Changed }}<cyan,lightCyan>\uE0C6</>{{ else }} <background,lightCyan>\uE0C6 </>{{ end }}{{ end }}{{ if .Working.Changed }}<,lightCyan> \uF044 {{ .Working.String }} </><lightCyan,background>\uE0C6</> {{ end }}{{ if and (.Staging.Changed) (not (.Working.Changed)) }}<cyan,background>\uE0C6</> {{ end }}"
-          }
+            "fetch_status": true,
+            "template": " {{ .HEAD }}{{ .BranchStatus }}{{ if .Staging.Changed }} <background,cyan>\ue0c6 </><,cyan> \uf046 {{ .Staging.String }} </>{{ end }}{{ if .Working.Changed }}{{ if .Staging.Changed }}<cyan,lightCyan>\ue0c6</>{{ else }} <background,lightCyan>\ue0c6 </>{{ end }}{{ end }}{{ if .Working.Changed }}<,lightCyan> \uf044 {{ .Working.String }} </><lightCyan,background>\ue0c6</> {{ end }}{{ if and (.Staging.Changed) (not (.Working.Changed)) }}<cyan,background>\ue0c6</> {{ end }} "
+          },
+          "style": "powerline",
+          "type": "git"
         }
-      ]
+      ],
+      "type": "prompt"
     },
     {
-      "type": "prompt",
       "alignment": "right",
       "segments": [
         {
-          "type": "executiontime",
-          "style": "diamond",
-          "leading_diamond": "\ue0c2 ",
-          "trailing_diamond": "\ue0c0 ",
-          "invert_powerline": false,
-          "foreground": "#ffffff",
           "background": "red",
+          "foreground": "#ffffff",
+          "leading_diamond": "\ue0c2 ",
           "properties": {
-            "threshold": 500,
             "style": "austin",
-            "template": " <#fefefe>\ufbab</> "
-          }
+            "threshold": 500,
+			"template": " <#fefefe>\ufbab</> {{ .FormattedMs }} "
+          },
+          "style": "diamond",
+          "trailing_diamond": "\ue0c0 ",
+          "type": "executiontime"
         },
         {
-          "type": "time",
-          "style": "plain",
           "foreground": "#007ACC",
           "properties": {
+            "template": " {{ .CurrentDate | date .Format }} ",
             "time_format": "Mar 2, 15:04:05"
-          }
+          },
+          "style": "plain",
+          "type": "time"
         }
-      ]
+      ],
+      "type": "prompt"
     },
     {
       "type": "newline"
     },
     {
-      "type": "prompt",
       "alignment": "left",
       "segments": [
         {
-          "type": "text",
-          "style": "plain",
           "foreground": "#007ACC",
           "properties": {
-            "prefix": "",
-            "text": "\u276F",
-            "suffix": ""
-          }
+            "suffix": "",
+            "template": "\u276f "
+          },
+          "style": "plain",
+          "type": "text"
         }
-      ]
+      ],
+      "type": "prompt"
     }
-  ]
+  ],
+  "console_title": true,
+  "console_title_style": "template",
+  "console_title_template": "{{if .Root}}(Admin){{end}} {{.PWD}}",
+  "version": 1
 }

@@ -1,0 +1,9 @@
+Install:
+  winget install JanDeDobbeleer.OhMyPosh
+
+Update:
+  winget upgrade JanDeDobbeleer.OhMyPosh
+
+Enable:
+  $env:POSH_GIT_ENABLED = $true   # maybe not necessary
+  oh-my-posh --init --shell pwsh --config <path to the omp.json file> | Invoke-Expression
