@@ -140,7 +140,7 @@
     shd = show -M --dirstat --pretty=mysummary
     shss = show -M --name-status --pretty=mysummary
     shf = show -M --stat=170 --dirstat  --pretty=mysummary
-    shff = !git diff-tree --no-commit-id --name-only --line-prefix="$(git rev-parse --show-toplevel)" -r ${1-HEAD}
+    shff = !git diff-tree --no-commit-id --name-only --line-prefix="$(git rev-parse --show-toplevel)/" -r ${1-HEAD}
     unignored = ls-files -ic --exclude-standard
     ignored = clean -ndx
     ignoredd = ls-files --others -i --exclude-standard
@@ -218,3 +218,9 @@
 #    lg1-specific = log --graph --abbrev-commit --decorate --pretty=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
 #    lg2-specific = log --graph --abbrev-commit --decorate --pretty=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
 #    lg3-specific = log --graph --abbrev-commit --decorate --pretty=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(bold cyan)(committed: %cD)%C(reset) %C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset)%n''          %C(dim white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)'
+
+[http]
+	sslVersion = tlsv1.2
+
+[pager]
+    branch = cat
