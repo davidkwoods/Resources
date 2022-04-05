@@ -155,6 +155,7 @@
     co = checkout
     cob = checkout --no-track -b
     cobb = checkout --no-track -B
+    cop = !sh -c 'git checkout -b ${1} origin/user/dwoo/${1}' -
     
     deps = pump-sheriff resolve-deps --update-pr --pump-root D:/PumpRepos --pr-id
     
