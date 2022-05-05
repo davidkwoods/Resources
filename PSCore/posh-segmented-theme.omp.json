@@ -11,7 +11,7 @@
 		  ],
           "properties": {
             "always_enabled": false,
-            "template": "\ue20f {{ if gt .Code 0 }}\uf00d {{ .Code }}{{ else }}\uf42e{{ end }}"
+            "template": "{{ if gt .Code 0 }}\uf00d {{ .Code }}{{ else }}\uf42e{{ end }}"
           },
           "style": "plain",
           "type": "exit"
