@@ -116,6 +116,7 @@
     muf = !sh -c 'git branch -f ${1} ${1}@\\{u\\}' -
     ff = merge --ff-only -n
     ru = reset HEAD@{u}
+    rhu = reset --hard HEAD@{u}
     pp = pull --prune
     stat = status --short --branch
     statc = "!echo 'Conflicted Files:'; git diff --name-only --diff-filter=U"
@@ -123,9 +124,10 @@
     br = "!git branch ; echo ; git branch -r"
     brc = branch --all --contains
     brp = "!git branch ; echo ; git branch -r --list self/* ; git branch -r --list origin/feature/* ; git branch -r --list origin/release/* ; git branch -r --list origin/user/dwoo/*"
+    brmine = branch -r --list origin/user/dwoo/* --sort=committerdate
     brint = branch -r --list origin/int/cr/*/main
+    brstab = branch -r --list origin/int/cr/*/main
     brrel = branch -r --list origin/integration/official/*
-    brstab = branch -a --list *master-to-master/*
     bv = branch -vv
     tc = tag --contains
     btc = "!sh -c 'git branch --all --contains ${1}; echo; echo "Tags:"; git tag --contains ${1}' -"
@@ -154,7 +156,7 @@
     getpr = !git fetch origin +refs/pull/${1}/merge:PR-${1}
     co = checkout
     cob = checkout --no-track -b
-    cobb = checkout --no-track -B
+    cobb = checkout --no-track --unset-upstream -B
     cop = !sh -c 'git checkout -b ${1} origin/user/dwoo/${1}' -
     
     deps = pump-sheriff resolve-deps --update-pr --pump-root D:/PumpRepos --pr-id
@@ -203,10 +205,18 @@
 
     lgcolors = log --graph --date=format-local:%c -M -i --pretty=colortest -5
     lgv      = log --graph --date=format-local:%c -M -i --pretty=logone -- integration_pump/src/version.py
-    lgvl      = log --graph --date=format-local:%c -M -i --pretty=logone -1 -- integration_pump/src/version.py
+    lgvl     = log --graph --date=format-local:%c -M -i --pretty=logone -1 -- integration_pump/src/version.py
     lgvv     = log --graph --date=format-local:%c -M -i --pretty=logone --all -- integration_pump/src/version.py
     lgbv     = log --graph --date=format-local:%c -M -i --pretty=logone -- pr_analytics/config/app_packages.json
-    lgbvl     = log --graph --date=format-local:%c -M -i --pretty=logone -1 -- pr_analytics/config/app_packages.json
+    lgbvl    = log --graph --date=format-local:%c -M -i --pretty=logone -1 -- pr_analytics/config/app_packages.json
+    
+    # Last Version stuff
+    last-version = log -1 --pretty="%h" -- integration_pump/src/version.py
+    last-batch-version = log -1 --pretty="%h" -- pr_analytics/config/app_packages.json
+    lgvbump  = !git log --pretty=logoneline $(git last-version)..${1-HEAD} -- integration_pump/.
+    lgvbumpb = !git log --pretty=logoneline $(git last-batch-version)..${1-HEAD} -- pr_analytics/. integration_pump/config/key_vault_map*
+    diftv    = !pwsh -nop -c "git difftool -d -t odd $(git last-version) ${1-HEAD} &"
+    diftbv   = !pwsh -nop -c "git difftool -d -t odd $(git last-batch-version) ${1-HEAD} &"
 
 [pretty]
     logoneline = tformat:%C(bold blue)%h%C(reset) - %C(reset)%s
