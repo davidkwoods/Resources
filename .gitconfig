@@ -125,6 +125,7 @@
     brc = branch --all --contains
     brp = "!git branch ; echo ; git branch -r --list self/* ; git branch -r --list origin/feature/* ; git branch -r --list origin/release/* ; git branch -r --list origin/user/dwoo/*"
     brmine = branch -r --list origin/user/dwoo/* --sort=committerdate
+    brme = branch --sort=committerdate
     brint = branch -r --list origin/int/cr/*/main
     brstab = branch -r --list origin/int/cr/*/main
     brrel = branch -r --list origin/integration/official/*
