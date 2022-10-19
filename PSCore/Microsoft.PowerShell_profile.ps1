@@ -1,4 +1,4 @@
-﻿. "~\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
+. "~\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
 
 # Now that the basic profile is loaded, override with PSCore-specific stuff
 
@@ -66,5 +66,9 @@ function Decode-Safelink($url) {
 # else {
     # Set-PoshPrompt -Theme D:\temp\posh-theme2.omp.json
 # }
+
+# # Must first call `winget install JanDeDobbeleer.OhMyPosh` to allow this
+# $env:POSH_GIT_ENABLED = $true
+# oh-my-posh --init --shell pwsh --config "C:\Users\dwoo\OneDrive - Microsoft\Documents\posh-segmented-theme.omp.json" | Invoke-Expression
 
 Import-Module 'C:\Git\posh-git\src\posh-git.psd1'

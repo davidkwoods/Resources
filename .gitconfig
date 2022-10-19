@@ -1,12 +1,12 @@
 [core]
     gc = true
-    editor = 'C:\\Program Files (x86)\\Notepad++\\notepad++.exe' -multiInst -nosession -noPlugin
-	attributesfile = C:\\Users\\dwoo\\.gitattributes
+    editor = 'C:\\Program Files\\Notepad++\\notepad++.exe' -multiInst -nosession -noPlugin
+    attributesfile = C:\\Users\\dwoo\\.gitattributes
 # This pager line sets diff output to utf8
     pager = LESSCHARSET=utf-8 less -R
 # This pager line sets diff output to utf8, and fixes window sizes since pwsh 7.1.3 is playing funny
 #    pager = LESSCHARSET=utf-8 COLUMNS=170 LINES=44 less -MR
-    autocrlf = true
+    autocrlf = false
 # FSMonitor spawns a long-lived git process for each repo visited when enabled.  Maybe best to enable it only on specific repos.
     usebuiltinfsmonitor = true
 	fsmonitor = true
@@ -21,13 +21,13 @@
 [credential]
     helper = manager-core
 [commit]
-	cleanup = scissors
+    cleanup = scissors
 [rebase]
     useBuiltin = true
 [stash]
     useBuiltin = true
 [rerere]
-	enabled = false
+    enabled = false
 
 [diff]
     tool = vsdiffmerge
@@ -75,6 +75,7 @@
     diftx = !pwsh -nop -c "git difftool -t semanticmerge \"$@\" & #"
     diftc = !pwsh -nop -c "git difftool -d -t odd --cached &"
     diftu = !pwsh -nop -c "git difftool -d -t odd \\'${1-HEAD}@{u}\\' ${1-HEAD} &"
+    # diftu = !sh -c 'git difftool -d -t odd ${1-HEAD}@\\{u\\} ${1-HEAD} &' -
     diftf = !pwsh -nop -c "git difftool -d -t odd ${1-$(git current-branch)}.fork ${1-$(git current-branch)} &"
     diffit = !pwsh -nop -c "git difftool -d -t odd ${1-HEAD}^ ${1-HEAD} & #"
     difs = diff -M --stat=170 --dirstat
@@ -152,7 +153,7 @@
     amend = !sh -c 'git commit --amend ${1+-m} \"${1---reuse-message=HEAD}\"' -
     l = shortlog -sne
     anchor = branch -f --no-track
-	anchorr = branch -f --no-track anchor
+    anchorr = branch -f --no-track anchor
     mergebc = mergetool --tool bc
     xmerge = mergetool -t xmerge
     wip = !sh -c 'git commit -m \"[WIP] ${1-Work in progress}\"' -
@@ -161,9 +162,8 @@
     cob = checkout --no-track -b
     cobb = checkout --no-track --unset-upstream -B
     cop = !sh -c 'git checkout -b ${1} origin/user/dwoo/${1}' -
-    
-    deps = pump-sheriff resolve-deps --update-pr --pump-root D:/PumpRepos --pr-id
-    
+    cp = cherry-pick -x
+
     odd = !pwsh -nop -c "git difftool -d -t odd ${1-master}...${2-HEAD}" &
 
     follow   = log --follow --date=format-local:%c --pretty=logone
@@ -207,19 +207,6 @@
     lga      = log --graph --date=format-local:%c -M -i --pretty=logone --ancestry-path
 
     lgcolors = log --graph --date=format-local:%c -M -i --pretty=colortest -5
-    lgv      = log --graph --date=format-local:%c -M -i --pretty=logone -- integration_pump/src/version.py
-    lgvl     = log --graph --date=format-local:%c -M -i --pretty=logone -1 -- integration_pump/src/version.py
-    lgvv     = log --graph --date=format-local:%c -M -i --pretty=logone --all -- integration_pump/src/version.py
-    lgbv     = log --graph --date=format-local:%c -M -i --pretty=logone -- pr_analytics/config/app_packages.json
-    lgbvl    = log --graph --date=format-local:%c -M -i --pretty=logone -1 -- pr_analytics/config/app_packages.json
-    
-    # Last Version stuff
-    last-version = log -1 --pretty="%h" -- integration_pump/src/version.py
-    last-batch-version = log -1 --pretty="%h" -- pr_analytics/config/app_packages.json
-    lgvbump  = !git log --pretty=logoneline $(git last-version)..${1-HEAD} -- integration_pump/.
-    lgvbumpb = !git log --pretty=logoneline $(git last-batch-version)..${1-HEAD} -- pr_analytics/. integration_pump/config/key_vault_map*
-    diftv    = !pwsh -nop -c "git difftool -d -t odd $(git last-version) ${1-HEAD} &"
-    diftbv   = !pwsh -nop -c "git difftool -d -t odd $(git last-batch-version) ${1-HEAD} &"
 
 [pretty]
     logoneline = tformat:%C(bold blue)%h%C(reset) - %C(reset)%s
@@ -234,7 +221,7 @@
 #    lg3-specific = log --graph --abbrev-commit --decorate --pretty=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(bold cyan)(committed: %cD)%C(reset) %C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset)%n''          %C(dim white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)'
 
 [http]
-	sslVersion = tlsv1.2
+    sslVersion = tlsv1.2
 
 [pager]
     branch = cat
