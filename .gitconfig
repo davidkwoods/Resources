@@ -8,9 +8,11 @@
 #    pager = LESSCHARSET=utf-8 COLUMNS=170 LINES=44 less -MR
     autocrlf = true
 # FSMonitor spawns a long-lived git process for each repo visited when enabled.  Maybe best to enable it only on specific repos.
-#	useBuiltinFSMonitor = true
+    usebuiltinfsmonitor = true
+	fsmonitor = true
     untrackedCache = true
     longpaths = true
+    commitGraph = true
 [user]
     name = David Woods
     email = ***@hotmail.com
@@ -48,8 +50,8 @@
     keepBackup = false
     trustExitCode = true
 [difftool "vsdiffmerge"]
-    cmd = \"C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\Common7\\IDE\\vsdiffmerge.exe\" \"$LOCAL\" \"$REMOTE\" //t
-    keepbackup = false
+	cmd = \"C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\Common7\\IDE\\CommonExtensions\\Microsoft\\TeamFoundation\\Team Explorer\\vsdiffmerge.exe\" \"$LOCAL\" \"$REMOTE\" //t
+	keepBackup = false
 
 [mergetool]
 #    prompt = false
@@ -72,7 +74,7 @@
     dift = !pwsh -nop -c "git difftool -d -t odd \"$@\" & #"
     diftx = !pwsh -nop -c "git difftool -t semanticmerge \"$@\" & #"
     diftc = !pwsh -nop -c "git difftool -d -t odd --cached &"
-    diftu = !pwsh -nop -c "git difftool -d -t odd ${1-HEAD}@\\{u\\} ${1-HEAD} &"
+    diftu = !pwsh -nop -c "git difftool -d -t odd \\'${1-HEAD}@{u}\\' ${1-HEAD} &"
     diftf = !pwsh -nop -c "git difftool -d -t odd ${1-$(git current-branch)}.fork ${1-$(git current-branch)} &"
     diffit = !pwsh -nop -c "git difftool -d -t odd ${1-HEAD}^ ${1-HEAD} & #"
     difs = diff -M --stat=170 --dirstat
@@ -201,7 +203,7 @@
     lgoo     = log --pretty=logoneline
     lgoos    = log --date=format-local:%c --pretty=logoneline -20
     lgooc    = log --date=format-local:%c --pretty=logoneline -5
-    lgme     = log --graph --date=format-local:%c -M -i --pretty=logone --author=dwoo
+    lgme     = log --date=format-local:%c -M -i --pretty=logoneline --author=dwoo
     lga      = log --graph --date=format-local:%c -M -i --pretty=logone --ancestry-path
 
     lgcolors = log --graph --date=format-local:%c -M -i --pretty=colortest -5

@@ -15,20 +15,49 @@ Set-Alias diffitf "Diff-Fork"
 Set-Alias blame "Blame-File"
 Set-Alias mklink "Make-Link"
 Set-Alias wh "where.exe"
+Set-Alias vs "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\devenv.exe"
 
 $desktop = Get-Item ([Environment]::GetFolderPath("Desktop"))
 
 $env:Path += ";C:\Tools\NuGet\bin;"
 
+function fetchem {
+    gci -Directory | %{ Write-Host $_; git -C $_.FullName fapm }
+}
+
+function pygen {
+    # python2 -m compileall .
+    python3 -m compileall .
+}
+
+function New-Password
+{
+    param
+    (
+        [int]
+        $Length = (Get-Random -Minimum 16 -Maximum 20),
+
+        [int]
+        $NumSpecialCharacters = (Get-Random -Minimum 4 -Maximum 10)
+    )
+
+    Add-Type -AssemblyName System.Web
+    [System.Web.Security.Membership]::GeneratePassword($Length, $NumSpecialCharacters)
+}
+
 function timeit {
     param(
         [Parameter(Mandatory=$true)]
-        [ScriptBlock] $Action
+        [ScriptBlock] $Action,
+        [int] $Times = 1
     )
-    
+    if ($Times -lt 1) { $Times = 1 }
     $stopwatch = [System.Diagnostics.Stopwatch]::StartNew()
-    $Action.Invoke()
+    for ($attempt = 1; $attempt -le $Times; $attempt++) {
+        $Action.Invoke()
+    }
     $stopwatch.Stop()
+    Write-Host "avg: $($stopwatch.Elapsed / $Times)"
     $stopwatch
 }
 
@@ -216,13 +245,35 @@ Function Make-Link {
 
 function elevate {
     $here = Get-Location
-    $args = ("-NoExit","-Command `"pushd '$here'`"")
-    Start-Process PowerShell.exe -Verb RunAs -ArgumentList $args
+    $myArgs = ("-NoExit","-Command `"pushd '$here'`"")
+    Start-Process PowerShell.exe -Verb RunAs -ArgumentList $myArgs
+}
+
+function Decode-Safelink($url) {
+    if (!$url) {
+        $fromClipboard = $true
+        $url = Get-Clipboard -TextFormatType Text
+    }
+
+    $bases = @("https://na01.safelinks.protection.outlook.com/",
+               "https://nam06.safelinks.protection.outlook.com/")
+
+    foreach ($base in $bases)
+    {
+        if ($url.StartsWith($base))
+        {
+            Add-Type -AssemblyName System.Web
+            $url = [Web.HttpUtility]::ParseQueryString(([uri]$url).Query)["url"]
+            if ($fromClipboard) { Set-Clipboard -Value $Url }
+            break
+        }
+    }
+    $url
 }
 
 # Load posh-git example profile
-Import-Module "C:\Git\posh-git\src\posh-git.psd1"
-
+# Import-Module "C:\Git\posh-git\src\posh-git.psd1"
+oh-my-posh --init --shell pwsh --config "C:\Users\dwoo\Documents\PowerShell\PoshThemes\posh-segmented-theme.omp.json" | Invoke-Expression
 
 # Chocolatey profile
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"

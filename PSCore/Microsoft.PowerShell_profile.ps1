@@ -4,8 +4,8 @@
 
 function elevate {
     $here = Get-Location
-    $args = ("-NoExit","-Command `"pushd '$here'`"")
-    Start-Process pwsh.exe -Verb RunAs -ArgumentList $args
+    $myArgs = ("-NoExit","-Command `"pushd '$here'`"")
+    Start-Process pwsh.exe -Verb RunAs -ArgumentList $myArgs
 }
 
 function New-Password {
@@ -58,11 +58,13 @@ function Decode-Safelink($url) {
 
 # From https://github.com/davidkwoods/oh-my-posh.git  (Fork of https://github.com/JanDeDobbeleer/oh-my-posh.git)
 
-$modulePath = "C:\git\oh-my-posh\oh-my-posh.psd1"
-if (Test-Path $modulePath) {
-    Import-Module $modulePath -Force
-    Set-Theme PsCoreSeparated
-}
-else {
-    Set-PoshPrompt -Theme D:\temp\posh-theme2.omp.json
-}
+# $modulePath = "C:\git\oh-my-posh\oh-my-posh.psd1"
+# if (Test-Path $modulePath) {
+    # Import-Module $modulePath -Force
+    # Set-Theme PsCoreSeparated
+# }
+# else {
+    # Set-PoshPrompt -Theme D:\temp\posh-theme2.omp.json
+# }
+
+Import-Module 'C:\Git\posh-git\src\posh-git.psd1'
