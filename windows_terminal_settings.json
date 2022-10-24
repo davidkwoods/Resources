@@ -1,21 +1,8 @@
 {
+    "$help": "https://aka.ms/terminal-documentation",
     "$schema": "https://aka.ms/terminal-profiles-schema",
-    "alwaysOnTop": false,
-    "alwaysShowTabs": true,
-    "confirmCloseAllTabs": false,
-    "copyFormatting": "all",
-    "copyOnSelect": false,
-    "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
-    "initialCols": 170,
-    "initialRows": 45,
-    // Add custom keybindings to this array.
-    // To unbind a key combination from your defaults.json, set the command to "unbound".
-    // To learn more about keybindings, visit https://aka.ms/terminal-keybindings
-    "keybindings": 
+    "actions": 
     [
-        // Copy and paste are bound to Ctrl+Shift+C and Ctrl+Shift+V in your defaults.json.
-        // These two lines additionally bind them to Ctrl+C and Ctrl+V.
-        // To learn more about selection, visit https://aka.ms/terminal-selection
         {
             "command": 
             {
@@ -28,15 +15,17 @@
             "command": "paste",
             "keys": "ctrl+v"
         },
-        // Press Ctrl+Shift+F to open the search box
         {
             "command": "find",
             "keys": "ctrl+shift+f"
         },
-        // Press Alt+Shift+D to open a new pane.
-        // - "split": "auto" makes this pane open in the direction that provides the most surface area.
-        // - "splitMode": "duplicate" makes the new pane use the focused pane's profile.
-        // To learn more about panes, visit https://aka.ms/terminal-panes
+        {
+            "command": 
+            {
+                "action": "newTab"
+            },
+            "keys": "ctrl+t"
+        },
         {
             "command": 
             {
@@ -47,60 +36,65 @@
             "keys": "alt+shift+d"
         },
         {
-            "command": "closeTab",
+            "command": 
+            {
+                "action": "closeTab"
+            },
             "keys": "ctrl+w"
-        },
-        {
-            "command": "newTab",
-            "keys": "ctrl+t"
         }
     ],
+    "alwaysOnTop": false,
+    "alwaysShowTabs": true,
+    "confirmCloseAllTabs": false,
+    "copyFormatting": "all",
+    "copyOnSelect": false,
+    "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+    "initialCols": 170,
+    "initialRows": 45,
     "launchMode": "default",
+    "multiLinePasteWarning": false,
     "profiles": 
     {
         "defaults": {},
         "list": 
         [
             {
-                "acrylicOpacity": 0.84999999999999998,
-                "antialiasingMode": "cleartype",
+                "antialiasingMode": "grayscale",
+                "bellStyle": 
+                [
+                    "audible",
+                    "window",
+                    "taskbar"
+                ],
                 "closeOnExit": "graceful",
                 "colorScheme": "PS Core Paradox",
                 "commandline": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
                 "cursorColor": "#FFFFFF",
                 "cursorShape": "bar",
                 "experimental.retroTerminalEffect": false,
-                "fontFace": "CaskaydiaCove NF",
-                "fontSize": 10,
+                "font": 
+                {
+                    "face": "CaskaydiaCove Nerd Font",
+                    "size": 11
+                },
                 "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
                 "hidden": false,
                 "historySize": 9001,
                 "icon": "ms-appx:///ProfileIcons/{574e775e-4f2a-5b96-ac1e-a2962a402336}.png",
                 "name": "PowerShell Core",
+                "opacity": 100,
                 "padding": "0, 0, 0, 0",
                 "snapOnInput": true,
                 "source": "Windows.Terminal.PowershellCore",
-                "startingDirectory": "D:\\src",
+                "startingDirectory": "E:\\src",
                 "useAcrylic": false
             },
             {
-                "colorScheme": "Solarized Dark",
-                "commandline": "wsl.exe ~",
-                "fontFace": "Cascadia Mono PL",
-                "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
-                "hidden": false,
-                "name": "Ubuntu",
-                "source": "Windows.Terminal.Wsl",
-                "startingDirectory": "//wsl$/Ubuntu-20.04/home/dwoo"
-            },
-            {
-                "commandline": "powershell.exe",
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
                 "hidden": false,
                 "name": "Windows PowerShell"
             },
             {
-                "commandline": "cmd.exe",
                 "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
                 "hidden": false,
                 "name": "Command Prompt"
@@ -110,6 +104,30 @@
                 "hidden": false,
                 "name": "Azure Cloud Shell",
                 "source": "Windows.Terminal.Azure"
+            },
+            {
+                "guid": "{44c40ac2-2e45-54fc-8009-4e25f45c419d}",
+                "hidden": false,
+                "name": "Developer Command Prompt for VS 2022",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{e00fabdd-f63d-5ea5-bb80-d9eeee910a76}",
+                "hidden": false,
+                "name": "Developer PowerShell for VS 2022",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{3cef4662-e181-5aac-997a-ee5214d486c9}",
+                "hidden": true,
+                "name": "Developer Command Prompt for VS 2019",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{b9079739-4c5d-547e-ab13-07d0f92122bd}",
+                "hidden": true,
+                "name": "Developer PowerShell for VS 2019",
+                "source": "Windows.Terminal.VisualStudio"
             }
         ]
     },
@@ -376,5 +394,8 @@
     "tabSwitcherMode": "disabled",
     "tabWidthMode": "equal",
     "theme": "system",
+    "themes": [],
+    "trimPaste": false,
+    "useAcrylicInTabRow": true,
     "wordDelimiters": " /\\()\"'-.,:;<>~!@#$%^&*|+=[]{}~?\u2502"
 }
