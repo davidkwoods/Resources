@@ -61,7 +61,7 @@ function timeit {
     $stopwatch
 }
 
-Function Touch-File([switch]$CRLF) {
+Function Touch-File([switch]$LF) {
     $file = $args[0]
     if($null -eq $file) {
         throw "No filename supplied"
@@ -71,11 +71,11 @@ Function Touch-File([switch]$CRLF) {
         (Get-ChildItem $file).LastWriteTime = Get-Date
     }
     else {
-        if ($CRLF) {
-            New-Item -Type File -Path $file
+        if ($LF) {
+            Set-Content -NoNewline -Encoding utf8 -Value "`n" $file
         }
         else {
-            Set-Content -NoNewline -Encoding utf8 -Value "`n" $file
+            New-Item -Type File -Path $file
         }
     }
 }
