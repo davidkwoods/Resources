@@ -1,4 +1,4 @@
-Set-Alias npp "C:\Program Files (x86)\Notepad++\notepad++.exe"
+Set-Alias npp "C:\Program Files\Notepad++\notepad++.exe"
 Set-Alias mergeit "Merge-GitUpstream"
 Set-Alias pushit "Push-GitUpstream"
 Set-Alias pushp "Push-Personal"
@@ -121,7 +121,7 @@ Function Push-GitUpstream ([switch]$Force) {
 }
 
 Function Push-Personal ([string] $Repo = "origin") {
-    Push-Prefix "user/dwoo" $Repo
+    Push-Prefix "user/david" $Repo
 }
 
 Function Push-Release ([string] $Repo = "origin") {
@@ -168,7 +168,7 @@ Function Fetch-All-Prune-Merge ([switch]$All) {
 }
 
 Function Gitk-All {
-	gitk --all
+    gitk --all
 }
 
 Function Clean-RestoreNuget([switch] $Scorch) {
@@ -256,7 +256,7 @@ function Decode-Safelink($url) {
     }
 
     $bases = @("https://na01.safelinks.protection.outlook.com/",
-               "https://nam06.safelinks.protection.outlook.com/")
+            "https://nam06.safelinks.protection.outlook.com/")
 
     foreach ($base in $bases)
     {
@@ -273,10 +273,16 @@ function Decode-Safelink($url) {
 
 # Load posh-git example profile
 # Import-Module "C:\Git\posh-git\src\posh-git.psd1"
-oh-my-posh --init --shell pwsh --config "C:\Users\dwoo\Documents\PowerShell\PoshThemes\posh-segmented-theme.omp.json" | Invoke-Expression
+
+# Must first call `winget install JanDeDobbeleer.OhMyPosh` to allow this
+$env:POSH_GIT_ENABLED = $true
+oh-my-posh --init --shell pwsh --config "C:\Users\dkwoo\OneDrive\Documents\PowerShell\PoshThemes\posh-segmented-theme.omp.json" | Invoke-Expression
+if (!$?) {
+    Write-Host "oh-my-posh command failed.  May need to run 'winget install JanDeDobbeleer.OhMyPosh' first."
+}
 
 # Chocolatey profile
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
 if (Test-Path($ChocolateyProfile)) {
-  Import-Module "$ChocolateyProfile"
+Import-Module "$ChocolateyProfile"
 }

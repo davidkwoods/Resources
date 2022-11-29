@@ -67,8 +67,12 @@ function Decode-Safelink($url) {
     # Set-PoshPrompt -Theme D:\temp\posh-theme2.omp.json
 # }
 
+# This should already be there from the base PS profile
 # # Must first call `winget install JanDeDobbeleer.OhMyPosh` to allow this
 # $env:POSH_GIT_ENABLED = $true
-# oh-my-posh --init --shell pwsh --config "C:\Users\dwoo\OneDrive - Microsoft\Documents\posh-segmented-theme.omp.json" | Invoke-Expression
+# oh-my-posh --init --shell pwsh --config "C:\Users\dkwoo\OneDrive\Documents\PowerShell\PoshThemes\posh-segmented-theme.omp.json" | Invoke-Expression
+# if (!$?) {
+#     Write-Host "oh-my-posh command failed.  May need to run 'winget install JanDeDobbeleer.OhMyPosh' first."
+# }
 
 Import-Module 'C:\Git\posh-git\src\posh-git.psd1'

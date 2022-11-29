@@ -9,7 +9,7 @@
     autocrlf = false
 # FSMonitor spawns a long-lived git process for each repo visited when enabled.  Maybe best to enable it only on specific repos.
     usebuiltinfsmonitor = true
-	fsmonitor = true
+    fsmonitor = true
     untrackedCache = true
     longpaths = true
     commitGraph = true
@@ -50,8 +50,8 @@
     keepBackup = false
     trustExitCode = true
 [difftool "vsdiffmerge"]
-	cmd = \"C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\Common7\\IDE\\CommonExtensions\\Microsoft\\TeamFoundation\\Team Explorer\\vsdiffmerge.exe\" \"$LOCAL\" \"$REMOTE\" //t
-	keepBackup = false
+    cmd = \"C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\Common7\\IDE\\CommonExtensions\\Microsoft\\TeamFoundation\\Team Explorer\\vsdiffmerge.exe\" \"$LOCAL\" \"$REMOTE\" //t
+    keepBackup = false
 
 [mergetool]
 #    prompt = false
@@ -129,9 +129,6 @@
     brp = "!git branch ; echo ; git branch -r --list self/* ; git branch -r --list origin/feature/* ; git branch -r --list origin/release/* ; git branch -r --list origin/user/dwoo/*"
     brmine = branch -r --list origin/user/dwoo/* --sort=committerdate
     brme = branch --sort=committerdate
-    brint = branch -r --list origin/int/cr/*/main
-    brstab = branch -r --list origin/int/cr/*/main
-    brrel = branch -r --list origin/integration/official/*
     bv = branch -vv
     tc = tag --contains
     btc = "!sh -c 'git branch --all --contains ${1}; echo; echo "Tags:"; git tag --contains ${1}' -"
