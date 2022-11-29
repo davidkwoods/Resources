@@ -275,6 +275,7 @@ function Decode-Safelink($url) {
 # Import-Module "C:\Git\posh-git\src\posh-git.psd1"
 
 # Must first call `winget install JanDeDobbeleer.OhMyPosh` to allow this
+# Plus `choco install cascadia-code-nerd-font` for the nice glyphs
 $env:POSH_GIT_ENABLED = $true
 oh-my-posh --init --shell pwsh --config "C:\Users\dkwoo\OneDrive\Documents\PowerShell\PoshThemes\posh-segmented-theme.omp.json" | Invoke-Expression
 if (!$?) {
